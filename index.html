@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>Kharjino</title>
+
+  <!-- PWA & Add to Home Screen Configurations -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="kharjino">
+  <meta name="application-name" content="kharjino">
+  <meta name="theme-color" content="#6366f1">
+  <meta name="msapplication-TileColor" content="#6366f1">
+
+  <!-- Fallback Vector Icon Data URI -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%234f46e5'/%3E%3Cstop offset='50%25' stop-color='%237c3aed'/%3E%3Cstop offset='100%25' stop-color='%23db2777'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='192' height='192' rx='42' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='11' stroke-linecap='round' stroke-linejoin='round' transform='translate(36, 36) scale(5)'%3E%3Cpath d='M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1'/%3E%3Cpath d='M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4'/%3E%3Ccircle cx='17.5' cy='12.5' r='1.2' fill='%23ffffff'/%3E%3C/g%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" id="appleTouchIcon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%234f46e5'/%3E%3Cstop offset='50%25' stop-color='%237c3aed'/%3E%3Cstop offset='100%25' stop-color='%23db2777'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='192' height='192' rx='42' fill='url(%23g)'/%3E%3Cg fill='none' stroke='%23ffffff' stroke-width='11' stroke-linecap='round' stroke-linejoin='round' transform='translate(36, 36) scale(5)'%3E%3Cpath d='M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1'/%3E%3Cpath d='M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4'/%3E%3Ccircle cx='17.5' cy='12.5' r='1.2' fill='%23ffffff'/%3E%3C/g%3E%3C/svg%3E">
+
+  <!-- Immediate High-Resolution App Icon & Manifest Generator (Safari iOS & Android Native Support) -->
+  <script>
+    (function generateAppIcon() {
+      try {
+        var canvas = document.createElement('canvas');
+        canvas.width = 192;
+        canvas.height = 192;
+        var ctx = canvas.getContext('2d');
+        if (!ctx) return;
+
+        // Draw squircle rounded rect
+        var r = 42;
+        ctx.beginPath();
+        ctx.moveTo(r, 0);
+        ctx.arcTo(192, 0, 192, 192, r);
+        ctx.arcTo(192, 192, 0, 192, r);
+        ctx.arcTo(0, 192, 0, 0, r);
+        ctx.arcTo(0, 0, 192, 0, r);
+        ctx.closePath();
+
+        // Premium fintech gradient
+        var grad = ctx.createLinearGradient(0, 0, 192, 192);
+        grad.addColorStop(0, '#4f46e5');
+        grad.addColorStop(0.5, '#7c3aed');
+        grad.addColorStop(1, '#ec4899');
+        ctx.fillStyle = grad;
+        ctx.fill();
+
+        // Draw Wallet Icon
+        ctx.save();
+        ctx.translate(36, 36);
+        ctx.scale(5, 5);
+        ctx.strokeStyle = '#ffffff';
+        ctx.fillStyle = '#ffffff';
+        ctx.lineWidth = 2.2;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+
+        var pTop = new Path2D("M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1");
+        var pBottom = new Path2D("M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4");
+        ctx.stroke(pTop);
+        ctx.stroke(pBottom);
+
+        ctx.beginPath();
+        ctx.arc(17.5, 12.5, 1.25, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+
+        var pngDataUrl = canvas.toDataURL('image/png');
+
+        // Apply high-res PNG to Apple Touch Icon
+        var appleIcon = document.getElementById('appleTouchIcon');
+        if (appleIcon) appleIcon.href = pngDataUrl;
+
+        // Dynamic Web App Manifest
+        var manifestObj = {
+          name: "kharjino",
+          short_name: "kharjino",
+          description: "مدیریت هوشمند امور مالی شخصی",
+          start_url: window.location.href || ".",
+          display: "standalone",
+          orientation: "portrait",
+          background_color: "#0f172a",
+          theme_color: "#6366f1",
+          icons: [
+            {
+              src: pngDataUrl,
+              sizes: "192x192",
+              type: "image/png",
+              purpose: "any maskable"
+            }
+          ]
+        };
+        var manifestLink = document.createElement('link');
+        manifestLink.rel = 'manifest';
+        manifestLink.href = 'data:application/manifest+json;charset=utf-8,' + encodeURIComponent(JSON.stringify(manifestObj));
+        document.head.appendChild(manifestLink);
+      } catch (e) {
+        console.warn('App icon auto-generator note:', e);
+      }
+    })();
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN for visual expense analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Vazirmatn for Persian and Inter for English -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            fa: ['Vazirmatn', 'sans-serif'],
+            en: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#f0f9ff',
+              500: '#0ea5e9',
+              600: '#0284c7',
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    * {
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Vazirmatn', 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-top: env(safe-area-inset-top, 0);
+      padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+
+    /* Ambient animated glass background glow spheres */
+    .ambient-glow {
+      position: fixed;
+      border-radius: 9999px;
+      filter: blur(120px);
+      z-index: 0;
+      opacity: 0.45;
+      pointer-events: none;
+      animation: floatSlow 18s ease-in-out infinite alternate;
+    }
+
+    .glow-1 {
+      top: -6%;
+      right: 4%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(199, 210, 254, 0.55) 0%, rgba(224, 231, 255, 0.25) 55%, transparent 75%);
+    }
+
+    .glow-2 {
+      bottom: 5%;
+      left: -4%;
+      width: 560px;
+      height: 560px;
+      background: radial-gradient(circle, rgba(186, 230, 253, 0.6) 0%, rgba(224, 242, 254, 0.2) 55%, transparent 75%);
+      animation-delay: -7s;
+    }
+
+    .glow-3 {
+      top: 35%;
+      left: 28%;
+      width: 440px;
+      height: 440px;
+      background: radial-gradient(circle, rgba(254, 205, 211, 0.4) 0%, rgba(253, 232, 242, 0.15) 55%, transparent 75%);
+      animation-delay: -12s;
+    }
+
+    .dark .ambient-glow {
+      filter: blur(95px);
+      opacity: 0.65;
+    }
+
+    .dark .glow-1 {
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.48) 0%, rgba(168, 85, 247, 0.22) 70%, transparent 85%);
+    }
+
+    .dark .glow-2 {
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.48) 0%, rgba(56, 189, 248, 0.18) 70%, transparent 85%);
+    }
+
+    .dark .glow-3 {
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.32) 0%, rgba(244, 63, 94, 0.12) 70%, transparent 85%);
+    }
+
+    @keyframes floatSlow {
+      0% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(40px, 30px) scale(1.08); }
+      100% { transform: translate(-30px, 50px) scale(0.95); }
+    }
+
+    /* Glass Panels */
+    .glass-card {
+      background: rgba(255, 255, 255, 0.84);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      box-shadow: 0 10px 30px -4px rgba(15, 23, 42, 0.05),
+                  0 2px 8px -2px rgba(15, 23, 42, 0.02),
+                  inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.98),
+                  inset 0 -1px 1px 0 rgba(226, 232, 240, 0.35);
+    }
+
+    .dark .glass-card {
+      background: rgba(18, 24, 38, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
+                  inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-input {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(203, 213, 225, 0.85);
+      color: #0f172a;
+      box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03), inset 0 1.5px 1px rgba(255, 255, 255, 0.95);
+    }
+
+    .dark .glass-input {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #f1f5f9;
+      box-shadow: none;
+    }
+
+    .glass-input:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.18), 0 2px 8px rgba(99, 102, 241, 0.08);
+    }
+
+    /* Shamsi Calendar Popover Styles */
+    .shamsi-cal-popover {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 8px;
+      z-index: 60;
+      width: 100%;
+      min-width: 290px;
+      box-shadow: 0 22px 48px -8px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(226, 232, 240, 0.8), inset 0 1.5px 1px rgba(255, 255, 255, 0.95);
+    }
+
+    .dark .shamsi-cal-popover {
+      box-shadow: 0 22px 48px -8px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    .shamsi-cal-popover.active {
+      display: block;
+      animation: fadeInDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .cal-day-cell {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.825rem;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .cal-day-cell:hover:not(.empty):not(.selected) {
+      background-color: rgba(99, 102, 241, 0.15);
+      color: #6366f1;
+    }
+
+    .cal-day-cell.selected {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #ffffff;
+      font-weight: 700;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    }
+
+    .cal-day-cell.today:not(.selected) {
+      border: 1.5px solid #6366f1;
+      font-weight: 700;
+      color: #6366f1;
+    }
+
+    /* Floating navigation glow & active animations */
+    .nav-floating-btn.active {
+      background: rgba(99, 102, 241, 0.15);
+      color: #6366f1;
+      border: 1px solid rgba(99, 102, 241, 0.25);
+    }
+    .dark .nav-floating-btn.active {
+      background: rgba(99, 102, 241, 0.25);
+      color: #818cf8;
+      border: 1px solid rgba(99, 102, 241, 0.35);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.3);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(148, 163, 184, 0.6);
+    }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-[#f8fafc] via-[#f1f5f9] to-[#eef2ff] text-slate-800 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900 dark:text-slate-100 min-h-screen relative flex flex-col justify-between selection:bg-indigo-500 selection:text-white pb-24 sm:pb-28">
+
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
+    <header class="glass-card rounded-3xl p-4 sm:p-5 flex items-center justify-between mb-6">
+      <!-- Logo & Branding -->
+      <div class="flex items-center gap-3.5">
+        <div class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 flex items-center justify-center text-white shadow-lg shadow-indigo-500/30 shrink-0 group hover:scale-105 transition-transform duration-300">
+          <svg class="w-6 h-6 sm:w-7 sm:h-7 drop-shadow-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" xmlns="http://www.w3.org/2000/svg">
+            <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1" />
+            <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4" />
+            <circle cx="17.5" cy="12.5" r="1" fill="currentColor" />
+          </svg>
+        </div>
+        <div>
+          <h1 class="text-lg sm:text-2xl font-extrabold tracking-tight text-black dark:text-white leading-snug" data-i18n="app_title">
+            kharjino
+          </h1>
+          <p class="text-[11px] sm:text-xs font-medium text-slate-500 dark:text-slate-400 mt-0.5 leading-tight" data-i18n="app_subtitle">
+            خرجتو بشناس، پولتو مدیریت کن.
+          </p>
+        </div>
+      </div>
+
+      <!-- Quick Action Controls -->
+      <div class="flex items-center gap-2.5 sm:gap-3">
+        <button id="themeToggleBtn" aria-label="Toggle Theme" title="تغییر تم" class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl glass-card hover:bg-white/90 dark:hover:bg-slate-800/90 text-slate-700 dark:text-slate-200 transition-all active:scale-95 shadow-sm flex items-center justify-center shrink-0">
+          <i id="themeIcon" data-lucide="sun" class="w-5 h-5"></i>
+        </button>
+
+        <button id="openSettingsBtn" aria-label="Open Settings" title="تنظیمات" class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl glass-card hover:bg-white/90 dark:hover:bg-slate-800/90 text-slate-700 dark:text-slate-200 transition-all active:scale-95 shadow-sm flex items-center justify-center shrink-0">
+          <i data-lucide="settings" class="w-5 h-5 text-indigo-500"></i>
+        </button>
+      </div>
+    </header>
+
+    <main class="space-y-6">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        
+        <!-- Total Balance Card -->
+        <div class="glass-card rounded-3xl p-5 relative overflow-hidden group">
+          <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-indigo-500/10 dark:bg-indigo-500/20 rounded-full blur-xl group-hover:scale-125 transition-all"></div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm font-medium text-slate-500 dark:text-slate-400" data-i18n="total_balance">موجودی کل</span>
+            <div class="w-10 h-10 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+              <i data-lucide="scale" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold tracking-tight" id="balanceAmount">0</div>
+          <p class="text-xs text-slate-400 dark:text-slate-500 mt-2 flex items-center gap-1">
+            <span id="balanceTrendBadge" class="inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+              <i data-lucide="trending-up" class="w-3.5 h-3.5 ml-1"></i>
+              <span id="balanceRatioText">100%</span>
+            </span>
+            <span data-i18n="financial_status">وضعیت مالی</span>
+          </p>
+        </div>
+
+        <!-- Income Card -->
+        <div class="glass-card rounded-3xl p-5 relative overflow-hidden group">
+          <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-emerald-500/10 dark:bg-emerald-500/20 rounded-full blur-xl group-hover:scale-125 transition-all"></div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm font-medium text-slate-500 dark:text-slate-400" data-i18n="total_income">مجموع درآمد</span>
+            <div class="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+              <i data-lucide="arrow-down-left" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400 tracking-tight" id="incomeAmount">0</div>
+          <p class="text-xs text-slate-400 dark:text-slate-500 mt-2 flex items-center gap-1">
+            <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+            <span data-i18n="recorded_incomes">درآمدهای ثبت شده</span>
+          </p>
+        </div>
+
+        <!-- Expenses Card -->
+        <div class="glass-card rounded-3xl p-5 relative overflow-hidden group">
+          <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-rose-500/10 dark:bg-rose-500/20 rounded-full blur-xl group-hover:scale-125 transition-all"></div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm font-medium text-slate-500 dark:text-slate-400" data-i18n="total_expense">مجموع هزینه‌ها</span>
+            <div class="w-10 h-10 rounded-2xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center">
+              <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-rose-600 dark:text-rose-400 tracking-tight" id="expenseAmount">0</div>
+          <p class="text-xs text-slate-400 dark:text-slate-500 mt-2 flex items-center gap-1">
+            <i data-lucide="receipt" class="w-3.5 h-3.5"></i>
+            <span data-i18n="recorded_expenses">مخارج این دوره</span>
+          </p>
+        </div>
+
+        <!-- Savings Card -->
+        <div class="glass-card rounded-3xl p-5 relative overflow-hidden group">
+          <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-purple-500/10 dark:bg-purple-500/20 rounded-full blur-xl group-hover:scale-125 transition-all"></div>
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm font-medium text-slate-500 dark:text-slate-400" data-i18n="savings_rate">نرخ پس‌انداز</span>
+            <div class="w-10 h-10 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+              <i data-lucide="piggy-bank" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-purple-600 dark:text-purple-400 tracking-tight" id="savingsRate">0%</div>
+          <div class="w-full bg-slate-200 dark:bg-slate-700/50 rounded-full h-2 mt-3 overflow-hidden">
+            <div id="savingsProgressBar" class="bg-gradient-to-r from-purple-500 to-indigo-500 h-2 rounded-full transition-all duration-500" style="width: 0%"></div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Add New Transaction Form (1 col) -->
+        <div class="lg:col-span-1 glass-card rounded-3xl p-6 flex flex-col justify-between relative z-30">
+          <div>
+            <div class="flex items-center gap-2 mb-5">
+              <div class="w-8 h-8 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center">
+                <i data-lucide="plus-circle" class="w-4 h-4"></i>
+              </div>
+              <h2 class="text-lg font-bold" data-i18n="add_transaction">ثبت تراکنش جدید</h2>
+            </div>
+
+            <form id="transactionForm" class="space-y-4">
+              <!-- Type Switcher (Income vs Expense) -->
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2" data-i18n="transaction_type">نوع تراکنش</label>
+                <div class="grid grid-cols-2 gap-2 p-1 rounded-2xl bg-slate-200/60 dark:bg-slate-800/50 border border-slate-300/60 dark:border-white/5">
+                  <button type="button" id="typeExpenseBtn" class="py-2 text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-1.5 transition-all bg-rose-500 text-white shadow-md shadow-rose-500/20">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    <span data-i18n="expense">هزینه</span>
+                  </button>
+                  <button type="button" id="typeIncomeBtn" class="py-2 text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-1.5 transition-all text-slate-600 dark:text-slate-300 hover:text-emerald-500">
+                    <i data-lucide="arrow-down-left" class="w-4 h-4"></i>
+                    <span data-i18n="income">درآمد</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Title / Description -->
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5" data-i18n="description">عنوان تراکنش</label>
+                <div class="relative">
+                  <input type="text" id="descInput" required placeholder="مثلاً: خرید سوپرمارکت، حقوق ماهانه" class="glass-input w-full h-12 px-4 rounded-2xl text-sm focus:outline-none placeholder:text-slate-400 dark:placeholder:text-slate-600">
+                </div>
+              </div>
+
+              <!-- Amount -->
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5" data-i18n="amount">مبلغ</label>
+                <div class="relative">
+                  <input type="number" id="amountInput" min="1" step="any" required placeholder="0" class="glass-input w-full h-12 px-4 rounded-2xl text-sm font-semibold tracking-wide focus:outline-none placeholder:text-slate-400 dark:placeholder:text-slate-600">
+                  <span id="currencySymbolBadge" class="absolute inset-y-0 ltr:right-4 rtl:left-4 flex items-center text-xs font-bold text-slate-400 pointer-events-none">تومان</span>
+                </div>
+              </div>
+
+              <!-- Category -->
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5" data-i18n="category">دسته‌بندی</label>
+                <div class="relative">
+                  <select id="categorySelect" class="glass-input w-full h-12 px-4 rounded-2xl text-sm focus:outline-none cursor-pointer">
+                    <!-- Dynamically populated according to active lang -->
+                  </select>
+                </div>
+              </div>
+
+              <!-- Date (Shamsi Picker) -->
+              <div class="relative z-40">
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5" data-i18n="date">تاریخ تراکنش (شمسی)</label>
+                <div class="relative">
+                  <button type="button" id="shamsiDateBtn" class="glass-input w-full h-12 px-4 rounded-2xl text-sm flex items-center justify-between text-right cursor-pointer focus:outline-none">
+                    <span id="shamsiDateLabel" class="font-medium text-slate-800 dark:text-slate-100">امروز</span>
+                    <i data-lucide="calendar" class="w-4 h-4 text-indigo-500 shrink-0"></i>
+                  </button>
+                  <input type="hidden" id="dateInput">
+
+                  <!-- Glassmorphism Shamsi Calendar Popover -->
+                  <div id="shamsiCalendarPopover" class="shamsi-cal-popover glass-card rounded-2xl p-4 border border-slate-200/80 dark:border-white/10">
+                    <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-200/80 dark:border-slate-700/60">
+                      <button type="button" id="calPrevMonth" class="w-8 h-8 rounded-xl flex items-center justify-center hover:bg-slate-200/50 dark:hover:bg-slate-800/80 text-slate-600 dark:text-slate-300">
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                      </button>
+                      <div class="flex items-center gap-1.5 text-sm font-bold" id="calMonthYearTitle"></div>
+                      <button type="button" id="calNextMonth" class="w-8 h-8 rounded-xl flex items-center justify-center hover:bg-slate-200/50 dark:hover:bg-slate-800/80 text-slate-600 dark:text-slate-300">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+
+                    <div class="grid grid-cols-7 gap-1 text-center text-[11px] font-semibold text-slate-400 mb-2" id="calWeekdayHeader">
+                      <span>ش</span>
+                      <span>ی</span>
+                      <span>د</span>
+                      <span>س</span>
+                      <span>چ</span>
+                      <span>پ</span>
+                      <span class="text-rose-500">ج</span>
+                    </div>
+
+                    <div class="grid grid-cols-7 gap-1" id="calDaysGrid"></div>
+
+                    <div class="mt-3 pt-2 border-t border-slate-200/80 dark:border-slate-700/60 flex items-center justify-between">
+                      <button type="button" id="calJumpTodayBtn" class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline" data-i18n="today_shortcut">
+                        انتخاب امروز
+                      </button>
+                      <button type="button" id="calCloseBtn" class="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+                        بستن
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit Button -->
+              <button type="submit" class="w-full mt-2 py-3.5 px-4 rounded-2xl font-bold text-white bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 active:scale-[0.98] transition-all shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2">
+                <i data-lucide="check" class="w-5 h-5"></i>
+                <span data-i18n="save_transaction">ثبت تراکنش</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="lg:col-span-2 space-y-6 flex flex-col relative z-10">
+          
+          <!-- Chart Breakdown Card -->
+          <div class="glass-card rounded-3xl p-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center">
+                  <i data-lucide="pie-chart" class="w-4 h-4"></i>
+                </div>
+                <h3 class="text-base font-bold" data-i18n="chart_title">نمودار توزیع هزینه‌ها</h3>
+              </div>
+              <span class="text-xs text-slate-400" data-i18n="chart_subtitle">دسته‌بندی بر اساس بیشترین مصرف</span>
+            </div>
+
+            <div class="relative h-56 sm:h-64 w-full flex items-center justify-center">
+              <canvas id="categoryChart"></canvas>
+              <div id="noChartData" class="hidden absolute inset-0 flex flex-col items-center justify-center text-slate-400">
+                <i data-lucide="bar-chart-2" class="w-10 h-10 mb-2 opacity-50"></i>
+                <p class="text-xs font-medium" data-i18n="no_chart_data">هنوز هزینه‌ای برای رسم نمودار ثبت نشده است</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Transaction History Card -->
+          <div class="glass-card rounded-3xl p-6 flex-1 flex flex-col">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center">
+                  <i data-lucide="history" class="w-4 h-4"></i>
+                </div>
+                <h3 class="text-base font-bold" data-i18n="transaction_history">تاریخچه تراکنش‌ها</h3>
+              </div>
+
+              <!-- Filters & Search -->
+              <div class="flex items-center gap-2 flex-wrap">
+                <div class="flex bg-slate-200/50 dark:bg-slate-800/60 p-1 rounded-2xl text-xs font-medium">
+                  <button type="button" data-filter="all" class="filter-btn active-filter px-3 py-1.5 rounded-xl bg-white dark:bg-slate-700 shadow-sm text-slate-800 dark:text-white" data-i18n="filter_all">همه</button>
+                  <button type="button" data-filter="expense" class="filter-btn px-3 py-1.5 rounded-xl text-slate-500 hover:text-slate-800 dark:hover:text-white" data-i18n="expense">هزینه</button>
+                  <button type="button" data-filter="income" class="filter-btn px-3 py-1.5 rounded-xl text-slate-500 hover:text-slate-800 dark:hover:text-white" data-i18n="income">درآمد</button>
+                </div>
+
+                <div class="relative w-full sm:w-44">
+                  <input type="text" id="searchInput" placeholder="جستجو..." class="glass-input w-full px-3 py-1.5 rounded-2xl text-xs focus:outline-none placeholder:text-slate-400">
+                  <i data-lucide="search" class="w-3.5 h-3.5 absolute inset-y-0 ltr:right-3 rtl:left-3 my-auto text-slate-400 pointer-events-none"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- List items -->
+            <div id="transactionsList" class="space-y-2.5 overflow-y-auto max-h-[380px] pr-1 pl-1"></div>
+
+            <!-- Empty State -->
+            <div id="emptyListState" class="hidden py-12 flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 text-center">
+              <div class="w-16 h-16 rounded-full bg-slate-200/50 dark:bg-slate-800/50 flex items-center justify-center mb-3">
+                <i data-lucide="receipt-text" class="w-8 h-8 opacity-40"></i>
+              </div>
+              <p class="text-sm font-semibold" data-i18n="no_transactions">هیچ تراکنشی یافت نشد!</p>
+              <p class="text-xs text-slate-400 mt-1" data-i18n="no_transactions_sub">با فرم سمت راست اولین تراکنش خود را ثبت کنید</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+    <footer class="mt-8 text-center text-xs text-slate-400 dark:text-slate-500 pb-4">
+      <p data-i18n="footer_text">خرجینو؛ مدیریت هوشمند دخل‌وخرج • تمام اطلاعات با امنیت کامل روی دستگاه شما نگهداری می‌شود</p>
+    </footer>
+  </div>
+
+  <!-- Floating Glass Bottom Navigation Bar -->
+  <nav id="floatingBottomNav" aria-label="Bottom Navigation" class="fixed bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 z-40 w-[92%] sm:w-auto min-w-[320px] max-w-md glass-card px-2.5 sm:px-4 py-2 rounded-2xl sm:rounded-full border border-slate-200/80 dark:border-white/10 shadow-2xl backdrop-blur-xl flex items-center justify-around sm:justify-center gap-1 sm:gap-2">
+    <button type="button" id="navHomeBtn" class="nav-floating-btn active flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 py-1.5 px-2.5 sm:px-3.5 rounded-xl sm:rounded-full text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all text-xs font-semibold">
+      <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+      <span data-i18n="nav_dashboard">داشبورد</span>
+    </button>
+
+    <button type="button" id="navAddBtn" class="nav-floating-btn flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 py-1.5 px-2.5 sm:px-3.5 rounded-xl sm:rounded-full text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all text-xs font-semibold">
+      <i data-lucide="plus-circle" class="w-4 h-4"></i>
+      <span data-i18n="nav_add">ثبت جدید</span>
+    </button>
+
+    <button type="button" id="navAnalyticsBtn" class="nav-floating-btn flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 py-1.5 px-2.5 sm:px-3.5 rounded-xl sm:rounded-full text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all text-xs font-semibold">
+      <i data-lucide="pie-chart" class="w-4 h-4"></i>
+      <span data-i18n="nav_analytics">نمودار</span>
+    </button>
+
+    <button type="button" id="navHistoryBtn" class="nav-floating-btn flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 py-1.5 px-2.5 sm:px-3.5 rounded-xl sm:rounded-full text-slate-600 dark:text-slate-300 hover:text-indigo-600 dark:hover:text-indigo-400 transition-all text-xs font-semibold">
+      <i data-lucide="history" class="w-4 h-4"></i>
+      <span data-i18n="nav_history">تراکنش‌ها</span>
+    </button>
+  </nav>
+
+  <div id="settingsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 dark:bg-slate-900/60 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div class="glass-card w-full max-w-md rounded-3xl p-6 border border-slate-200/80 dark:border-white/10 shadow-2xl transform scale-95 transition-transform duration-300" id="settingsDialogCard">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200/80 dark:border-slate-700/50 mb-5">
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center">
+            <i data-lucide="sliders-horizontal" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-lg font-bold" data-i18n="settings_title">تنظیمات سیستم</h3>
+        </div>
+        <button id="closeSettingsBtn" class="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-5">
+        <!-- Language Option -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2" data-i18n="language_label">زبان برنامه (Language)</label>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" id="langFaBtn" class="lang-opt-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl border text-sm font-semibold transition-all">
+              <span>🇮🇷</span>
+              <span>فارسی (FA)</span>
+            </button>
+            <button type="button" id="langEnBtn" class="lang-opt-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl border text-sm font-semibold transition-all">
+              <span>🇺🇸</span>
+              <span>English (EN)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Theme Mode Option -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2" data-i18n="theme_label">حالت تم (Appearance)</label>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" id="themeLightOption" class="theme-opt-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl border text-sm font-semibold transition-all">
+              <i data-lucide="sun" class="w-4 h-4 text-amber-500"></i>
+              <span data-i18n="light_mode">روشن</span>
+            </button>
+            <button type="button" id="themeDarkOption" class="theme-opt-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl border text-sm font-semibold transition-all">
+              <i data-lucide="moon" class="w-4 h-4 text-indigo-400"></i>
+              <span data-i18n="dark_mode">تاریک</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Currency Selector -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2" data-i18n="currency_label">واحد پول پیش‌فرض</label>
+          <select id="currencySelect" class="glass-input w-full px-4 py-2.5 rounded-2xl text-sm focus:outline-none cursor-pointer">
+            <option value="تومان">تومان (Toman)</option>
+            <option value="ریال">ریال (Rial)</option>
+            <option value="$">دلار ($ USD)</option>
+            <option value="€">یورو (€ EUR)</option>
+            <option value="£">پوند (£ GBP)</option>
+          </select>
+        </div>
+
+        <!-- Data Management -->
+        <div class="pt-3 border-t border-black/10 dark:border-slate-700/50">
+          <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2" data-i18n="data_management">مدیریت داده‌ها</label>
+          <div class="flex gap-2">
+            <button type="button" id="exportDataBtn" class="flex-1 py-2 px-3 rounded-2xl glass-input hover:bg-slate-200/50 dark:hover:bg-slate-800/80 text-xs font-semibold flex items-center justify-center gap-1.5 transition">
+              <i data-lucide="download" class="w-4 h-4 text-indigo-500"></i>
+              <span data-i18n="export_json">خروجی JSON</span>
+            </button>
+            <button type="button" id="clearDataPromptBtn" class="flex-1 py-2 px-3 rounded-2xl bg-rose-500/10 text-rose-600 dark:text-rose-400 hover:bg-rose-500/20 text-xs font-semibold flex items-center justify-center gap-1.5 transition">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+              <span data-i18n="clear_all_data">پاکسازی اطلاعات</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-6">
+        <button type="button" id="confirmSettingsBtn" class="w-full py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition shadow-lg shadow-indigo-600/20" data-i18n="apply_and_close">
+          اعمال و بستن
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="confirmModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div class="glass-card w-full max-w-sm rounded-3xl p-6 text-center shadow-2xl transform scale-95 transition-transform duration-300">
+      <div class="w-14 h-14 mx-auto rounded-full bg-rose-500/10 text-rose-500 flex items-center justify-center mb-4">
+        <i data-lucide="alert-triangle" class="w-7 h-7"></i>
+      </div>
+      <h4 id="confirmModalTitle" class="text-base font-bold mb-2">آیا مطمئن هستید؟</h4>
+      <p id="confirmModalDesc" class="text-xs text-slate-500 dark:text-slate-400 mb-6">این عملیات قابل بازگشت نیست.</p>
+      <div class="flex gap-2">
+        <button type="button" id="cancelConfirmActionBtn" class="flex-1 py-2.5 rounded-2xl glass-input text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-800 transition" data-i18n="cancel">انصراف</button>
+        <button type="button" id="acceptConfirmActionBtn" class="flex-1 py-2.5 rounded-2xl bg-rose-500 hover:bg-rose-600 text-white text-xs font-semibold transition shadow-md shadow-rose-500/30" data-i18n="confirm">بله، انجام بده</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Message Box -->
+  <div id="toastNotification" class="fixed bottom-6 inset-x-0 mx-auto w-max max-w-[90%] z-50 px-5 py-3 rounded-2xl glass-card border border-white/40 shadow-2xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <i id="toastIcon" data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500"></i>
+    <span id="toastMessage" class="text-xs font-semibold">تراکنش با موفقیت ثبت شد</span>
+  </div>
+
+  <script>
+    const translations = {
+      fa: {
+        app_title: "kharjino",
+        app_subtitle: "خرجتو بشناس، پولتو مدیریت کن.",
+        settings_title: "تنظیمات",
+        nav_dashboard: "داشبورد",
+        nav_add: "ثبت جدید",
+        nav_analytics: "نمودار",
+        nav_history: "تراکنش‌ها",
+        total_balance: "موجودی کل",
+        financial_status: "وضعیت مالی",
+        total_income: "مجموع درآمد",
+        recorded_incomes: "درآمدهای ثبت شده",
+        total_expense: "مجموع هزینه‌ها",
+        recorded_expenses: "مخارج این دوره",
+        savings_rate: "نرخ پس‌انداز",
+        add_transaction: "ثبت تراکنش جدید",
+        transaction_type: "نوع تراکنش",
+        expense: "هزینه",
+        income: "درآمد",
+        description: "عنوان تراکنش",
+        amount: "مبلغ",
+        category: "دسته‌بندی",
+        date: "تاریخ تراکنش (شمسی)",
+        save_transaction: "ثبت تراکنش",
+        chart_title: "نمودار توزیع هزینه‌ها",
+        chart_subtitle: "دسته‌بندی بر اساس بیشترین مصرف",
+        no_chart_data: "هنوز هزینه‌ای برای رسم نمودار ثبت نشده است",
+        transaction_history: "تاریخچه تراکنش‌ها",
+        filter_all: "همه",
+        no_transactions: "هیچ تراکنشی یافت نشد!",
+        no_transactions_sub: "با فرم سمت راست اولین تراکنش خود را ثبت کنید",
+        footer_text: "خرجینو؛ مدیریت هوشمند دخل‌وخرج • تمام اطلاعات با امنیت کامل روی دستگاه شما نگهداری می‌شود",
+        today_shortcut: "انتخاب امروز",
+        language_label: "زبان برنامه (Language)",
+        theme_label: "حالت تم (Appearance)",
+        light_mode: "روشن",
+        dark_mode: "تاریک",
+        currency_label: "واحد پول پیش‌فرض",
+        data_management: "مدیریت داده‌ها",
+        export_json: "خروجی JSON",
+        clear_all_data: "پاکسازی",
+        apply_and_close: "اعمال و بستن",
+        cancel: "انصراف",
+        confirm: "بله، انجام بده",
+        search_placeholder: "جستجو...",
+        delete_confirm_title: "حذف تراکنش",
+        delete_confirm_desc: "آیا مطمئن هستید که می‌خواهید این تراکنش را حذف کنید؟",
+        clear_confirm_title: "حذف همه تراکنش‌ها",
+        clear_confirm_desc: "تمامی تراکنش‌ها به صورت دائمی از حافظه مرورگر پاک خواهند شد.",
+        toast_added: "تراکنش با موفقیت ثبت شد",
+        toast_deleted: "تراکنش با موفقیت حذف گردید",
+        toast_cleared: "تمام اطلاعات با موفقیت پاکسازی شد",
+        toast_exported: "فایل پشتیبان با موفقیت دانلود شد",
+        toast_storage_error: "خطا در ذخیره‌سازی داده‌ها در حافظه مرورگر",
+        toast_form_invalid: "لطفاً مقادیر فرم را به درستی وارد کنید"
+      },
+      en: {
+        app_title: "kharjino",
+        app_subtitle: "Know your spending, manage your money.",
+        settings_title: "Settings",
+        nav_dashboard: "Dashboard",
+        nav_add: "Add New",
+        nav_analytics: "Charts",
+        nav_history: "History",
+        total_balance: "Total Balance",
+        financial_status: "Financial Health",
+        total_income: "Total Income",
+        recorded_incomes: "Recorded Incomes",
+        total_expense: "Total Expenses",
+        recorded_expenses: "Current Period Costs",
+        savings_rate: "Savings Rate",
+        add_transaction: "New Transaction",
+        transaction_type: "Transaction Type",
+        expense: "Expense",
+        income: "Income",
+        description: "Description",
+        amount: "Amount",
+        category: "Category",
+        date: "Transaction Date",
+        save_transaction: "Add Transaction",
+        chart_title: "Expense Distribution",
+        chart_subtitle: "Breakdown by spending category",
+        no_chart_data: "No expenses recorded yet to render chart",
+        transaction_history: "Transaction History",
+        filter_all: "All",
+        no_transactions: "No transactions found!",
+        no_transactions_sub: "Use the transaction form to add your first record",
+        footer_text: "Kharjino • Smart expense tracking with 100% privacy, stored safely on your device",
+        today_shortcut: "Select Today",
+        language_label: "App Language",
+        theme_label: "Theme Mode",
+        light_mode: "Light",
+        dark_mode: "Dark",
+        currency_label: "Default Currency",
+        data_management: "Data Management",
+        export_json: "Export JSON",
+        clear_all_data: "Clear Data",
+        apply_and_close: "Apply & Close",
+        cancel: "Cancel",
+        confirm: "Yes, Proceed",
+        search_placeholder: "Search...",
+        delete_confirm_title: "Delete Transaction",
+        delete_confirm_desc: "Are you sure you want to permanently delete this transaction?",
+        clear_confirm_title: "Clear All Records",
+        clear_confirm_desc: "All recorded transactions will be completely removed from local storage.",
+        toast_added: "Transaction saved successfully",
+        toast_deleted: "Transaction deleted successfully",
+        toast_cleared: "All data cleared successfully",
+        toast_exported: "Data backup exported successfully",
+        toast_storage_error: "Unable to write data to browser storage",
+        toast_form_invalid: "Please provide valid transaction details"
+      }
+    };
+
+    const categoriesConfig = {
+      expense: [
+        { id: "food", icon: "utensils", fa: "خوراک و غذا", en: "Food & Dining", color: "#f43f5e" },
+        { id: "transport", icon: "car", fa: "حمل و نقل", en: "Transportation", color: "#0ea5e9" },
+        { id: "shopping", icon: "shopping-bag", fa: "خرید روزمره", en: "Shopping", color: "#a855f7" },
+        { id: "bills", icon: "zap", fa: "قبوض و مسکن", en: "Bills & Housing", color: "#eab308" },
+        { id: "entertainment", icon: "film", fa: "تفریح و سرگرمی", en: "Entertainment", color: "#ec4899" },
+        { id: "health", icon: "activity", fa: "سلامت و درمان", en: "Healthcare", color: "#14b8a6" },
+        { id: "other_exp", icon: "more-horizontal", fa: "سایر هزینه‌ها", en: "Other Expenses", color: "#64748b" }
+      ],
+      income: [
+        { id: "salary", icon: "briefcase", fa: "حقوق و دستمزد", en: "Salary", color: "#10b981" },
+        { id: "freelance", icon: "laptop", fa: "پروژه و فریلنسری", en: "Freelance", color: "#06b6d4" },
+        { id: "investment", icon: "trending-up", fa: "سرمایه‌گذاری", en: "Investment", color: "#8b5cf6" },
+        { id: "gift", icon: "gift", fa: "هدیه و پاداش", en: "Gifts & Bonus", color: "#f59e0b" },
+        { id: "other_inc", icon: "plus-circle", fa: "سایر درآمدها", en: "Other Income", color: "#10b981" }
+      ]
+    };
+
+    function getLocalDateISO(d = new Date()) {
+      if (!(d instanceof Date) || isNaN(d.getTime())) {
+        d = new Date();
+      }
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, "0");
+      const day = String(d.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    }
+
+    function isValidISODateString(str) {
+      if (typeof str !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(str)) {
+        return false;
+      }
+      const parts = str.split("-").map(Number);
+      const year = parts[0];
+      const month = parts[1];
+      const day = parts[2];
+      if (year < 1300 || year > 2200 || month < 1 || month > 12 || day < 1 || day > 31) {
+        return false;
+      }
+      const testDate = new Date(year, month - 1, day);
+      return (
+        testDate.getFullYear() === year &&
+        testDate.getMonth() === month - 1 &&
+        testDate.getDate() === day
+      );
+    }
+
+    const persianMonthNames = [
+      "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور",
+      "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"
+    ];
+
+    const persianMonthNamesEn = [
+      "Farvardin", "Ordibehesht", "Khordad", "Tir", "Mordad", "Shahrivar",
+      "Mehr", "Aban", "Azar", "Dey", "Bahman", "Esfand"
+    ];
+
+    function toPersianDigits(n) {
+      if (n === null || n === undefined) return "";
+      const p = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+      return n.toString().replace(/\d/g, x => p[x]);
+    }
+
+    function isJalaliLeapYear(jy) {
+      const rem = jy % 33;
+      return [1, 5, 9, 13, 17, 22, 26, 30].includes(rem);
+    }
+
+    function gregorianToJalali(gy, gm, gd) {
+      const g_d_m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+      let jy = (gy > 1600) ? 979 : 0;
+      gy -= (gy > 1600) ? 1600 : 621;
+      const gy2 = (gm > 2) ? (gy + 1) : gy;
+      let days = (365 * gy) + Math.floor((gy2 + 3) / 4) - Math.floor((gy2 + 99) / 100) + Math.floor((gy2 + 399) / 400) - 80 + gd + g_d_m[gm - 1];
+      jy += 33 * Math.floor(days / 12053);
+      days %= 12053;
+      jy += 4 * Math.floor(days / 1461);
+      days %= 1461;
+      if (days > 365) {
+        jy += Math.floor((days - 1) / 365);
+        days = (days - 1) % 365;
+      }
+      const jm = (days < 186) ? 1 + Math.floor(days / 31) : 7 + Math.floor((days - 186) / 30);
+      const jd = 1 + ((days < 186) ? (days % 31) : ((days - 186) % 30));
+      return { jy, jm, jd };
+    }
+
+    function jalaliToGregorian(jy, jm, jd) {
+      let gy = (jy > 979) ? 1600 : 621;
+      jy -= (jy > 979) ? 979 : 0;
+      let days = (365 * jy) + (Math.floor(jy / 33) * 8) + Math.floor(((jy % 33) + 3) / 4) + 78 + jd + ((jm < 7) ? (jm - 1) * 31 : ((jm - 7) * 30) + 186);
+      gy += 400 * Math.floor(days / 146097);
+      days %= 146097;
+      if (days > 36524) {
+        gy += 100 * Math.floor(--days / 36524);
+        days %= 36524;
+        if (days >= 365) days++;
+      }
+      gy += 4 * Math.floor(days / 1461);
+      days %= 1461;
+      if (days > 365) {
+        gy += Math.floor((days - 1) / 365);
+        days = (days - 1) % 365;
+      }
+      let gd = days + 1;
+      const isLeap = ((gy % 4 === 0 && gy % 100 !== 0) || (gy % 400 === 0));
+      const sal_a = [0, 31, isLeap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      let gm;
+      for (gm = 0; gm < 13; gm++) {
+        const v = sal_a[gm];
+        if (gd <= v) break;
+        gd -= v;
+      }
+      return { gy, gm, gd };
+    }
+
+    function getJalaliDateFromISO(isoDateStr) {
+      if (!isValidISODateString(isoDateStr)) {
+        const fallback = getLocalDateISO();
+        const parts = fallback.split("-").map(Number);
+        return gregorianToJalali(parts[0], parts[1], parts[2]);
+      }
+      const parts = isoDateStr.split("-").map(Number);
+      return gregorianToJalali(parts[0], parts[1], parts[2]);
+    }
+
+    function formatJalaliForDisplay(isoDateStr) {
+      if (!isoDateStr) return "";
+      const j = getJalaliDateFromISO(isoDateStr);
+      if (appPrefs.lang === "fa") {
+        return `${toPersianDigits(j.jd)} ${persianMonthNames[j.jm - 1]} ${toPersianDigits(j.jy)}`;
+      } else {
+        return `${j.jd} ${persianMonthNamesEn[j.jm - 1]} ${j.jy}`;
+      }
+    }
+
+    const STORAGE_KEY = "smart_finance_transactions_v2";
+    const PREF_KEY = "smart_finance_preferences_v2";
+    const INIT_FLAG_KEY = "smart_finance_initialized_v2";
+
+    const defaultPrefs = {
+      lang: "fa",
+      theme: "dark",
+      currency: "تومان"
+    };
+
+    const allowedLanguages = ["fa", "en"];
+    const allowedThemes = ["dark", "light"];
+    const allowedCurrencies = ["تومان", "ریال", "$", "€", "£"];
+
+    function safeStorageGet(key, fallback = null) {
+      try {
+        const item = localStorage.getItem(key);
+        if (item === null) return fallback;
+        return JSON.parse(item);
+      } catch (err) {
+        console.warn(`Failed to parse localStorage key [${key}], returning fallback`, err);
+        return fallback;
+      }
+    }
+
+    function safeStorageSet(key, value) {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+        return true;
+      } catch (err) {
+        console.error(`Failed to write [${key}] to localStorage:`, err);
+        showToast("toast_storage_error", false);
+        return false;
+      }
+    }
+
+    function sanitizePreferences(prefs) {
+      if (!prefs || typeof prefs !== "object") {
+        return { ...defaultPrefs };
+      }
+      const clean = {};
+      clean.lang = allowedLanguages.includes(prefs.lang) ? prefs.lang : defaultPrefs.lang;
+      clean.theme = allowedThemes.includes(prefs.theme) ? prefs.theme : defaultPrefs.theme;
+      clean.currency = (typeof prefs.currency === "string" && prefs.currency.trim().length > 0 && prefs.currency.length <= 10)
+        ? prefs.currency.trim()
+        : defaultPrefs.currency;
+      return clean;
+    }
+
+    const MAX_ALLOWED_AMOUNT = 1000000000000000;
+    function validateAndSanitizeTransaction(item) {
+      if (!item || typeof item !== "object") return null;
+
+      const type = (item.type === "income" || item.type === "expense") ? item.type : null;
+      if (!type) return null;
+
+      const title = (typeof item.title === "string") ? item.title.trim() : "";
+      if (title.length === 0 || title.length > 200) return null;
+
+      const rawAmount = Number(item.amount);
+      if (!Number.isFinite(rawAmount) || isNaN(rawAmount) || rawAmount <= 0 || rawAmount > MAX_ALLOWED_AMOUNT) {
+        return null;
+      }
+
+      const validCategories = (categoriesConfig[type] || []).map(c => c.id);
+      let category = (typeof item.category === "string") ? item.category.trim() : "";
+      if (!validCategories.includes(category)) {
+        category = type === "expense" ? "other_exp" : "other_inc";
+      }
+
+      let date = (typeof item.date === "string") ? item.date.trim() : "";
+      if (!isValidISODateString(date)) {
+        date = getLocalDateISO();
+      }
+
+      const id = (typeof item.id === "string" && item.id.trim().length > 0)
+        ? item.id.trim()
+        : `${Date.now()}_${Math.random().toString(36).substring(2, 9)}`;
+
+      return {
+        id,
+        type,
+        title,
+        amount: Math.round(rawAmount * 100) / 100,
+        category,
+        date
+      };
+    }
+
+    function loadInitialTransactions() {
+      const raw = safeStorageGet(STORAGE_KEY, null);
+      const isAlreadyInitialized = safeStorageGet(INIT_FLAG_KEY, false);
+
+      if (Array.isArray(raw)) {
+        return raw.map(validateAndSanitizeTransaction).filter(Boolean);
+      }
+
+      if (isAlreadyInitialized) {
+        return [];
+      }
+
+      safeStorageSet(INIT_FLAG_KEY, true);
+      const demoList = [
+        { id: "1", type: "income", title: "حقوق ماهیانه", amount: 25000000, category: "salary", date: getLocalDateISO() },
+        { id: "2", type: "expense", title: "خرید میوه و مایحتاج", amount: 1250000, category: "food", date: getLocalDateISO() },
+        { id: "3", type: "expense", title: "بنزین و اسنپ", amount: 450000, category: "transport", date: getLocalDateISO() },
+        { id: "4", type: "expense", title: "قبض اینترنت", amount: 380000, category: "bills", date: getLocalDateISO() }
+      ];
+      safeStorageSet(STORAGE_KEY, demoList);
+      return demoList;
+    }
+
+    // App State
+    let appPrefs = sanitizePreferences(safeStorageGet(PREF_KEY, defaultPrefs));
+    let transactions = loadInitialTransactions();
+
+    let currentTransactionType = "expense";
+    let activeFilter = "all";
+    let searchQuery = "";
+    let expenseChartInstance = null;
+    let pendingConfirmAction = null;
+
+    // Calendar Picker State
+    let selectedJalali = null;
+    let viewingJalaliMonth = null;
+    let viewingJalaliYear = null;
+
+    // DOM Element References
+    const themeToggleBtn = document.getElementById("themeToggleBtn");
+    const themeIcon = document.getElementById("themeIcon");
+    const openSettingsBtn = document.getElementById("openSettingsBtn");
+    const closeSettingsBtn = document.getElementById("closeSettingsBtn");
+    const settingsModal = document.getElementById("settingsModal");
+    const settingsDialogCard = document.getElementById("settingsDialogCard");
+    const confirmSettingsBtn = document.getElementById("confirmSettingsBtn");
+
+    const langFaBtn = document.getElementById("langFaBtn");
+    const langEnBtn = document.getElementById("langEnBtn");
+    const themeLightOption = document.getElementById("themeLightOption");
+    const themeDarkOption = document.getElementById("themeDarkOption");
+    const currencySelect = document.getElementById("currencySelect");
+
+    const typeExpenseBtn = document.getElementById("typeExpenseBtn");
+    const typeIncomeBtn = document.getElementById("typeIncomeBtn");
+    const transactionForm = document.getElementById("transactionForm");
+    const descInput = document.getElementById("descInput");
+    const amountInput = document.getElementById("amountInput");
+    const categorySelect = document.getElementById("categorySelect");
+    const dateInput = document.getElementById("dateInput");
+    const shamsiDateBtn = document.getElementById("shamsiDateBtn");
+    const shamsiDateLabel = document.getElementById("shamsiDateLabel");
+    const shamsiCalendarPopover = document.getElementById("shamsiCalendarPopover");
+    const calMonthYearTitle = document.getElementById("calMonthYearTitle");
+    const calDaysGrid = document.getElementById("calDaysGrid");
+    const calPrevMonth = document.getElementById("calPrevMonth");
+    const calNextMonth = document.getElementById("calNextMonth");
+    const calJumpTodayBtn = document.getElementById("calJumpTodayBtn");
+    const calCloseBtn = document.getElementById("calCloseBtn");
+    const currencySymbolBadge = document.getElementById("currencySymbolBadge");
+
+    const balanceAmountEl = document.getElementById("balanceAmount");
+    const incomeAmountEl = document.getElementById("incomeAmount");
+    const expenseAmountEl = document.getElementById("expenseAmount");
+    const savingsRateEl = document.getElementById("savingsRate");
+    const savingsProgressBar = document.getElementById("savingsProgressBar");
+    const balanceTrendBadge = document.getElementById("balanceTrendBadge");
+
+    const transactionsListEl = document.getElementById("transactionsList");
+    const emptyListStateEl = document.getElementById("emptyListState");
+    const searchInput = document.getElementById("searchInput");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+
+    const confirmModal = document.getElementById("confirmModal");
+    const confirmModalTitle = document.getElementById("confirmModalTitle");
+    const confirmModalDesc = document.getElementById("confirmModalDesc");
+    const cancelConfirmActionBtn = document.getElementById("cancelConfirmActionBtn");
+    const acceptConfirmActionBtn = document.getElementById("acceptConfirmActionBtn");
+
+    const exportDataBtn = document.getElementById("exportDataBtn");
+    const clearDataPromptBtn = document.getElementById("clearDataPromptBtn");
+    const toastEl = document.getElementById("toastNotification");
+    const toastMessageEl = document.getElementById("toastMessage");
+
+    const navHomeBtn = document.getElementById("navHomeBtn");
+    const navAddBtn = document.getElementById("navAddBtn");
+    const navAnalyticsBtn = document.getElementById("navAnalyticsBtn");
+    const navHistoryBtn = document.getElementById("navHistoryBtn");
+    const navFloatingButtons = document.querySelectorAll(".nav-floating-btn");
+
+    function safeRenderIcons() {
+      try {
+        if (window.lucide && typeof window.lucide.createIcons === "function") {
+          window.lucide.createIcons();
+        }
+      } catch (err) {
+        console.warn("Failed to render lucide icons", err);
+      }
+    }
+
+    function setFormDate(isoDateStr) {
+      if (!isValidISODateString(isoDateStr)) {
+        isoDateStr = getLocalDateISO();
+      }
+      if (dateInput) dateInput.value = isoDateStr;
+      selectedJalali = getJalaliDateFromISO(isoDateStr);
+      if (shamsiDateLabel) {
+        shamsiDateLabel.textContent = formatJalaliForDisplay(isoDateStr);
+      }
+    }
+
+    function renderShamsiCalendar() {
+      if (!calMonthYearTitle || !calDaysGrid) return;
+      const monthNames = appPrefs.lang === "fa" ? persianMonthNames : persianMonthNamesEn;
+      const displayYear = appPrefs.lang === "fa" ? toPersianDigits(viewingJalaliYear) : viewingJalaliYear;
+      calMonthYearTitle.textContent = `${monthNames[viewingJalaliMonth - 1]} ${displayYear}`;
+
+      const gFirst = jalaliToGregorian(viewingJalaliYear, viewingJalaliMonth, 1);
+      const gDate = new Date(gFirst.gy, gFirst.gm - 1, gFirst.gd);
+      const startDayOfWeek = (gDate.getDay() + 1) % 7;
+
+      let totalDays = 31;
+      if (viewingJalaliMonth > 6 && viewingJalaliMonth < 12) {
+        totalDays = 30;
+      } else if (viewingJalaliMonth === 12) {
+        totalDays = isJalaliLeapYear(viewingJalaliYear) ? 30 : 29;
+      }
+
+      const todayISO = getLocalDateISO();
+      const todayJalali = getJalaliDateFromISO(todayISO);
+
+      while (calDaysGrid.firstChild) {
+        calDaysGrid.removeChild(calDaysGrid.firstChild);
+      }
+
+      for (let i = 0; i < startDayOfWeek; i++) {
+        const emptyCell = document.createElement("div");
+        emptyCell.className = "cal-day-cell empty pointer-events-none";
+        calDaysGrid.appendChild(emptyCell);
+      }
+
+      for (let d = 1; d <= totalDays; d++) {
+        const dayBtn = document.createElement("button");
+        dayBtn.type = "button";
+        dayBtn.className = "cal-day-cell text-slate-700 dark:text-slate-200 font-medium";
+
+        const isToday = (todayJalali.jy === viewingJalaliYear && todayJalali.jm === viewingJalaliMonth && todayJalali.jd === d);
+        const isSelected = (selectedJalali && selectedJalali.jy === viewingJalaliYear && selectedJalali.jm === viewingJalaliMonth && selectedJalali.jd === d);
+
+        if (isToday) dayBtn.classList.add("today");
+        if (isSelected) dayBtn.classList.add("selected");
+
+        dayBtn.textContent = appPrefs.lang === "fa" ? toPersianDigits(d) : String(d);
+
+        dayBtn.addEventListener("click", () => {
+          const g = jalaliToGregorian(viewingJalaliYear, viewingJalaliMonth, d);
+          const mm = String(g.gm).padStart(2, "0");
+          const dd = String(g.gd).padStart(2, "0");
+          const iso = `${g.gy}-${mm}-${dd}`;
+          setFormDate(iso);
+          closeShamsiCalendar();
+        });
+
+        calDaysGrid.appendChild(dayBtn);
+      }
+    }
+
+    function openShamsiCalendar() {
+      if (selectedJalali) {
+        viewingJalaliYear = selectedJalali.jy;
+        viewingJalaliMonth = selectedJalali.jm;
+      } else {
+        const nowJ = getJalaliDateFromISO(getLocalDateISO());
+        viewingJalaliYear = nowJ.jy;
+        viewingJalaliMonth = nowJ.jm;
+      }
+      renderShamsiCalendar();
+      if (shamsiCalendarPopover) shamsiCalendarPopover.classList.add("active");
+    }
+
+    function closeShamsiCalendar() {
+      if (shamsiCalendarPopover) shamsiCalendarPopover.classList.remove("active");
+    }
+
+    if (shamsiDateBtn) {
+      shamsiDateBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (shamsiCalendarPopover && shamsiCalendarPopover.classList.contains("active")) {
+          closeShamsiCalendar();
+        } else {
+          openShamsiCalendar();
+        }
+      });
+    }
+
+    if (calCloseBtn) calCloseBtn.addEventListener("click", closeShamsiCalendar);
+
+    if (calPrevMonth) {
+      calPrevMonth.addEventListener("click", (e) => {
+        e.stopPropagation();
+        viewingJalaliMonth--;
+        if (viewingJalaliMonth < 1) {
+          viewingJalaliMonth = 12;
+          viewingJalaliYear--;
+        }
+        renderShamsiCalendar();
+      });
+    }
+
+    if (calNextMonth) {
+      calNextMonth.addEventListener("click", (e) => {
+        e.stopPropagation();
+        viewingJalaliMonth++;
+        if (viewingJalaliMonth > 12) {
+          viewingJalaliMonth = 1;
+          viewingJalaliYear++;
+        }
+        renderShamsiCalendar();
+      });
+    }
+
+    if (calJumpTodayBtn) {
+      calJumpTodayBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        setFormDate(getLocalDateISO());
+        closeShamsiCalendar();
+      });
+    }
+
+    document.addEventListener("click", (e) => {
+      if (shamsiCalendarPopover && shamsiDateBtn) {
+        if (!shamsiCalendarPopover.contains(e.target) && !shamsiDateBtn.contains(e.target)) {
+          closeShamsiCalendar();
+        }
+      }
+    });
+
+    function setActiveNavButton(activeBtn) {
+      navFloatingButtons.forEach(btn => btn.classList.remove("active"));
+      if (activeBtn) activeBtn.classList.add("active");
+    }
+
+    let toastTimeout;
+    function showToast(msgKey, isSuccess = true) {
+      if (!toastMessageEl || !toastEl) return;
+      const dict = translations[appPrefs.lang] || translations.fa;
+      const text = dict[msgKey] || msgKey;
+      toastMessageEl.textContent = text;
+
+      const toastIcon = document.getElementById("toastIcon");
+      if (toastIcon) {
+        if (isSuccess) {
+          toastIcon.setAttribute("data-lucide", "check-circle-2");
+          toastIcon.className = "w-5 h-5 text-emerald-500";
+        } else {
+          toastIcon.setAttribute("data-lucide", "alert-circle");
+          toastIcon.className = "w-5 h-5 text-rose-500";
+        }
+      }
+      safeRenderIcons();
+
+      toastEl.classList.remove("translate-y-20", "opacity-0");
+      toastEl.classList.add("translate-y-0", "opacity-100");
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toastEl.classList.remove("translate-y-0", "opacity-100");
+        toastEl.classList.add("translate-y-20", "opacity-0");
+      }, 3200);
+    }
+
+    function formatMoney(amount) {
+      const num = Number(amount) || 0;
+      return num.toLocaleString(appPrefs.lang === "fa" ? "fa-IR" : "en-US") + " " + appPrefs.currency;
+    }
+
+    function applyLanguage(lang) {
+      appPrefs.lang = allowedLanguages.includes(lang) ? lang : "fa";
+      const html = document.documentElement;
+
+      if (appPrefs.lang === "fa") {
+        html.setAttribute("lang", "fa");
+        html.setAttribute("dir", "rtl");
+        document.body.classList.remove("font-en");
+        document.body.classList.add("font-fa");
+      } else {
+        html.setAttribute("lang", "en");
+        html.setAttribute("dir", "ltr");
+        document.body.classList.remove("font-fa");
+        document.body.classList.add("font-en");
+      }
+
+      const dict = translations[appPrefs.lang] || translations.fa;
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+
+      if (searchInput) searchInput.placeholder = dict.search_placeholder;
+
+      if (appPrefs.lang === "fa") {
+        if (langFaBtn) langFaBtn.className = "lang-opt-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl border text-sm font-semibold transition-all bg-indigo-600 text-white border-indigo-600 shadow-md";
+        if (langEnBtn) langEnBtn.className = "lang-opt-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl border text-sm font-semibold transition-all border-slate-300 dark:border-slate-700 hover:bg-slate-200/50 dark:hover:bg-slate-800/50";
+      } else {
+        if (langEnBtn) langEnBtn.className = "lang-opt-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl border text-sm font-semibold transition-all bg-indigo-600 text-white border-indigo-600 shadow-md";
+        if (langFaBtn) langFaBtn.className = "lang-opt-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl border text-sm font-semibold transition-all border-slate-300 dark:border-slate-700 hover:bg-slate-200/50 dark:hover:bg-slate-800/50";
+      }
+
+      savePreferences();
+      populateCategoryDropdown();
+      if (dateInput && dateInput.value) {
+        setFormDate(dateInput.value);
+      }
+      renderUI();
+    }
+
+    function applyTheme(theme) {
+      appPrefs.theme = allowedThemes.includes(theme) ? theme : "dark";
+      const html = document.documentElement;
+
+      if (appPrefs.theme === "dark") {
+        html.classList.add("dark");
+        if (themeIcon) themeIcon.setAttribute("data-lucide", "sun");
+        if (themeDarkOption) themeDarkOption.className = "theme-opt-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl border text-sm font-semibold transition-all bg-indigo-600 text-white border-indigo-600 shadow-md";
+        if (themeLightOption) themeLightOption.className = "theme-opt-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl border text-sm font-semibold transition-all border-slate-300 dark:border-slate-700 hover:bg-slate-200/50 dark:hover:bg-slate-800/50";
+      } else {
+        html.classList.remove("dark");
+        if (themeIcon) themeIcon.setAttribute("data-lucide", "moon");
+        if (themeLightOption) themeLightOption.className = "theme-opt-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl border text-sm font-semibold transition-all bg-indigo-600 text-white border-indigo-600 shadow-md";
+        if (themeDarkOption) themeDarkOption.className = "theme-opt-btn flex items-center justify-center gap-2 py-2.5 px-3 rounded-2xl border text-sm font-semibold transition-all border-slate-300 dark:border-slate-700 hover:bg-slate-200/50 dark:hover:bg-slate-800/50";
+      }
+
+      safeRenderIcons();
+      savePreferences();
+      renderChart();
+    }
+
+    function savePreferences() {
+      safeStorageSet(PREF_KEY, appPrefs);
+      if (currencySymbolBadge) {
+        currencySymbolBadge.textContent = appPrefs.currency;
+      }
+    }
+
+    function saveTransactions() {
+      safeStorageSet(STORAGE_KEY, transactions);
+      safeStorageSet(INIT_FLAG_KEY, true);
+    }
+
+    function populateCategoryDropdown() {
+      if (!categorySelect) return;
+      const list = categoriesConfig[currentTransactionType] || [];
+      categorySelect.innerHTML = "";
+      list.forEach(cat => {
+        const option = document.createElement("option");
+        option.value = cat.id;
+        option.textContent = appPrefs.lang === "fa" ? cat.fa : cat.en;
+        categorySelect.appendChild(option);
+      });
+    }
+
+    function setTransactionType(type) {
+      currentTransactionType = (type === "income") ? "income" : "expense";
+      if (currentTransactionType === "expense") {
+        if (typeExpenseBtn) typeExpenseBtn.className = "py-2 text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-1.5 transition-all bg-rose-500 text-white shadow-md shadow-rose-500/20";
+        if (typeIncomeBtn) typeIncomeBtn.className = "py-2 text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-1.5 transition-all text-slate-600 dark:text-slate-300 hover:text-emerald-500";
+      } else {
+        if (typeIncomeBtn) typeIncomeBtn.className = "py-2 text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-1.5 transition-all bg-emerald-500 text-white shadow-md shadow-emerald-500/20";
+        if (typeExpenseBtn) typeExpenseBtn.className = "py-2 text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-1.5 transition-all text-slate-600 dark:text-slate-300 hover:text-rose-500";
+      }
+      populateCategoryDropdown();
+    }
+
+    function getCategoryInfo(type, catId) {
+      const list = categoriesConfig[type] || [];
+      const item = list.find(c => c.id === catId);
+      if (item) return item;
+      return {
+        id: String(catId || "unknown"),
+        icon: "tag",
+        fa: String(catId || "سایر"),
+        en: String(catId || "Other"),
+        color: "#64748b"
+      };
+    }
+
+    function updateSummaryMetrics() {
+      let totalIncome = 0;
+      let totalExpense = 0;
+
+      transactions.forEach(t => {
+        const amt = Number(t.amount);
+        if (Number.isFinite(amt) && amt > 0) {
+          if (t.type === "income") {
+            totalIncome += amt;
+          } else {
+            totalExpense += amt;
+          }
+        }
+      });
+
+      const totalBalance = totalIncome - totalExpense;
+      let savingsRate = 0;
+      if (totalIncome > 0) {
+        savingsRate = Math.max(0, Math.min(100, Math.round(((totalIncome - totalExpense) / totalIncome) * 100)));
+      }
+
+      if (balanceAmountEl) balanceAmountEl.textContent = formatMoney(totalBalance);
+      if (incomeAmountEl) incomeAmountEl.textContent = formatMoney(totalIncome);
+      if (expenseAmountEl) expenseAmountEl.textContent = formatMoney(totalExpense);
+      if (savingsRateEl) savingsRateEl.textContent = savingsRate + "%";
+      if (savingsProgressBar) savingsProgressBar.style.width = savingsRate + "%";
+
+      if (balanceAmountEl && balanceTrendBadge) {
+        if (totalBalance >= 0) {
+          balanceAmountEl.className = "text-2xl sm:text-3xl font-extrabold tracking-tight text-emerald-600 dark:text-emerald-400";
+          balanceTrendBadge.className = "inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400";
+        } else {
+          balanceAmountEl.className = "text-2xl sm:text-3xl font-extrabold tracking-tight text-rose-600 dark:text-rose-400";
+          balanceTrendBadge.className = "inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400";
+        }
+      }
+    }
+
+    function renderTransactionList() {
+      if (!transactionsListEl) return;
+      while (transactionsListEl.firstChild) {
+        transactionsListEl.removeChild(transactionsListEl.firstChild);
+      }
+
+      const q = String(searchQuery || "").trim().toLowerCase();
+
+      const filtered = transactions.filter(t => {
+        if (!t) return false;
+        const matchesFilter = activeFilter === "all" || t.type === activeFilter;
+        if (!matchesFilter) return false;
+
+        if (!q) return true;
+        const titleSafe = String(t.title || "").toLowerCase();
+        const catSafe = String(t.category || "").toLowerCase();
+        const catInfo = getCategoryInfo(t.type, t.category);
+        const catFaSafe = String(catInfo.fa || "").toLowerCase();
+        const catEnSafe = String(catInfo.en || "").toLowerCase();
+
+        return titleSafe.includes(q) || catSafe.includes(q) || catFaSafe.includes(q) || catEnSafe.includes(q);
+      });
+
+      filtered.sort((a, b) => {
+        const da = new Date(a.date).getTime() || 0;
+        const db = new Date(b.date).getTime() || 0;
+        return db - da;
+      });
+
+      if (filtered.length === 0) {
+        if (emptyListStateEl) emptyListStateEl.classList.remove("hidden");
+        return;
+      }
+
+      if (emptyListStateEl) emptyListStateEl.classList.add("hidden");
+
+      filtered.forEach(item => {
+        const catInfo = getCategoryInfo(item.type, item.category);
+        const isExpense = item.type === "expense";
+        const catName = appPrefs.lang === "fa" ? catInfo.fa : catInfo.en;
+
+        const row = document.createElement("div");
+        row.className = "group glass-card rounded-2xl p-3.5 flex items-center justify-between hover:border-indigo-400/40 dark:hover:border-indigo-500/40 transition-all";
+
+        const leftWrap = document.createElement("div");
+        leftWrap.className = "flex items-center gap-3 min-w-0";
+
+        const iconBox = document.createElement("div");
+        iconBox.className = "w-10 h-10 rounded-xl flex items-center justify-center shrink-0 shadow-sm";
+        iconBox.style.backgroundColor = `${catInfo.color}20`;
+        iconBox.style.color = catInfo.color;
+
+        const iconEl = document.createElement("i");
+        iconEl.setAttribute("data-lucide", catInfo.icon || "tag");
+        iconEl.className = "w-5 h-5";
+        iconBox.appendChild(iconEl);
+
+        const textBox = document.createElement("div");
+        textBox.className = "truncate";
+
+        const titleHeading = document.createElement("h4");
+        titleHeading.className = "text-sm font-bold text-slate-800 dark:text-slate-100 group-hover:text-indigo-500 dark:group-hover:text-indigo-400 transition-colors truncate";
+        titleHeading.textContent = item.title;
+
+        const metaBox = document.createElement("div");
+        metaBox.className = "flex items-center gap-2 mt-0.5 text-[11px] text-slate-400";
+
+        const catBadge = document.createElement("span");
+        catBadge.className = "inline-block px-2 py-0.5 rounded-md bg-slate-200/50 dark:bg-slate-800/80 font-medium";
+        catBadge.textContent = catName;
+
+        const dot = document.createElement("span");
+        dot.textContent = "•";
+
+        const dateBadge = document.createElement("span");
+        dateBadge.className = "font-medium";
+        dateBadge.textContent = formatJalaliForDisplay(item.date);
+
+        metaBox.appendChild(catBadge);
+        metaBox.appendChild(dot);
+        metaBox.appendChild(dateBadge);
+
+        textBox.appendChild(titleHeading);
+        textBox.appendChild(metaBox);
+
+        leftWrap.appendChild(iconBox);
+        leftWrap.appendChild(textBox);
+
+        const rightWrap = document.createElement("div");
+        rightWrap.className = "flex items-center gap-3 shrink-0";
+
+        const amountBox = document.createElement("div");
+        amountBox.className = `text-left font-bold text-sm sm:text-base ${isExpense ? 'text-rose-600 dark:text-rose-400' : 'text-emerald-600 dark:text-emerald-400'}`;
+        amountBox.textContent = (isExpense ? "- " : "+ ") + formatMoney(item.amount);
+
+        const deleteBtn = document.createElement("button");
+        deleteBtn.type = "button";
+        deleteBtn.setAttribute("data-delete-id", item.id);
+        deleteBtn.className = "delete-item-btn p-2 rounded-xl text-slate-400 hover:text-rose-500 hover:bg-rose-500/10 active:scale-95 transition";
+        deleteBtn.setAttribute("aria-label", "Delete");
+
+        const deleteIcon = document.createElement("i");
+        deleteIcon.setAttribute("data-lucide", "trash-2");
+        deleteIcon.className = "w-4 h-4 pointer-events-none";
+        deleteBtn.appendChild(deleteIcon);
+
+        rightWrap.appendChild(amountBox);
+        rightWrap.appendChild(deleteBtn);
+
+        row.appendChild(leftWrap);
+        row.appendChild(rightWrap);
+        transactionsListEl.appendChild(row);
+      });
+
+      safeRenderIcons();
+    }
+
+    function renderChart() {
+      const expenses = transactions.filter(t => t && t.type === "expense" && Number(t.amount) > 0);
+      const noChartDataEl = document.getElementById("noChartData");
+      const canvasEl = document.getElementById("categoryChart");
+
+      if (!canvasEl) return;
+
+      if (expenses.length === 0) {
+        if (expenseChartInstance) {
+          try {
+            expenseChartInstance.destroy();
+          } catch (e) {}
+          expenseChartInstance = null;
+        }
+        if (noChartDataEl) noChartDataEl.classList.remove("hidden");
+        return;
+      }
+
+      if (noChartDataEl) noChartDataEl.classList.add("hidden");
+
+      const catTotals = {};
+      expenses.forEach(t => {
+        catTotals[t.category] = (catTotals[t.category] || 0) + Number(t.amount);
+      });
+
+      const labels = [];
+      const data = [];
+      const backgroundColors = [];
+
+      Object.keys(catTotals).forEach(catId => {
+        const catInfo = getCategoryInfo("expense", catId);
+        labels.push(appPrefs.lang === "fa" ? catInfo.fa : catInfo.en);
+        data.push(catTotals[catId]);
+        backgroundColors.push(catInfo.color);
+      });
+
+      const isDark = document.documentElement.classList.contains("dark");
+      const textColor = isDark ? "#cbd5e1" : "#475569";
+
+      try {
+        if (expenseChartInstance) {
+          expenseChartInstance.destroy();
+        }
+
+        const ctx = canvasEl.getContext("2d");
+        if (!ctx) return;
+
+        expenseChartInstance = new Chart(ctx, {
+          type: 'doughnut',
+          data: {
+            labels: labels,
+            datasets: [{
+              data: data,
+              backgroundColor: backgroundColors,
+              borderColor: isDark ? "rgba(18, 24, 38, 0.8)" : "rgba(255, 255, 255, 0.8)",
+              borderWidth: 2,
+              hoverOffset: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: 'bottom',
+                rtl: appPrefs.lang === "fa",
+                labels: {
+                  color: textColor,
+                  font: {
+                    family: appPrefs.lang === "fa" ? 'Vazirmatn' : 'Inter',
+                    size: 11
+                  },
+                  padding: 14,
+                  usePointStyle: true,
+                  pointStyle: 'circle'
+                }
+              },
+              tooltip: {
+                rtl: appPrefs.lang === "fa",
+                callbacks: {
+                  label: function(context) {
+                    const val = context.raw || 0;
+                    return " " + formatMoney(val);
+                  }
+                }
+              }
+            },
+            cutout: '68%'
+          }
+        });
+      } catch (err) {
+        console.warn("Chart rendering skipped or encountered error:", err);
+      }
+    }
+
+    function renderUI() {
+      updateSummaryMetrics();
+      renderTransactionList();
+      renderChart();
+    }
+
+    if (typeExpenseBtn) typeExpenseBtn.addEventListener("click", () => setTransactionType("expense"));
+    if (typeIncomeBtn) typeIncomeBtn.addEventListener("click", () => setTransactionType("income"));
+
+    if (transactionForm) {
+      transactionForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const rawTitle = descInput ? descInput.value : "";
+        const rawAmount = amountInput ? parseFloat(amountInput.value) : NaN;
+        const rawCategory = categorySelect ? categorySelect.value : "";
+        const rawDate = dateInput ? dateInput.value : "";
+
+        const sanitized = validateAndSanitizeTransaction({
+          type: currentTransactionType,
+          title: rawTitle,
+          amount: rawAmount,
+          category: rawCategory,
+          date: rawDate
+        });
+
+        if (!sanitized) {
+          showToast("toast_form_invalid", false);
+          return;
+        }
+
+        transactions.unshift(sanitized);
+        saveTransactions();
+        renderUI();
+
+        if (descInput) descInput.value = "";
+        if (amountInput) amountInput.value = "";
+        setFormDate(getLocalDateISO());
+
+        showToast("toast_added", true);
+      });
+    }
+
+    if (transactionsListEl) {
+      transactionsListEl.addEventListener("click", (e) => {
+        const deleteBtn = e.target.closest(".delete-item-btn");
+        if (!deleteBtn) return;
+
+        const id = deleteBtn.getAttribute("data-delete-id");
+        if (!id) return;
+
+        const dict = translations[appPrefs.lang] || translations.fa;
+        openConfirmModal(
+          dict.delete_confirm_title,
+          dict.delete_confirm_desc,
+          () => {
+            transactions = transactions.filter(t => t && t.id !== id);
+            saveTransactions();
+            renderUI();
+            showToast("toast_deleted", true);
+          }
+        );
+      });
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach(b => {
+          b.classList.remove("active-filter", "bg-white", "dark:bg-slate-700", "shadow-sm", "text-slate-800", "dark:text-white");
+          b.classList.add("text-slate-500");
+        });
+        btn.classList.add("active-filter", "bg-white", "dark:bg-slate-700", "shadow-sm", "text-slate-800", "dark:text-white");
+        btn.classList.remove("text-slate-500");
+        activeFilter = btn.getAttribute("data-filter") || "all";
+        renderTransactionList();
+      });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        searchQuery = (e.target.value || "").trim();
+        renderTransactionList();
+      });
+    }
+
+    if (themeToggleBtn) {
+      themeToggleBtn.addEventListener("click", () => {
+        applyTheme(appPrefs.theme === "dark" ? "light" : "dark");
+      });
+    }
+
+    if (navHomeBtn) {
+      navHomeBtn.addEventListener("click", () => {
+        setActiveNavButton(navHomeBtn);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    }
+
+    if (navAddBtn) {
+      navAddBtn.addEventListener("click", () => {
+        setActiveNavButton(navAddBtn);
+        const formEl = document.getElementById("transactionForm");
+        if (formEl) {
+          formEl.scrollIntoView({ behavior: "smooth", block: "center" });
+          setTimeout(() => { if (descInput) descInput.focus(); }, 350);
+        }
+      });
+    }
+
+    if (navAnalyticsBtn) {
+      navAnalyticsBtn.addEventListener("click", () => {
+        setActiveNavButton(navAnalyticsBtn);
+        const chartCard = document.getElementById("categoryChart")?.closest(".glass-card");
+        if (chartCard) {
+          chartCard.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      });
+    }
+
+    if (navHistoryBtn) {
+      navHistoryBtn.addEventListener("click", () => {
+        setActiveNavButton(navHistoryBtn);
+        const historyCard = document.getElementById("transactionsList")?.closest(".glass-card");
+        if (historyCard) {
+          historyCard.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      });
+    }
+
+    function openSettingsModal() {
+      if (!settingsModal || !settingsDialogCard) return;
+      settingsModal.classList.remove("opacity-0", "pointer-events-none");
+      settingsDialogCard.classList.remove("scale-95");
+      settingsDialogCard.classList.add("scale-100");
+    }
+
+    function closeSettingsModal() {
+      if (!settingsModal || !settingsDialogCard) return;
+      settingsModal.classList.add("opacity-0", "pointer-events-none");
+      settingsDialogCard.classList.remove("scale-100");
+      settingsDialogCard.classList.add("scale-95");
+    }
+
+    if (openSettingsBtn) openSettingsBtn.addEventListener("click", openSettingsModal);
+    if (closeSettingsBtn) closeSettingsBtn.addEventListener("click", closeSettingsModal);
+    if (confirmSettingsBtn) confirmSettingsBtn.addEventListener("click", closeSettingsModal);
+
+    if (langFaBtn) langFaBtn.addEventListener("click", () => applyLanguage("fa"));
+    if (langEnBtn) langEnBtn.addEventListener("click", () => applyLanguage("en"));
+
+    if (themeLightOption) themeLightOption.addEventListener("click", () => applyTheme("light"));
+    if (themeDarkOption) themeDarkOption.addEventListener("click", () => applyTheme("dark"));
+
+    if (currencySelect) {
+      currencySelect.value = appPrefs.currency;
+      currencySelect.addEventListener("change", (e) => {
+        const val = e.target.value;
+        appPrefs.currency = allowedCurrencies.includes(val) ? val : "تومان";
+        savePreferences();
+        renderUI();
+      });
+    }
+
+    function openConfirmModal(title, description, onConfirm) {
+      if (!confirmModal || !confirmModalTitle || !confirmModalDesc) return;
+      confirmModalTitle.textContent = title;
+      confirmModalDesc.textContent = description;
+      pendingConfirmAction = onConfirm;
+
+      confirmModal.classList.remove("opacity-0", "pointer-events-none");
+      const card = confirmModal.querySelector("div");
+      if (card) {
+        card.classList.remove("scale-95");
+        card.classList.add("scale-100");
+      }
+    }
+
+    function closeConfirmModal() {
+      if (!confirmModal) return;
+      confirmModal.classList.add("opacity-0", "pointer-events-none");
+      const card = confirmModal.querySelector("div");
+      if (card) {
+        card.classList.remove("scale-100");
+        card.classList.add("scale-95");
+      }
+      pendingConfirmAction = null;
+    }
+
+    if (cancelConfirmActionBtn) cancelConfirmActionBtn.addEventListener("click", closeConfirmModal);
+    if (acceptConfirmActionBtn) {
+      acceptConfirmActionBtn.addEventListener("click", () => {
+        if (typeof pendingConfirmAction === "function") {
+          try {
+            pendingConfirmAction();
+          } catch (err) {
+            console.error("Action execution failed", err);
+          }
+        }
+        closeConfirmModal();
+      });
+    }
+
+    if (clearDataPromptBtn) {
+      clearDataPromptBtn.addEventListener("click", () => {
+        closeSettingsModal();
+        const dict = translations[appPrefs.lang] || translations.fa;
+        openConfirmModal(
+          dict.clear_confirm_title,
+          dict.clear_confirm_desc,
+          () => {
+            transactions = [];
+            saveTransactions();
+            renderUI();
+            showToast("toast_cleared", true);
+          }
+        );
+      });
+    }
+
+    if (exportDataBtn) {
+      exportDataBtn.addEventListener("click", () => {
+        const exportObject = {
+          app: "Kharjino",
+          version: "2.0",
+          exportedAt: new Date().toISOString(),
+          preferences: appPrefs,
+          transactions: transactions
+        };
+
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObject, null, 2));
+        const downloadAnchor = document.createElement("a");
+        downloadAnchor.setAttribute("href", dataStr);
+        downloadAnchor.setAttribute("download", `kharjino_backup_${getLocalDateISO()}.json`);
+        document.body.appendChild(downloadAnchor);
+        downloadAnchor.click();
+        downloadAnchor.remove();
+
+        showToast("toast_exported", true);
+      });
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      setFormDate(getLocalDateISO());
+      applyTheme(appPrefs.theme);
+      applyLanguage(appPrefs.lang);
+      setTransactionType("expense");
+      safeRenderIcons();
+    });
+  </script>
+</body>
+</html>
