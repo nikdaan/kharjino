@@ -204,6 +204,39 @@
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
 
+    /* iOS PWA Safe Area / Notch & Dynamic Island Calibration */
+    :root {
+      --sat: env(safe-area-inset-top, 0px);
+      --sab: env(safe-area-inset-bottom, 0px);
+    }
+    body {
+      padding-top: calc(0.65rem + env(safe-area-inset-top, 0px)) !important;
+      padding-left: max(0.625rem, calc(0.625rem + env(safe-area-inset-left, 0px)));
+      padding-right: max(0.625rem, calc(0.625rem + env(safe-area-inset-right, 0px)));
+    }
+    #appHeader {
+      top: calc(0.5rem + env(safe-area-inset-top, 0px)) !important;
+    }
+
+    /* Top Protective Scrim for iOS Standalone PWA Status Bar */
+    .ios-status-scrim {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: env(safe-area-inset-top, 0px);
+      z-index: 35;
+      pointer-events: none;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+    }
+    html:not(.dark) .ios-status-scrim {
+      background: rgba(234, 237, 243, 0.85);
+    }
+    .dark .ios-status-scrim {
+      background: rgba(7, 10, 20, 0.85);
+    }
+
     /* Eye-Friendly Ergonomic Soft Light Theme (5% darker than #ffffff cards) */
     html:not(.dark) body {
       background-color: #eaedf3;
@@ -550,6 +583,9 @@
   </style>
 </head>
 <body class="min-h-screen pb-28 sm:pb-32 pt-2.5 sm:pt-4 px-2.5 sm:px-6 md:px-8 max-w-6xl mx-auto selection:bg-indigo-500 selection:text-white">
+
+  <!-- پوشش محافظ نوار وضعیت آیفون در حالت PWA -->
+  <div class="ios-status-scrim"></div>
 
   <header id="appHeader" class="glass-card rounded-2xl sm:rounded-3xl p-3 sm:p-4 mb-4 sm:mb-6 flex items-center justify-between gap-2 sm:gap-4 sticky top-2 sm:top-3 z-30 transition-all duration-300">
     <div class="flex items-center gap-2 sm:gap-3.5 min-w-0">
