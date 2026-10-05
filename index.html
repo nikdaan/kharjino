@@ -1,0 +1,2877 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl" class="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <title>خرجینو | مدیریت هوشمند دخل و خرج</title>
+
+  <!-- PWA & Mobile Web App Meta -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="kharjino">
+  <meta name="application-name" content="kharjino">
+  <meta name="theme-color" content="#6366f1" id="metaThemeColor">
+  <meta name="msapplication-TileColor" content="#6366f1">
+
+  <!-- Adaptive SVG Favicon with Built-in CSS prefers-color-scheme -->
+  <link rel="icon" type="image/svg+xml" id="faviconTag" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'%3E%3Cstyle%3E.bg%7Bfill:%230c0f1d;stroke:rgba(255,255,255,0.12);stroke-width:2.5%7D.core%7Bfill:url(%23g-gold)%7D@media(prefers-color-scheme:light)%7B.bg%7Bfill:%23f8fafc;stroke:rgba(203,213,225,0.85);stroke-width:2%7D%7D%3C/style%3E%3Cdefs%3E%3ClinearGradient id='g-p' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%2338bdf8'/%3E%3Cstop offset='50%25' stop-color='%236366f1'/%3E%3Cstop offset='100%25' stop-color='%23ec4899'/%3E%3C/linearGradient%3E%3ClinearGradient id='g-gold' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%23fde047'/%3E%3Cstop offset='60%25' stop-color='%23f59e0b'/%3E%3Cstop offset='100%25' stop-color='%23ea580c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect class='bg' width='192' height='192' rx='44'/%3E%3Cg transform='translate(22, 18) scale(3.1)'%3E%3Crect x='11' y='7' width='7' height='34' rx='3.5' fill='url(%23g-p)'/%3E%3Cpath d='M18 24l11.8-13c1.6-1.8 4.4-1.8 6 0 1.6 1.8 1.6 4.7 0 6.5L28.5 24.5l9 12c1.6 1.8 1.4 4.7-.2 6.5-1.6 1.8-4.4 1.8-6 0L18 27.5' stroke='url(%23g-p)' stroke-width='5.6' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='28' cy='24' r='5.2' class='core'/%3E%3Ccircle cx='28' cy='24' r='3.4' stroke='%23ffffff' stroke-width='1' fill='none' opacity='0.9'/%3E%3C/g%3E%3C/svg%3E">
+
+  <!-- Apple Touch Icons with Active Media Queries for iOS Dark & Light Modes -->
+  <link rel="apple-touch-icon" id="appleTouchIcon" sizes="192x192" href="">
+  <link rel="apple-touch-icon" id="appleTouchIconDark" sizes="192x192" media="(prefers-color-scheme: dark)" href="">
+  <link rel="apple-touch-icon" id="appleTouchIconLight" sizes="192x192" media="(prefers-color-scheme: light)" href="">
+
+  <!-- Dynamic Native iOS Adaptive Touch Icons & Manifest Engine -->
+  <script>
+    (function initAdaptiveIOSIcons() {
+      try {
+        function drawKharjinoCanvas(isDark) {
+          var canvas = document.createElement('canvas');
+          canvas.width = 192;
+          canvas.height = 192;
+          var ctx = canvas.getContext('2d');
+          if (!ctx) return '';
+
+          // 1. iOS Squircle Container
+          var r = 44;
+          ctx.beginPath();
+          ctx.moveTo(r, 0);
+          ctx.arcTo(192, 0, 192, 192, r);
+          ctx.arcTo(192, 192, 0, 192, r);
+          ctx.arcTo(0, 192, 0, 0, r);
+          ctx.arcTo(0, 0, 192, 0, r);
+          ctx.closePath();
+
+          if (isDark) {
+            // iOS Dark Mode Pure Obsidian Canvas
+            var darkBg = ctx.createLinearGradient(0, 0, 192, 192);
+            darkBg.addColorStop(0, '#0a0d18');
+            darkBg.addColorStop(0.5, '#11162b');
+            darkBg.addColorStop(1, '#070912');
+            ctx.fillStyle = darkBg;
+            ctx.fill();
+
+            // Inner Specular Rim for iOS 18 Dark Icons
+            ctx.strokeStyle = 'rgba(255, 255, 255, 0.14)';
+            ctx.lineWidth = 2.5;
+            ctx.stroke();
+
+            // Ambient Radiant Core
+            var radial = ctx.createRadialGradient(96, 96, 12, 96, 96, 88);
+            radial.addColorStop(0, 'rgba(99, 102, 241, 0.42)');
+            radial.addColorStop(0.55, 'rgba(236, 72, 153, 0.16)');
+            radial.addColorStop(1, 'transparent');
+            ctx.fillStyle = radial;
+            ctx.fill();
+          } else {
+            // iOS Light Mode Clean Ceramic / Pearl Canvas
+            var lightBg = ctx.createLinearGradient(0, 0, 192, 192);
+            lightBg.addColorStop(0, '#ffffff');
+            lightBg.addColorStop(0.5, '#f8fafc');
+            lightBg.addColorStop(1, '#e2e8f0');
+            ctx.fillStyle = lightBg;
+            ctx.fill();
+
+            ctx.strokeStyle = 'rgba(203, 213, 225, 0.85)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            var radialLight = ctx.createRadialGradient(96, 96, 12, 96, 96, 90);
+            radialLight.addColorStop(0, 'rgba(99, 102, 241, 0.18)');
+            radialLight.addColorStop(1, 'transparent');
+            ctx.fillStyle = radialLight;
+            ctx.fill();
+          }
+
+          // 2. Draw Fintech Brandmark
+          ctx.save();
+          ctx.translate(22, 18);
+          ctx.scale(3.1, 3.1);
+
+          var grad1 = ctx.createLinearGradient(10, 6, 40, 42);
+          grad1.addColorStop(0, '#38bdf8');
+          grad1.addColorStop(0.45, '#6366f1');
+          grad1.addColorStop(1, '#ec4899');
+
+          var grad2 = ctx.createLinearGradient(38, 8, 16, 42);
+          grad2.addColorStop(0, '#a855f7');
+          grad2.addColorStop(0.6, '#6366f1');
+          grad2.addColorStop(1, '#0ea5e9');
+
+          ctx.shadowColor = isDark ? 'rgba(0, 0, 0, 0.65)' : 'rgba(99, 102, 241, 0.3)';
+          ctx.shadowBlur = 10;
+          ctx.shadowOffsetY = 4;
+
+          // Left Foundation Pillar
+          ctx.beginPath();
+          var px = 11, py = 7, pw = 7, ph = 34, pr = 3.5;
+          ctx.moveTo(px + pr, py);
+          ctx.lineTo(px + pw - pr, py);
+          ctx.arcTo(px + pw, py, px + pw, py + ph, pr);
+          ctx.lineTo(px + pw, py + ph - pr);
+          ctx.arcTo(px + pw, py + ph, px, py + ph, pr);
+          ctx.lineTo(px + pr, py + ph);
+          ctx.arcTo(px, py + ph, px, py, pr);
+          ctx.lineTo(px, py + pr);
+          ctx.arcTo(px, py, px + pw, py, pr);
+          ctx.closePath();
+          ctx.fillStyle = grad1;
+          ctx.fill();
+
+          // Specular Reflection
+          ctx.save();
+          ctx.shadowColor = 'transparent';
+          ctx.fillStyle = 'rgba(255, 255, 255, 0.45)';
+          ctx.fillRect(px + 1.8, py + 3, 1.6, ph - 6);
+          ctx.restore();
+
+          // Ascending Dynamic Chevron
+          ctx.beginPath();
+          ctx.moveTo(18, 24);
+          ctx.lineTo(29.8, 11);
+          ctx.arcTo(36, 6, 38, 12, 5);
+          ctx.lineTo(28.5, 24.5);
+          ctx.lineTo(37.5, 36.5);
+          ctx.arcTo(36, 41, 31, 41, 5);
+          ctx.lineTo(18, 27.5);
+          ctx.strokeStyle = grad2;
+          ctx.lineWidth = 5.6;
+          ctx.lineCap = 'round';
+          ctx.lineJoin = 'round';
+          ctx.stroke();
+
+          // Central Gleaming Financial Core
+          ctx.beginPath();
+          ctx.arc(28, 24, 5.2, 0, Math.PI * 2);
+          var goldGrad = ctx.createLinearGradient(23, 19, 33, 29);
+          goldGrad.addColorStop(0, '#fde047');
+          goldGrad.addColorStop(0.55, '#f59e0b');
+          goldGrad.addColorStop(1, '#ea580c');
+          ctx.fillStyle = goldGrad;
+          ctx.shadowColor = 'rgba(245, 158, 11, 0.75)';
+          ctx.shadowBlur = 12;
+          ctx.fill();
+
+          // Specular Core Ring
+          ctx.beginPath();
+          ctx.arc(28, 24, 3.4, 0, Math.PI * 2);
+          ctx.strokeStyle = 'rgba(255, 255, 255, 0.9)';
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          ctx.beginPath();
+          ctx.arc(28, 24, 1.2, 0, Math.PI * 2);
+          ctx.fillStyle = '#ffffff';
+          ctx.fill();
+
+          ctx.restore();
+          return canvas.toDataURL('image/png');
+        }
+
+        var darkIconUrl = drawKharjinoCanvas(true);
+        var lightIconUrl = drawKharjinoCanvas(false);
+
+        window._iosDarkIconUrl = darkIconUrl;
+        window._iosLightIconUrl = lightIconUrl;
+
+        var appleIcon = document.getElementById('appleTouchIcon');
+        var appleIconDark = document.getElementById('appleTouchIconDark');
+        var appleIconLight = document.getElementById('appleTouchIconLight');
+        var themeMeta = document.getElementById('metaThemeColor');
+
+        if (appleIconDark) appleIconDark.href = darkIconUrl;
+        if (appleIconLight) appleIconLight.href = lightIconUrl;
+
+        // Detect active system appearance at runtime
+        var systemPrefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+
+        function updateSystemIcon(isDark) {
+          var targetUrl = isDark ? darkIconUrl : lightIconUrl;
+          if (appleIcon) appleIcon.href = targetUrl;
+          if (themeMeta) {
+            themeMeta.setAttribute('content', isDark ? '#0c0f1d' : '#eef2f6');
+          }
+
+          // Build Dynamic Web App Manifest matching current system mode
+          var existingManifest = document.querySelector('link[rel="manifest"]');
+          if (existingManifest) existingManifest.remove();
+
+          var manifestObj = {
+            name: "خرجینو | مدیریت هوشمند دخل و خرج",
+            short_name: "kharjino",
+            description: "مدیریت حرفه‌ای حساب‌ها و مخارج روزانه",
+            start_url: window.location.href || ".",
+            display: "standalone",
+            orientation: "portrait",
+            background_color: isDark ? "#0c0f1d" : "#f8fafc",
+            theme_color: isDark ? "#0c0f1d" : "#6366f1",
+            icons: [
+              { src: isDark ? darkIconUrl : lightIconUrl, sizes: "192x192", type: "image/png", purpose: "any" },
+              { src: isDark ? darkIconUrl : lightIconUrl, sizes: "192x192", type: "image/png", purpose: "maskable" },
+              { src: darkIconUrl, sizes: "192x192", type: "image/png", purpose: "any" },
+              { src: lightIconUrl, sizes: "192x192", type: "image/png", purpose: "any" }
+            ]
+          };
+
+          var manifestLink = document.createElement('link');
+          manifestLink.rel = 'manifest';
+          manifestLink.href = 'data:application/manifest+json;charset=utf-8,' + encodeURIComponent(JSON.stringify(manifestObj));
+          document.head.appendChild(manifestLink);
+        }
+
+        // Initialize with system preference
+        var isCurrentDark = systemPrefersDark ? systemPrefersDark.matches : true;
+        updateSystemIcon(isCurrentDark);
+
+        // System Dark/Light Mode change listener (iOS Live Switching)
+        if (systemPrefersDark && systemPrefersDark.addEventListener) {
+          systemPrefersDark.addEventListener('change', function(e) {
+            updateSystemIcon(e.matches);
+          });
+        }
+
+        // Bridge for app theme switch
+        window._syncHomeTouchIcons = function(currentAppTheme) {
+          var isDark = (currentAppTheme === 'dark') || (currentAppTheme === 'auto' && systemPrefersDark && systemPrefersDark.matches);
+          updateSystemIcon(isDark);
+        };
+
+      } catch (err) {
+        console.warn('iOS Adaptive Icon initialization:', err);
+      }
+    })();
+  </script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Google Fonts: Vazirmatn & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            fa: ['Vazirmatn', 'sans-serif'],
+            en: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    * {
+      transition: background-color 0.25s ease, border-color 0.25s ease, color 0.2s ease;
+      -webkit-tap-highlight-color: transparent;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Vazirmatn', 'Inter', sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+      padding-top: env(safe-area-inset-top, 0);
+      padding-bottom: env(safe-area-inset-bottom, 0);
+    }
+
+    .ambient-glow {
+      position: fixed;
+      border-radius: 9999px;
+      filter: blur(130px);
+      z-index: 0;
+      opacity: 0.22;
+      pointer-events: none;
+      animation: floatSlow 18s ease-in-out infinite alternate;
+    }
+
+    .glow-1 {
+      top: -6%;
+      right: 4%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(165, 180, 252, 0.4) 0%, rgba(203, 213, 225, 0.15) 55%, transparent 75%);
+    }
+
+    .glow-2 {
+      bottom: 5%;
+      left: -4%;
+      width: 560px;
+      height: 560px;
+      background: radial-gradient(circle, rgba(186, 215, 245, 0.4) 0%, rgba(226, 232, 240, 0.15) 55%, transparent 75%);
+      animation-delay: -7s;
+    }
+
+    .dark .ambient-glow {
+      filter: blur(95px);
+      opacity: 0.65;
+    }
+
+    .dark .glow-1 {
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.48) 0%, rgba(168, 85, 247, 0.22) 70%, transparent 85%);
+    }
+
+    .dark .glow-2 {
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.48) 0%, rgba(56, 189, 248, 0.18) 70%, transparent 85%);
+    }
+
+    @keyframes floatSlow {
+      0% { transform: translate(0px, 0px) scale(1); }
+      50% { transform: translate(40px, 30px) scale(1.08); }
+      100% { transform: translate(-30px, 50px) scale(0.95); }
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.75);
+      backdrop-filter: blur(28px);
+      -webkit-backdrop-filter: blur(28px);
+      border: 1px solid rgba(203, 213, 225, 0.65);
+      box-shadow: 0 10px 25px -4px rgba(100, 116, 139, 0.08),
+                  0 2px 6px -2px rgba(100, 116, 139, 0.04),
+                  inset 0 1px 1px 0 rgba(255, 255, 255, 0.7);
+    }
+
+    .dark .glass-card {
+      background: rgba(18, 24, 38, 0.72);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.09);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37),
+                  inset 0 1px 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .glass-input {
+      background: rgba(248, 250, 252, 0.85);
+      border: 1px solid rgba(203, 213, 225, 0.75);
+      color: #1e293b;
+    }
+
+    .dark .glass-input {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #f1f5f9;
+    }
+
+    .glass-input:focus {
+      outline: none;
+      border-color: #6366f1;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    /* Modern Centered Dock Navigation */
+    #floatingBottomNav {
+      margin-left: auto;
+      margin-right: auto;
+      left: 0;
+      right: 0;
+      will-change: transform;
+    }
+
+    .nav-dock-btn {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+      padding: 0;
+      margin: 0;
+      gap: 0.25rem;
+      border-radius: 1rem;
+      transition: color 0.15s ease, transform 0.15s ease;
+      cursor: pointer;
+    }
+
+    .nav-dock-btn .nav-icon-box {
+      width: 2rem;
+      height: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 0.75rem;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    @media (min-width: 640px) {
+      .nav-dock-btn .nav-icon-box {
+        width: 2.25rem;
+        height: 2.25rem;
+        border-radius: 0.85rem;
+      }
+    }
+
+    .nav-dock-btn.active .nav-icon-box {
+      background: rgba(99, 102, 241, 0.16);
+      color: #6366f1;
+    }
+
+    .dark .nav-dock-btn.active .nav-icon-box {
+      background: rgba(99, 102, 241, 0.25);
+      color: #818cf8;
+    }
+
+    .nav-dock-btn.active span {
+      color: #6366f1;
+      font-weight: 700;
+    }
+
+    .dark .nav-dock-btn.active span {
+      color: #818cf8;
+      font-weight: 700;
+    }
+
+    /* Popover Calendar */
+    .shamsi-cal-popover {
+      display: none;
+      position: absolute;
+      top: 100%;
+      right: 0;
+      margin-top: 8px;
+      z-index: 60;
+      width: 100%;
+      min-width: 290px;
+      box-shadow: 0 22px 48px -8px rgba(15, 23, 42, 0.18), 0 0 0 1px rgba(226, 232, 240, 0.8);
+    }
+
+    .dark .shamsi-cal-popover {
+      box-shadow: 0 22px 48px -8px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.08);
+    }
+
+    .shamsi-cal-popover.active {
+      display: block;
+      animation: fadeInDown 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .cal-day-cell {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.825rem;
+      border-radius: 0.75rem;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .cal-day-cell:hover:not(.empty):not(.selected) {
+      background-color: rgba(99, 102, 241, 0.15);
+      color: #6366f1;
+    }
+
+    .cal-day-cell.selected {
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .cal-day-cell.today:not(.selected) {
+      border: 1.5px solid #6366f1;
+      font-weight: 700;
+      color: #6366f1;
+    }
+
+    /* Spotlight Onboarding Tour */
+    .tour-highlight {
+      position: relative !important;
+      z-index: 70 !important;
+      box-shadow: 0 0 0 4px #6366f1, 0 0 35px rgba(99, 102, 241, 0.5) !important;
+      border-radius: 1.5rem !important;
+      transition: box-shadow 0.3s ease !important;
+    }
+
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.3); border-radius: 9999px; }
+  </style>
+</head>
+
+<body class="bg-gradient-to-br from-[#eef2f6] via-[#f1f5f9] to-[#e8edf5] text-slate-800 dark:from-slate-950 dark:via-slate-950 dark:to-slate-900 dark:text-slate-100 min-h-screen relative flex flex-col justify-between selection:bg-indigo-500 selection:text-white pb-28">
+
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5" id="dashboardTop">
+    
+    <!-- Top Header -->
+    <header id="tourHeader" class="glass-card rounded-3xl p-4 sm:p-5 mb-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        
+        <!-- Brand Section -->
+        <div class="flex items-center gap-3.5 w-full md:w-auto justify-between md:justify-start">
+          <div class="flex items-center gap-3.5">
+            <!-- Bespoke Fintech Brandmark -->
+            <div class="w-12 h-12 sm:w-13 sm:h-13 rounded-2xl bg-gradient-to-tr from-slate-900/90 via-indigo-950/80 to-slate-900/90 dark:from-indigo-950/60 dark:via-slate-900/80 dark:to-purple-950/60 border border-indigo-500/25 dark:border-white/10 flex items-center justify-center shadow-lg shadow-indigo-500/20 shrink-0 group hover:scale-105 hover:shadow-indigo-500/35 transition-all duration-300 relative overflow-hidden backdrop-blur-md cursor-pointer">
+              <!-- Ambient Inner Glow -->
+              <div class="absolute inset-0 bg-gradient-to-br from-indigo-500/15 via-transparent to-pink-500/15 pointer-events-none"></div>
+
+              <!-- Precision Vector SVG Logo -->
+              <svg class="w-7 h-7 sm:w-8 sm:h-8 relative z-10 filter drop-shadow(0 2px 4px rgba(0,0,0,0.3))" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="hdr-grad-pillar" x1="12" y1="6" x2="20" y2="42" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#38bdf8"/>
+                    <stop offset="50%" stop-color="#6366f1"/>
+                    <stop offset="100%" stop-color="#ec4899"/>
+                  </linearGradient>
+                  <linearGradient id="hdr-grad-wing" x1="38" y1="8" x2="18" y2="40" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#c084fc"/>
+                    <stop offset="55%" stop-color="#6366f1"/>
+                    <stop offset="100%" stop-color="#0284c7"/>
+                  </linearGradient>
+                  <linearGradient id="hdr-grad-gold" x1="22" y1="18" x2="34" y2="30" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#fde047"/>
+                    <stop offset="60%" stop-color="#f59e0b"/>
+                    <stop offset="100%" stop-color="#ea580c"/>
+                  </linearGradient>
+                </defs>
+
+                <!-- Left Stability Pillar (Accounts & Security) -->
+                <rect x="11.5" y="7" width="6.5" height="34" rx="3.25" fill="url(#hdr-grad-pillar)"/>
+                <!-- Specular Reflection Edge -->
+                <rect x="13" y="9.5" width="1.6" height="29" rx="0.8" fill="#ffffff" opacity="0.45"/>
+
+                <!-- Kinetic Growth Wings (Expense Control & Income Surge) -->
+                <path d="M19 24L29.8 11.8C31.2 10.2 33.6 10 35.1 11.4C36.6 12.8 36.7 15.1 35.4 16.7L28 25L36.2 35.2C37.5 36.8 37.3 39.1 35.8 40.5C34.3 41.9 31.9 41.7 30.6 40.1L19 28" stroke="url(#hdr-grad-wing)" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Wing Highlight -->
+                <path d="M22 21.5L30.5 12C31.5 10.9 33.1 10.8 34.2 11.8C35.2 12.7 35.3 14.3 34.4 15.3L27.5 23.5" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/>
+
+                <!-- Glowing Financial Core (Treasury & Precision) -->
+                <circle cx="28.5" cy="24" r="5" fill="url(#hdr-grad-gold)"/>
+                <circle cx="28.5" cy="24" r="3.2" stroke="#ffffff" stroke-width="1" fill="none" opacity="0.85"/>
+                <!-- Core Specular Sparkle -->
+                <circle cx="28.5" cy="24" r="1.1" fill="#ffffff"/>
+              </svg>
+            </div>
+            <div>
+              <h1 class="text-lg sm:text-2xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight" data-i18n="app_title">
+                خرجینو
+              </h1>
+              <p class="text-[11px] sm:text-xs font-medium text-slate-500 dark:text-slate-400" data-i18n="app_subtitle">
+                مدیریت هوشمند حساب‌ها و مخارج
+              </p>
+            </div>
+          </div>
+
+          <!-- Mobile Header Actions -->
+          <div class="flex md:hidden items-center gap-2">
+            <button id="mobileTourBtn" aria-label="راهنمای برنامه" title="راهنمای سریع برنامه" class="w-10 h-10 rounded-2xl glass-card text-indigo-500 dark:text-indigo-400 flex items-center justify-center active:scale-95 transition">
+              <i data-lucide="help-circle" class="w-4 h-4"></i>
+            </button>
+            <button id="themeToggleBtnMobile" aria-label="تغییر تم" title="تغییر تم" class="w-10 h-10 rounded-2xl glass-card text-indigo-500 dark:text-indigo-400 flex items-center justify-center active:scale-95 transition">
+              <i data-lucide="sun" class="w-4 h-4"></i>
+            </button>
+            <button id="openSettingsBtnMobile" aria-label="تنظیمات" title="تنظیمات" class="w-10 h-10 rounded-2xl glass-card text-indigo-500 dark:text-indigo-400 flex items-center justify-center active:scale-95 transition">
+              <i data-lucide="settings" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Period Selector & Desktop Actions -->
+        <div class="flex items-center gap-2 sm:gap-3 w-full md:w-auto justify-end">
+          <div class="relative flex-1 md:flex-initial min-w-[210px] sm:min-w-[240px]">
+            <div class="glass-input h-11 sm:h-12 px-3.5 rounded-2xl flex items-center gap-2 border border-slate-200/90 dark:border-white/10 shadow-sm">
+              <div class="w-6 h-6 rounded-lg bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+              </div>
+              <select id="periodFilterSelect" class="w-full bg-transparent text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 cursor-pointer focus:outline-none pr-1">
+                <!-- Dynamically populated -->
+              </select>
+            </div>
+          </div>
+
+          <!-- Desktop Actions -->
+          <div class="hidden md:flex items-center gap-2.5">
+            <button id="headerTourBtn" aria-label="راهنما" title="راهنمای سریع برنامه" class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl glass-card hover:bg-white/90 dark:hover:bg-slate-800/90 text-indigo-500 dark:text-indigo-400 transition-all active:scale-95 shadow-sm flex items-center justify-center shrink-0">
+              <i data-lucide="help-circle" class="w-5 h-5"></i>
+            </button>
+            <button id="themeToggleBtn" aria-label="تغییر تم" title="تغییر تم" class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl glass-card hover:bg-white/90 dark:hover:bg-slate-800/90 text-indigo-500 dark:text-indigo-400 transition-all active:scale-95 shadow-sm flex items-center justify-center shrink-0">
+              <i id="themeIcon" data-lucide="sun" class="w-5 h-5"></i>
+            </button>
+            <button id="openSettingsBtn" aria-label="تنظیمات" title="تنظیمات" class="w-11 h-11 sm:w-12 sm:h-12 rounded-2xl glass-card hover:bg-white/90 dark:hover:bg-slate-800/90 text-indigo-500 dark:text-indigo-400 transition-all active:scale-95 shadow-sm flex items-center justify-center shrink-0">
+              <i data-lucide="settings" class="w-5 h-5"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <main class="space-y-6">
+      
+      <!-- Metrics Cards Row -->
+      <div id="tourMetrics" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        
+        <!-- Total Balance -->
+        <div class="glass-card rounded-3xl p-5 relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm font-medium text-slate-500 dark:text-slate-400" data-i18n="total_balance">مانده کل حساب‌ها</span>
+            <div class="w-10 h-10 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 flex items-center justify-center">
+              <i data-lucide="wallet" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 dark:text-white" id="balanceAmount">۰ تومان</div>
+          <p class="text-xs text-slate-400 dark:text-slate-500 mt-2 flex items-center gap-1">
+            <span id="balanceTrendBadge" class="inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+              <i data-lucide="trending-up" class="w-3.5 h-3.5 ml-1"></i>
+              <span id="balanceRatioText">۰ تومان</span>
+            </span>
+            <span data-i18n="financial_status">تراز دوره جاری</span>
+          </p>
+        </div>
+
+        <!-- Period Income -->
+        <div class="glass-card rounded-3xl p-5 relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm font-medium text-slate-500 dark:text-slate-400" data-i18n="period_income">درآمد دوره انتخابی</span>
+            <div class="w-10 h-10 rounded-2xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center">
+              <i data-lucide="arrow-down-left" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-600 dark:text-emerald-400 tracking-tight" id="incomeAmount">۰ تومان</div>
+          <p class="text-xs text-slate-400 dark:text-slate-500 mt-2 flex items-center gap-1">
+            <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+            <span data-i18n="recorded_incomes">درآمدهای ثبت‌شده</span>
+          </p>
+        </div>
+
+        <!-- Period Expenses -->
+        <div class="glass-card rounded-3xl p-5 relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-sm font-medium text-slate-500 dark:text-slate-400" data-i18n="period_expense">هزینه‌های دوره</span>
+            <div class="w-10 h-10 rounded-2xl bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center">
+              <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
+            </div>
+          </div>
+          <div class="text-2xl sm:text-3xl font-extrabold text-rose-600 dark:text-rose-400 tracking-tight" id="expenseAmount">۰ تومان</div>
+          <p class="text-xs text-slate-400 dark:text-slate-500 mt-2 flex items-center gap-1">
+            <i data-lucide="receipt" class="w-3.5 h-3.5"></i>
+            <span data-i18n="recorded_expenses">مخارج ثبت‌شده</span>
+          </p>
+        </div>
+
+        <!-- Monthly Budget -->
+        <div class="glass-card rounded-3xl p-5 relative overflow-hidden group">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-1.5">
+              <span class="text-sm font-medium text-slate-500 dark:text-slate-400" data-i18n="budget_card_title">سقف بودجه ماهانه</span>
+              <button type="button" id="editBudgetBtn" title="تنظیم سقف بودجه" class="text-indigo-500 hover:text-indigo-600 p-0.5">
+                <i data-lucide="edit-3" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+            <div class="w-10 h-10 rounded-2xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center">
+              <i data-lucide="target" class="w-5 h-5"></i>
+            </div>
+          </div>
+          
+          <div class="flex items-baseline justify-between">
+            <div class="text-xl sm:text-2xl font-extrabold tracking-tight text-slate-800 dark:text-white" id="budgetUsageAmount">۰٪</div>
+            <span class="text-xs font-semibold text-slate-400" id="budgetLimitBadge">تعریف نشده</span>
+          </div>
+
+          <div class="w-full bg-slate-200 dark:bg-slate-700/50 rounded-full h-2 mt-3 overflow-hidden">
+            <div id="budgetProgressBar" class="h-2 rounded-full transition-all duration-500 bg-emerald-500" style="width: 0%"></div>
+          </div>
+          <p class="text-[11px] text-slate-400 mt-2 flex items-center justify-between" id="budgetStatusNotice">
+            <span>وضعیت: رعایت‌شده</span>
+            <span id="budgetRemainingText">باقی‌‌مانده: ۰</span>
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Accounts Section -->
+      <div id="accountsSectionWrapper" class="glass-card rounded-3xl p-5">
+        <div class="flex items-center justify-between mb-3.5">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-lg bg-indigo-500/10 text-indigo-500 flex items-center justify-center">
+              <i data-lucide="credit-card" class="w-4 h-4"></i>
+            </div>
+            <h3 class="text-sm font-bold" data-i18n="accounts_title">حساب‌های شما</h3>
+          </div>
+          <button type="button" id="addNewAccountBtn" class="text-xs font-bold text-indigo-600 dark:text-indigo-400 flex items-center gap-1 hover:underline">
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            <span data-i18n="add_account">افزودن حساب</span>
+          </button>
+        </div>
+        <div id="accountsContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <!-- Dynamic accounts rendered here -->
+        </div>
+      </div>
+
+      <!-- Main Columns: Form & History -->
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        
+        <!-- Transaction Form -->
+        <div id="transactionFormCard" class="lg:col-span-1 glass-card rounded-3xl p-6 flex flex-col justify-between relative z-30 transition-all duration-300">
+          <div>
+            <div class="flex items-center gap-2 mb-5">
+              <div class="w-8 h-8 rounded-xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center">
+                <i data-lucide="plus-circle" class="w-4 h-4"></i>
+              </div>
+              <h2 class="text-lg font-bold" data-i18n="add_transaction">ثبت تراکنش جدید</h2>
+            </div>
+
+            <form id="transactionForm" class="space-y-4">
+              <!-- Type Switcher -->
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2" data-i18n="transaction_type">نوع تراکنش</label>
+                <div class="grid grid-cols-2 gap-2 p-1 rounded-2xl bg-slate-200/60 dark:bg-slate-800/50 border border-slate-300/60 dark:border-white/5">
+                  <button type="button" id="typeExpenseBtn" class="py-2 text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-1.5 transition-all bg-rose-500 text-white shadow-md shadow-rose-500/20">
+                    <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+                    <span data-i18n="expense">هزینه</span>
+                  </button>
+                  <button type="button" id="typeIncomeBtn" class="py-2 text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-1.5 transition-all text-slate-600 dark:text-slate-300 hover:text-emerald-500">
+                    <i data-lucide="arrow-down-left" class="w-4 h-4"></i>
+                    <span data-i18n="income">درآمد</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Title -->
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5" data-i18n="description">عنوان تراکنش</label>
+                <input type="text" id="descInput" required placeholder="مثلاً: خرید سوپرمارکت، حقوق، بنزین" class="glass-input w-full h-12 px-4 rounded-2xl text-sm focus:outline-none placeholder:text-slate-400 dark:placeholder:text-slate-600">
+              </div>
+
+              <!-- Amount -->
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5" data-i18n="amount">مبلغ</label>
+                <div class="relative">
+                  <input type="number" id="amountInput" min="1" step="any" required placeholder="0" class="glass-input w-full h-12 px-4 rounded-2xl text-sm font-semibold tracking-wide focus:outline-none placeholder:text-slate-400 dark:placeholder:text-slate-600">
+                  <span id="currencySymbolBadge" class="absolute inset-y-0 ltr:right-4 rtl:left-4 flex items-center text-xs font-bold text-slate-400 pointer-events-none">تومان</span>
+                </div>
+              </div>
+
+              <!-- Category -->
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5" data-i18n="category">دسته‌بندی</label>
+                <select id="categorySelect" class="glass-input w-full h-12 px-4 rounded-2xl text-sm focus:outline-none cursor-pointer"></select>
+              </div>
+
+              <!-- Account Selection -->
+              <div>
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5" data-i18n="account_label">حساب یا کارت مبدا/مقصد</label>
+                <select id="transactionAccountSelect" class="glass-input w-full h-12 px-4 rounded-2xl text-sm focus:outline-none cursor-pointer"></select>
+              </div>
+
+              <!-- Date Picker -->
+              <div class="relative z-40">
+                <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5" data-i18n="date">تاریخ تراکنش (شمسی)</label>
+                <div class="relative">
+                  <button type="button" id="shamsiDateBtn" class="glass-input w-full h-12 px-4 rounded-2xl text-sm flex items-center justify-between text-right cursor-pointer focus:outline-none">
+                    <span id="shamsiDateLabel" class="font-medium text-slate-800 dark:text-slate-100">امروز</span>
+                    <i data-lucide="calendar" class="w-4 h-4 text-indigo-500 shrink-0"></i>
+                  </button>
+                  <input type="hidden" id="dateInput">
+
+                  <!-- Popover Calendar -->
+                  <div id="shamsiCalendarPopover" class="shamsi-cal-popover glass-card rounded-2xl p-4 border border-slate-200/80 dark:border-white/10">
+                    <div class="flex items-center justify-between mb-3 pb-2 border-b border-slate-200/80 dark:border-slate-700/60">
+                      <button type="button" id="calPrevMonth" class="w-8 h-8 rounded-xl flex items-center justify-center hover:bg-slate-200/50 dark:hover:bg-slate-800/80 text-slate-600 dark:text-slate-300">
+                        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                      </button>
+                      <div class="flex items-center gap-1.5 text-sm font-bold" id="calMonthYearTitle"></div>
+                      <button type="button" id="calNextMonth" class="w-8 h-8 rounded-xl flex items-center justify-center hover:bg-slate-200/50 dark:hover:bg-slate-800/80 text-slate-600 dark:text-slate-300">
+                        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+                      </button>
+                    </div>
+
+                    <div class="grid grid-cols-7 gap-1 text-center text-[11px] font-semibold text-slate-400 mb-2" id="calWeekdayHeader">
+                      <span>ش</span><span>ی</span><span>د</span><span>س</span><span>چ</span><span>پ</span><span class="text-rose-500">ج</span>
+                    </div>
+
+                    <div class="grid grid-cols-7 gap-1" id="calDaysGrid"></div>
+
+                    <div class="mt-3 pt-2 border-t border-slate-200/80 dark:border-slate-700/60 flex items-center justify-between">
+                      <button type="button" id="calJumpTodayBtn" class="text-xs font-semibold text-indigo-600 dark:text-indigo-400 hover:underline" data-i18n="today_shortcut">انتخاب امروز</button>
+                      <button type="button" id="calCloseBtn" class="text-xs text-slate-400 hover:text-slate-600 dark:hover:text-slate-200" data-i18n="close">بستن</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Submit -->
+              <button type="submit" class="w-full mt-2 py-3.5 px-4 rounded-2xl font-bold text-white bg-gradient-to-r from-indigo-600 via-purple-600 to-pink-600 hover:from-indigo-500 hover:to-pink-500 active:scale-[0.98] transition-all shadow-lg shadow-indigo-500/25 flex items-center justify-center gap-2">
+                <i data-lucide="check" class="w-5 h-5"></i>
+                <span data-i18n="save_transaction">ثبت تراکنش</span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right Side: Analytics & History -->
+        <div class="lg:col-span-2 space-y-6 flex flex-col relative z-10">
+          
+          <!-- Chart Breakdown -->
+          <div id="analyticsSectionCard" class="glass-card rounded-3xl p-6">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+              <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center">
+                  <i data-lucide="pie-chart" class="w-4 h-4"></i>
+                </div>
+                <h3 class="text-base font-bold" data-i18n="chart_title">نمودار توزیع مخارج</h3>
+              </div>
+              <span class="text-xs text-slate-400" id="chartPeriodNote" data-i18n="chart_period_note">بر اساس دوره جاری</span>
+            </div>
+
+            <div class="relative h-56 sm:h-64 w-full flex items-center justify-center">
+              <canvas id="categoryChart"></canvas>
+              <div id="noChartData" class="absolute inset-0 flex flex-col items-center justify-center text-slate-400">
+                <i data-lucide="bar-chart-2" class="w-10 h-10 mb-2 opacity-40"></i>
+                <p class="text-xs font-medium" data-i18n="no_chart_data">هنوز هزینه‌ای در این دوره ثبت نشده است</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- History Card -->
+          <div id="historySectionCard" class="glass-card rounded-3xl p-5 sm:p-6 flex-1 flex flex-col">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-5 pb-3 border-b border-slate-200/60 dark:border-slate-800/60">
+              <div class="flex items-center gap-2.5">
+                <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center shrink-0">
+                  <i data-lucide="receipt-text" class="w-4 h-4"></i>
+                </div>
+                <div class="flex items-center gap-2">
+                  <h3 class="text-base font-bold tracking-tight" data-i18n="transaction_history">تاریخچه تراکنش‌ها</h3>
+                  <span id="transactionsCountBadge" class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-slate-200/70 dark:bg-slate-800 text-slate-600 dark:text-slate-300">۰</span>
+                </div>
+              </div>
+
+              <!-- Filter Pills & Search -->
+              <div class="flex items-center gap-2 flex-wrap sm:flex-nowrap">
+                <div class="flex bg-slate-200/60 dark:bg-slate-800/80 p-1 rounded-2xl text-xs font-medium shrink-0">
+                  <button type="button" data-filter="all" class="filter-btn active-filter px-3 py-1.5 rounded-xl bg-white dark:bg-slate-700 shadow-sm text-slate-800 dark:text-white transition" data-i18n="filter_all">همه</button>
+                  <button type="button" data-filter="expense" class="filter-btn px-3 py-1.5 rounded-xl text-slate-500 hover:text-slate-800 dark:hover:text-white transition" data-i18n="expense">هزینه</button>
+                  <button type="button" data-filter="income" class="filter-btn px-3 py-1.5 rounded-xl text-slate-500 hover:text-slate-800 dark:hover:text-white transition" data-i18n="income">درآمد</button>
+                </div>
+
+                <div class="relative w-full sm:w-48">
+                  <input type="text" id="searchInput" placeholder="جستجو..." class="glass-input w-full h-9 px-3 ltr:pr-8 rtl:pl-8 rounded-xl text-xs focus:outline-none placeholder:text-slate-400">
+                  <i data-lucide="search" class="w-3.5 h-3.5 absolute inset-y-0 ltr:right-2.5 rtl:left-2.5 my-auto text-slate-400 pointer-events-none"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Transactions List -->
+            <div id="transactionsList" class="space-y-2.5 overflow-y-auto max-h-[380px] pr-1 pl-1"></div>
+
+            <div id="emptyListState" class="py-12 flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 text-center">
+              <div class="w-14 h-14 rounded-2xl bg-slate-200/50 dark:bg-slate-800/50 flex items-center justify-center mb-3">
+                <i data-lucide="receipt-text" class="w-7 h-7 opacity-40"></i>
+              </div>
+              <p class="text-sm font-semibold" data-i18n="no_transactions">هیچ تراکنشی ثبت نشده است!</p>
+              <p class="text-xs text-slate-400 mt-1" data-i18n="no_transactions_sub">با فرم سمت راست اولین تراکنش خود را ثبت کنید</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-8 text-center text-xs text-slate-400 dark:text-slate-500 pb-4">
+      <p data-i18n="footer_text">خرجینو؛ مدیریت هوشمند دخل‌وخرج • تمام اطلاعات با امنیت کامل روی دستگاه شما نگهداری می‌شود</p>
+    </footer>
+  </div>
+
+  <!-- Symmetrical Dock Navigation -->
+  <nav id="floatingBottomNav" aria-label="Bottom Navigation" class="fixed bottom-3 sm:bottom-6 inset-x-0 mx-auto z-40 w-[92%] sm:w-[410px] max-w-md h-[64px] sm:h-[68px] glass-card px-1.5 sm:px-3 py-0 rounded-2xl sm:rounded-3xl border border-slate-200/80 dark:border-white/10 shadow-2xl backdrop-blur-2xl grid grid-cols-5 items-center justify-items-center select-none">
+    
+    <!-- 1. Dashboard -->
+    <button type="button" id="navHomeBtn" data-nav="dashboard" class="nav-dock-btn active text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400">
+      <div class="nav-icon-box">
+        <i data-lucide="layout-dashboard" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+      </div>
+      <span class="text-[10px] sm:text-[11px] font-medium leading-none tracking-tight" data-i18n="nav_dashboard">داشبورد</span>
+    </button>
+
+    <!-- 2. Accounts -->
+    <button type="button" id="navAccountsBtn" data-nav="accounts" class="nav-dock-btn text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400">
+      <div class="nav-icon-box">
+        <i data-lucide="wallet" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+      </div>
+      <span class="text-[10px] sm:text-[11px] font-medium leading-none tracking-tight" data-i18n="nav_accounts">حساب‌ها</span>
+    </button>
+
+    <!-- 3. Add Transaction Button -->
+    <button type="button" id="navCenterAddBtn" data-nav="add" aria-label="ثبت تراکنش" class="nav-dock-btn group">
+      <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl sm:rounded-2xl bg-gradient-to-tr from-indigo-600 via-purple-600 to-pink-500 text-white shadow-md shadow-indigo-500/30 flex items-center justify-center shrink-0 group-hover:scale-105 active:scale-95 transition-transform duration-200">
+        <i data-lucide="plus" class="w-4 h-4 sm:w-5 sm:h-5 stroke-[2.8] group-hover:rotate-90 transition-transform duration-300"></i>
+      </div>
+      <span class="text-[10px] sm:text-[11px] font-bold leading-none text-indigo-600 dark:text-indigo-400" data-i18n="nav_add">ثبت</span>
+    </button>
+
+    <!-- 4. Analytics -->
+    <button type="button" id="navAnalyticsBtn" data-nav="analytics" class="nav-dock-btn text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400">
+      <div class="nav-icon-box">
+        <i data-lucide="pie-chart" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+      </div>
+      <span class="text-[10px] sm:text-[11px] font-medium leading-none tracking-tight" data-i18n="nav_analytics">نمودار</span>
+    </button>
+
+    <!-- 5. History -->
+    <button type="button" id="navHistoryBtn" data-nav="history" class="nav-dock-btn text-slate-400 dark:text-slate-500 hover:text-indigo-600 dark:hover:text-indigo-400">
+      <div class="nav-icon-box">
+        <i data-lucide="receipt-text" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+      </div>
+      <span class="text-[10px] sm:text-[11px] font-medium leading-none tracking-tight" data-i18n="nav_history">تراکنش‌ها</span>
+    </button>
+  </nav>
+
+  <!-- Budget Modal -->
+  <div id="budgetModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div class="glass-card w-full max-w-sm rounded-3xl p-6 shadow-2xl transform scale-95 transition-transform duration-300">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700/60 mb-4">
+        <h4 class="text-base font-bold flex items-center gap-2">
+          <i data-lucide="target" class="w-5 h-5 text-purple-500"></i>
+          <span data-i18n="budget_modal_title">تنظیم بودجه ماهانه</span>
+        </h4>
+        <button id="closeBudgetModalBtn" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <p class="text-xs text-slate-500 dark:text-slate-400 mb-4" data-i18n="budget_modal_desc">
+        سقف هزینه‌ای که می‌خواهید در هر ماه خرج کنید را تعیین کنید تا درصد مصرف آن محاسبه شود:
+      </p>
+      <div class="mb-5">
+        <label class="block text-xs font-semibold text-slate-500 mb-1" data-i18n="budget_amount_label">سقف مجاز (تومان)</label>
+        <input type="number" id="budgetLimitInput" min="0" step="100000" placeholder="مثلاً: 15000000" class="glass-input w-full h-11 px-3 rounded-2xl text-sm font-bold">
+      </div>
+      <div class="flex gap-2">
+        <button type="button" id="cancelBudgetBtn" class="flex-1 py-2.5 rounded-2xl glass-input text-xs font-semibold" data-i18n="cancel">انصراف</button>
+        <button type="button" id="saveBudgetBtn" class="flex-1 py-2.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold" data-i18n="save_budget">ذخیره بودجه</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Account Modal -->
+  <div id="accountModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div class="glass-card w-full max-w-sm rounded-3xl p-6 shadow-2xl transform scale-95 transition-transform duration-300">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700/60 mb-4">
+        <h4 class="text-base font-bold flex items-center gap-2">
+          <i data-lucide="credit-card" class="w-5 h-5 text-indigo-500"></i>
+          <span data-i18n="account_modal_title">افزودن حساب جدید</span>
+        </h4>
+        <button id="closeAccountModalBtn" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="space-y-3.5 mb-5">
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 mb-1" data-i18n="account_name_label">نام حساب / بانک</label>
+          <input type="text" id="accountNameInput" placeholder="مثلاً: بلوبانک، کارت حقوق، کیف پول نقد" class="glass-input w-full h-11 px-3 rounded-2xl text-sm">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 mb-1" data-i18n="account_balance_label">موجودی اولیه (تومان)</label>
+          <input type="number" id="accountBalanceInput" min="0" placeholder="0" class="glass-input w-full h-11 px-3 rounded-2xl text-sm font-bold">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 mb-1" data-i18n="account_color_label">رنگ کارت</label>
+          <div class="flex items-center gap-2">
+            <input type="color" id="accountColorInput" value="#6366f1" class="w-10 h-10 rounded-xl cursor-pointer bg-transparent border-0">
+            <span class="text-xs text-slate-400" data-i18n="color_hint">انتخاب رنگ کارت برای تمایز</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex gap-2">
+        <button type="button" id="cancelAccountBtn" class="flex-1 py-2.5 rounded-2xl glass-input text-xs font-semibold" data-i18n="cancel">انصراف</button>
+        <button type="button" id="saveAccountBtn" class="flex-1 py-2.5 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold" data-i18n="save_account">ذخیره حساب</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Settings Modal -->
+  <div id="settingsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 dark:bg-slate-900/60 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div class="glass-card w-full max-w-md rounded-3xl p-6 border border-slate-200/80 dark:border-white/10 shadow-2xl transform scale-95 transition-transform duration-300" id="settingsDialogCard">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-slate-200/80 dark:border-slate-700/50 mb-5">
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center">
+            <i data-lucide="sliders-horizontal" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-lg font-bold" data-i18n="settings_title">تنظیمات خرجینو</h3>
+        </div>
+        <button id="closeSettingsBtn" class="p-2 rounded-xl text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4">
+        <!-- Tour Button -->
+        <div>
+          <button type="button" id="restartTourFromSettings" class="w-full py-2.5 px-3 rounded-2xl bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 hover:bg-indigo-500/20 text-xs font-bold flex items-center justify-center gap-2 transition">
+            <i data-lucide="help-circle" class="w-4 h-4"></i>
+            <span data-i18n="tour_replay">مشاهده مجدد آموزش راهنمای بخش‌ها</span>
+          </button>
+        </div>
+
+        <!-- Language -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5" data-i18n="language_label">زبان برنامه (Language)</label>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" id="langFaBtn" class="lang-opt-btn flex items-center justify-center gap-2 py-2 px-3 rounded-2xl border text-sm font-semibold transition-all">
+              <span>🇮🇷</span><span>فارسی</span>
+            </button>
+            <button type="button" id="langEnBtn" class="lang-opt-btn flex items-center justify-center gap-2 py-2 px-3 rounded-2xl border text-sm font-semibold transition-all">
+              <span>🇺🇸</span><span>English</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Theme -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5" data-i18n="theme_label">حالت تم</label>
+          <div class="grid grid-cols-2 gap-2">
+            <button type="button" id="themeLightOption" class="theme-opt-btn flex items-center justify-center gap-2 py-2 px-3 rounded-2xl border text-sm font-semibold transition-all">
+              <i data-lucide="sun" class="w-4 h-4 text-amber-500"></i>
+              <span data-i18n="light_mode">روشن</span>
+            </button>
+            <button type="button" id="themeDarkOption" class="theme-opt-btn flex items-center justify-center gap-2 py-2 px-3 rounded-2xl border text-sm font-semibold transition-all">
+              <i data-lucide="moon" class="w-4 h-4 text-indigo-400"></i>
+              <span data-i18n="dark_mode">تاریک</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Currency -->
+        <div>
+          <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1.5" data-i18n="currency_label">واحد پول پیش‌فرض</label>
+          <select id="currencySelect" class="glass-input w-full px-4 py-2 rounded-2xl text-sm focus:outline-none cursor-pointer">
+            <option value="تومان">تومان (Toman)</option>
+            <option value="ریال">ریال (Rial)</option>
+            <option value="$">دلار ($ USD)</option>
+            <option value="€">یورو (€ EUR)</option>
+          </select>
+        </div>
+
+        <!-- Data Export & Import -->
+        <div class="pt-3 border-t border-black/10 dark:border-slate-700/50">
+          <label class="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-2" data-i18n="data_management">مدیریت فایل و پشتیبان</label>
+          
+          <div class="grid grid-cols-2 gap-2 mb-2">
+            <button type="button" id="exportCsvBtn" class="py-2 px-2.5 rounded-2xl glass-input hover:bg-slate-200/50 dark:hover:bg-slate-800/80 text-xs font-semibold flex items-center justify-center gap-1.5 transition">
+              <i data-lucide="file-spreadsheet" class="w-4 h-4 text-emerald-500"></i>
+              <span data-i18n="export_csv">خروجی اکسل (CSV)</span>
+            </button>
+            <button type="button" id="exportDataBtn" class="py-2 px-2.5 rounded-2xl glass-input hover:bg-slate-200/50 dark:hover:bg-slate-800/80 text-xs font-semibold flex items-center justify-center gap-1.5 transition">
+              <i data-lucide="download" class="w-4 h-4 text-indigo-500"></i>
+              <span data-i18n="export_json">دانلود بکاپ JSON</span>
+            </button>
+          </div>
+
+          <div class="grid grid-cols-2 gap-2">
+            <label class="py-2 px-2.5 rounded-2xl glass-input hover:bg-slate-200/50 dark:hover:bg-slate-800/80 text-xs font-semibold flex items-center justify-center gap-1.5 transition cursor-pointer text-center">
+              <i data-lucide="upload" class="w-4 h-4 text-blue-500"></i>
+              <span data-i18n="import_backup">بازیابی پشتیبان</span>
+              <input type="file" id="importBackupInput" accept=".json" class="hidden">
+            </label>
+            <button type="button" id="clearDataPromptBtn" class="py-2 px-2.5 rounded-2xl bg-rose-500/10 text-rose-600 dark:text-rose-400 hover:bg-rose-500/20 text-xs font-semibold flex items-center justify-center gap-1.5 transition">
+              <i data-lucide="trash-2" class="w-4 h-4"></i>
+              <span data-i18n="clear_all_data">پاکسازی کل اطلاعات</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="mt-5">
+        <button type="button" id="confirmSettingsBtn" class="w-full py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-sm transition shadow-lg shadow-indigo-600/20" data-i18n="apply_and_close">
+          اعمال و بستن
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Confirm Modal -->
+  <div id="confirmModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-md opacity-0 pointer-events-none transition-all duration-300">
+    <div class="glass-card w-full max-w-sm rounded-3xl p-6 text-center shadow-2xl transform scale-95 transition-transform duration-300">
+      <div class="w-14 h-14 mx-auto rounded-full bg-rose-500/10 text-rose-500 flex items-center justify-center mb-4">
+        <i data-lucide="alert-triangle" class="w-7 h-7"></i>
+      </div>
+      <h4 id="confirmModalTitle" class="text-base font-bold mb-2">آیا مطمئن هستید؟</h4>
+      <p id="confirmModalDesc" class="text-xs text-slate-500 dark:text-slate-400 mb-6">این عملیات قابل بازگشت نیست.</p>
+      <div class="flex gap-2">
+        <button type="button" id="cancelConfirmActionBtn" class="flex-1 py-2.5 rounded-2xl glass-input text-xs font-semibold hover:bg-slate-200 dark:hover:bg-slate-800 transition" data-i18n="cancel">انصراف</button>
+        <button type="button" id="acceptConfirmActionBtn" class="flex-1 py-2.5 rounded-2xl bg-rose-500 hover:bg-rose-600 text-white text-xs font-semibold transition shadow-md shadow-rose-500/30" data-i18n="confirm">بله، انجام بده</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toastNotification" class="fixed bottom-24 inset-x-0 mx-auto w-max max-w-[90%] z-50 px-5 py-3 rounded-2xl glass-card border border-white/40 shadow-2xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <div id="toastIconWrapper" class="shrink-0 flex items-center justify-center">
+      <i id="toastIcon" data-lucide="check-circle-2" class="w-5 h-5 text-emerald-500"></i>
+    </div>
+    <span id="toastMessage" class="text-xs font-semibold">تراکنش با موفقیت ثبت شد</span>
+  </div>
+
+  <!-- Contextual Onboarding Tour Popover -->
+  <div id="onboardingTourModal" class="fixed inset-0 z-50 pointer-events-none bg-slate-950/20 dark:bg-slate-950/35 opacity-0 transition-opacity duration-300">
+    <div id="tourPopoverCard" class="pointer-events-auto absolute glass-card w-[92%] sm:w-96 max-w-sm rounded-3xl p-5 shadow-2xl border border-indigo-500/30 text-right transform scale-95 transition-all duration-300">
+      
+      <!-- Popover Header -->
+      <div class="flex items-center justify-between pb-3 border-b border-slate-200 dark:border-slate-700/60 mb-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 rounded-2xl flex items-center justify-center text-white shrink-0 shadow-md transition-all duration-300" id="tourStepBadge">
+            <i id="tourStepIcon" data-lucide="calendar" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h4 class="text-sm font-extrabold text-slate-900 dark:text-white" id="tourStepTitle">راهنمای بخش</h4>
+            <span class="text-[10px] font-semibold text-slate-400 dark:text-slate-400" id="tourStepSub">آشنایی با امکانات</span>
+          </div>
+        </div>
+        <button id="skipTourTopBtn" class="text-xs text-slate-400 hover:text-rose-500 font-semibold px-2 py-1 rounded-lg hover:bg-slate-200/50 dark:hover:bg-slate-800 transition" data-i18n="skip">رد کردن</button>
+      </div>
+
+      <!-- Content -->
+      <div class="mb-4">
+        <p class="text-xs leading-relaxed text-slate-600 dark:text-slate-300" id="tourStepContent">
+          به خرجینو خوش آمدید!
+        </p>
+      </div>
+
+      <!-- Popover Footer -->
+      <div class="flex items-center justify-between gap-2 pt-2.5 border-t border-slate-200 dark:border-slate-800">
+        <button type="button" id="tourPrevBtn" class="py-1.5 px-3 rounded-xl glass-input text-xs font-semibold text-slate-500 disabled:opacity-30 disabled:pointer-events-none hover:text-slate-800 dark:hover:text-white transition" data-i18n="prev">
+          قبلی
+        </button>
+
+        <div class="flex items-center gap-1.5" id="tourDotsContainer"></div>
+
+        <button type="button" id="tourNextBtn" class="py-1.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold shadow-md shadow-indigo-500/25 transition" data-i18n="next">
+          بعدی
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const translations = {
+      fa: {
+        app_title: "خرجینو",
+        app_subtitle: "مدیریت هوشمند حساب‌ها و مخارج",
+        settings_title: "تنظیمات خرجینو",
+        tour_replay: "مشاهده مجدد آموزش راهنمای بخش‌ها",
+        language_label: "زبان برنامه (Language)",
+        theme_label: "حالت تم",
+        light_mode: "روشن",
+        dark_mode: "تاریک",
+        currency_label: "واحد پول پیش‌فرض",
+        data_management: "مدیریت فایل و پشتیبان",
+        export_csv: "خروجی اکسل (CSV)",
+        export_json: "دانلود بکاپ JSON",
+        import_backup: "بازیابی پشتیبان",
+        clear_all_data: "پاکسازی کل اطلاعات",
+        apply_and_close: "اعمال و بستن",
+        total_balance: "مانده کل حساب‌ها",
+        financial_status: "تراز دوره جاری",
+        period_income: "درآمد دوره انتخابی",
+        recorded_incomes: "درآمدهای ثبت‌شده",
+        period_expense: "هزینه‌های دوره",
+        recorded_expenses: "مخارج ثبت‌شده",
+        budget_card_title: "سقف بودجه ماهانه",
+        accounts_title: "حساب‌های شما",
+        add_account: "افزودن حساب",
+        no_accounts: "هیچ حساب یا کارتی ثبت نشده است",
+        no_accounts_sub: "برای ثبت دقیق دخل‌وخرج، حداقل یک حساب یا کارت ایجاد کنید",
+        add_transaction: "ثبت تراکنش جدید",
+        transaction_type: "نوع تراکنش",
+        expense: "هزینه",
+        income: "درآمد",
+        description: "عنوان تراکنش",
+        tx_title_ph: "مثلاً: خرید سوپرمارکت، حقوق، بنزین",
+        account_name_ph: "مثلاً: بلوبانک، کارت حقوق، کیف پول نقد",
+        search_ph: "جستجو...",
+        amount: "مبلغ",
+        category: "دسته‌بندی",
+        account_label: "حساب یا کارت مبدا/مقصد",
+        date: "تاریخ تراکنش (شمسی)",
+        today_shortcut: "انتخاب امروز",
+        close: "بستن",
+        save_transaction: "ثبت تراکنش",
+        chart_title: "نمودار توزیع مخارج",
+        chart_period_note: "بر اساس دوره جاری",
+        no_chart_data: "هنوز هزینه‌ای در این دوره ثبت نشده است",
+        transaction_history: "تاریخچه تراکنش‌ها",
+        filter_all: "همه",
+        no_transactions: "هیچ تراکنشی ثبت نشده است!",
+        no_transactions_sub: "با فرم سمت راست اولین تراکنش خود را ثبت کنید",
+        footer_text: "خرجینو؛ مدیریت هوشمند دخل‌وخرج • تمام اطلاعات با امنیت کامل روی دستگاه شما نگهداری می‌شود",
+        nav_dashboard: "داشبورد",
+        nav_accounts: "حساب‌ها",
+        nav_add: "ثبت",
+        nav_analytics: "نمودار",
+        nav_history: "تراکنش‌ها",
+        budget_modal_title: "تنظیم بودجه ماهانه",
+        budget_modal_desc: "سقف هزینه‌ای که می‌خواهید در هر ماه خرج کنید را تعیین کنید تا درصد مصرف آن محاسبه شود:",
+        budget_amount_label: "سقف مجاز (تومان)",
+        cancel: "انصراف",
+        confirm: "بله، انجام بده",
+        save_budget: "ذخیره بودجه",
+        account_modal_title: "افزودن حساب جدید",
+        account_name_label: "نام حساب / بانک",
+        account_balance_label: "موجودی اولیه (تومان)",
+        account_color_label: "رنگ کارت",
+        color_hint: "انتخاب رنگ کارت برای تمایز",
+        save_account: "ذخیره حساب",
+        skip: "رد کردن",
+        prev: "قبلی",
+        next: "بعدی",
+        finish_tour: "پایان آموزش",
+        delete_acc_title: "حذف حساب",
+        delete_acc_desc: "آیا مطمئن هستید که می‌خواهید این حساب را حذف کنید؟",
+        delete_tx_title: "حذف تراکنش",
+        delete_tx_desc: "این عملیات قابل بازگشت نیست. آیا ادامه می‌دهید؟",
+        must_add_account: "ابتدا باید حداقل یک حساب یا کارت ایجاد کنید!",
+        tour_end_toast: "آموزش به پایان رسید. خوش آمدید!",
+        all_periods: "تمام زمان‌ها",
+        ios_icon_preview_title: "آیکون هوم‌اسکرین آیفون (iOS Dark / Light)"
+      },
+      en: {
+        app_title: "Kharjino",
+        app_subtitle: "Smart Personal Finance & Expense Manager",
+        settings_title: "Kharjino Settings",
+        tour_replay: "Replay Onboarding Guide Tour",
+        language_label: "App Language",
+        theme_label: "Appearance Mode",
+        light_mode: "Light",
+        dark_mode: "Dark",
+        currency_label: "Default Currency",
+        data_management: "Data & Backup Management",
+        export_csv: "Export to Excel (CSV)",
+        export_json: "Download JSON Backup",
+        import_backup: "Restore Backup",
+        clear_all_data: "Clear All App Data",
+        apply_and_close: "Apply & Close",
+        total_balance: "Total Accounts Balance",
+        financial_status: "Period Net Balance",
+        period_income: "Period Income",
+        recorded_incomes: "Recorded Incomes",
+        period_expense: "Period Expenses",
+        recorded_expenses: "Recorded Expenses",
+        budget_card_title: "Monthly Budget Limit",
+        accounts_title: "Your Accounts",
+        add_account: "Add Account",
+        no_accounts: "No accounts or cards registered yet",
+        no_accounts_sub: "Create an account or wallet card to begin tracking expenses",
+        add_transaction: "New Transaction",
+        transaction_type: "Transaction Type",
+        expense: "Expense",
+        income: "Income",
+        description: "Transaction Title",
+        tx_title_ph: "e.g., Grocery shopping, Salary, Gasoline",
+        account_name_ph: "e.g., Main Bank, Salary Card, Cash Wallet",
+        search_ph: "Search...",
+        amount: "Amount",
+        category: "Category",
+        account_label: "Origin / Destination Account",
+        date: "Date (Shamsi / Jalali)",
+        today_shortcut: "Select Today",
+        close: "Close",
+        save_transaction: "Save Transaction",
+        chart_title: "Expense Distribution",
+        chart_period_note: "Based on active period",
+        no_chart_data: "No expenses recorded in this period",
+        transaction_history: "Transaction History",
+        filter_all: "All",
+        no_transactions: "No transactions recorded yet!",
+        no_transactions_sub: "Use the form to record your first transaction",
+        footer_text: "Kharjino • Smart finance manager with 100% privacy, stored on your device",
+        nav_dashboard: "Dashboard",
+        nav_accounts: "Accounts",
+        nav_add: "Add",
+        nav_analytics: "Charts",
+        nav_history: "History",
+        budget_modal_title: "Set Monthly Budget",
+        budget_modal_desc: "Set the maximum target you plan to spend per month:",
+        budget_amount_label: "Budget Limit",
+        cancel: "Cancel",
+        confirm: "Yes, Proceed",
+        save_budget: "Save Budget",
+        account_modal_title: "Add New Account / Card",
+        account_name_label: "Account Name / Bank",
+        account_balance_label: "Initial Balance",
+        account_color_label: "Card Color Accent",
+        color_hint: "Choose a color for clear distinction",
+        save_account: "Save Account",
+        skip: "Skip",
+        prev: "Previous",
+        next: "Next",
+        finish_tour: "Finish Tour",
+        delete_acc_title: "Delete Account",
+        delete_acc_desc: "Are you sure you want to permanently delete this account?",
+        delete_tx_title: "Delete Transaction",
+        delete_tx_desc: "This action cannot be undone. Are you sure?",
+        must_add_account: "Please create at least one account first!",
+        tour_end_toast: "Tour finished. Welcome aboard!",
+        all_periods: "All Time",
+        ios_icon_preview_title: "iPhone Home Screen Icons (iOS Dark / Light)"
+      }
+    };
+
+    const categoriesConfig = {
+      expense: [
+        { id: "food", icon: "utensils", fa: "خوراک و رستوران", en: "Food & Dining", color: "#f43f5e" },
+        { id: "transport", icon: "car", fa: "حمل و نقل و سوخت", en: "Transportation", color: "#0ea5e9" },
+        { id: "shopping", icon: "shopping-bag", fa: "خرید روزمره و پوشاک", en: "Shopping", color: "#a855f7" },
+        { id: "bills", icon: "zap", fa: "قبوض، خانه و اجاره", en: "Bills & Housing", color: "#eab308" },
+        { id: "entertainment", icon: "film", fa: "تفریح، سفر و کافه", en: "Entertainment", color: "#ec4899" },
+        { id: "health", icon: "activity", fa: "سلامت، درمان و دارو", en: "Healthcare", color: "#14b8a6" },
+        { id: "installment", icon: "credit-card", fa: "اقساط و بدهی", en: "Installments", color: "#f97316" },
+        { id: "other_exp", icon: "more-horizontal", fa: "سایر مخارج", en: "Other Expenses", color: "#64748b" }
+      ],
+      income: [
+        { id: "salary", icon: "briefcase", fa: "حقوق و دستمزد", en: "Salary", color: "#10b981" },
+        { id: "freelance", icon: "laptop", fa: "پروژه و فریلنسری", en: "Freelance", color: "#06b6d4" },
+        { id: "investment", icon: "trending-up", fa: "سود بانکی و سرمایه‌گذاری", en: "Investment", color: "#8b5cf6" },
+        { id: "gift", icon: "gift", fa: "هدیه و پاداش", en: "Gifts & Bonus", color: "#f59e0b" },
+        { id: "other_inc", icon: "plus-circle", fa: "سایر درآمدها", en: "Other Income", color: "#10b981" }
+      ]
+    };
+
+    const persianMonthNames = [
+      "فروردین", "اردیبهشت", "خرداد", "تیر", "مرداد", "شهریور",
+      "مهر", "آبان", "آذر", "دی", "بهمن", "اسفند"
+    ];
+    const persianMonthNamesEn = [
+      "Farvardin", "Ordibehesht", "Khordad", "Tir", "Mordad", "Shahrivar",
+      "Mehr", "Aban", "Azar", "Dey", "Bahman", "Esfand"
+    ];
+
+    function toPersianDigits(n) {
+      if (n === null || n === undefined) return "";
+      if (appPrefs && appPrefs.lang === "en") return String(n);
+      const p = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
+      return n.toString().replace(/\d/g, x => p[x]);
+    }
+
+    function isJalaliLeapYear(jy) {
+      const rem = jy % 33;
+      return [1, 5, 9, 13, 17, 22, 26, 30].includes(rem);
+    }
+
+    function gregorianToJalali(gy, gm, gd) {
+      const g_d_m = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+      let jy = (gy > 1600) ? 979 : 0;
+      gy -= (gy > 1600) ? 1600 : 621;
+      const gy2 = (gm > 2) ? (gy + 1) : gy;
+      let days = (365 * gy) + Math.floor((gy2 + 3) / 4) - Math.floor((gy2 + 99) / 100) + Math.floor((gy2 + 399) / 400) - 80 + gd + g_d_m[gm - 1];
+      jy += 33 * Math.floor(days / 12053);
+      days %= 12053;
+      jy += 4 * Math.floor(days / 1461);
+      days %= 1461;
+      if (days > 365) {
+        jy += Math.floor((days - 1) / 365);
+        days = (days - 1) % 365;
+      }
+      const jm = (days < 186) ? 1 + Math.floor(days / 31) : 7 + Math.floor((days - 186) / 30);
+      const jd = 1 + ((days < 186) ? (days % 31) : ((days - 186) % 30));
+      return { jy, jm, jd };
+    }
+
+    function jalaliToGregorian(jy, jm, jd) {
+      let gy = (jy > 979) ? 1600 : 621;
+      jy -= (jy > 979) ? 979 : 0;
+      let days = (365 * jy) + (Math.floor(jy / 33) * 8) + Math.floor(((jy % 33) + 3) / 4) + 78 + jd + ((jm < 7) ? (jm - 1) * 31 : ((jm - 7) * 30) + 186);
+      gy += 400 * Math.floor(days / 146097);
+      days %= 146097;
+      if (days > 36524) {
+        gy += 100 * Math.floor(--days / 36524);
+        days %= 36524;
+        if (days >= 365) days++;
+      }
+      gy += 4 * Math.floor(days / 1461);
+      days %= 1461;
+      if (days > 365) {
+        gy += Math.floor((days - 1) / 365);
+        days = (days - 1) % 365;
+      }
+      let gd = days + 1;
+      const isLeap = ((gy % 4 === 0 && gy % 100 !== 0) || (gy % 400 === 0));
+      const sal_a = [0, 31, isLeap ? 29 : 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+      let gm;
+      for (gm = 0; gm < 13; gm++) {
+        const v = sal_a[gm];
+        if (gd <= v) break;
+        gd -= v;
+      }
+      return { gy, gm, gd };
+    }
+
+    function getLocalDateISO(d = new Date()) {
+      if (!(d instanceof Date) || isNaN(d.getTime())) d = new Date();
+      const year = d.getFullYear();
+      const month = String(d.getMonth() + 1).padStart(2, "0");
+      const day = String(d.getDate()).padStart(2, "0");
+      return `${year}-${month}-${day}`;
+    }
+
+    function isValidISODateString(str) {
+      if (typeof str !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(str)) return false;
+      const parts = str.split("-").map(Number);
+      const testDate = new Date(parts[0], parts[1] - 1, parts[2]);
+      return testDate.getFullYear() === parts[0] && testDate.getMonth() === parts[1] - 1 && testDate.getDate() === parts[2];
+    }
+
+    function getJalaliDateFromISO(isoDateStr) {
+      if (!isValidISODateString(isoDateStr)) isoDateStr = getLocalDateISO();
+      const parts = isoDateStr.split("-").map(Number);
+      return gregorianToJalali(parts[0], parts[1], parts[2]);
+    }
+
+    function formatJalaliForDisplay(isoDateStr) {
+      if (!isoDateStr) return "";
+      const j = getJalaliDateFromISO(isoDateStr);
+      if (appPrefs.lang === "fa") {
+        return `${toPersianDigits(j.jd)} ${persianMonthNames[j.jm - 1]} ${toPersianDigits(j.jy)}`;
+      } else {
+        return `${j.jd} ${persianMonthNamesEn[j.jm - 1]} ${j.jy}`;
+      }
+    }
+
+    const STORAGE_KEY = "kharjino_transactions_v4";
+    const PREF_KEY = "kharjino_preferences_v4";
+    const ACCOUNTS_KEY = "kharjino_accounts_v4";
+    const BUDGET_KEY = "kharjino_monthly_budget_v4";
+    const TOUR_KEY = "kharjino_onboarding_completed_v4";
+
+    function safeStorageGet(key, fallback = null) {
+      try {
+        const item = localStorage.getItem(key);
+        return item === null ? fallback : JSON.parse(item);
+      } catch (err) {
+        return fallback;
+      }
+    }
+
+    function safeStorageSet(key, value) {
+      try {
+        localStorage.setItem(key, JSON.stringify(value));
+        return true;
+      } catch (err) {
+        return false;
+      }
+    }
+
+    let appPrefs = safeStorageGet(PREF_KEY, { lang: "fa", theme: "dark", currency: "تومان" });
+    if (!appPrefs.lang) appPrefs.lang = "fa";
+    let accounts = safeStorageGet(ACCOUNTS_KEY, []);
+    let monthlyBudgetLimit = Number(safeStorageGet(BUDGET_KEY, 0));
+    let transactions = safeStorageGet(STORAGE_KEY, []);
+
+    // Working State
+    let currentTransactionType = "expense";
+    let activeFilter = "all";
+    let searchQuery = "";
+    let activePeriod = "current_month";
+    let expenseChartInstance = null;
+    let pendingConfirmAction = null;
+
+    // Shamsi Calendar State
+    let selectedJalali = null;
+    let viewingJalaliMonth = null;
+    let viewingJalaliYear = null;
+
+    const periodFilterSelect = document.getElementById("periodFilterSelect");
+    const themeToggleBtn = document.getElementById("themeToggleBtn");
+    const themeToggleBtnMobile = document.getElementById("themeToggleBtnMobile");
+    const themeIcon = document.getElementById("themeIcon");
+    const openSettingsBtn = document.getElementById("openSettingsBtn");
+    const openSettingsBtnMobile = document.getElementById("openSettingsBtnMobile");
+    const closeSettingsBtn = document.getElementById("closeSettingsBtn");
+    const settingsModal = document.getElementById("settingsModal");
+    const confirmSettingsBtn = document.getElementById("confirmSettingsBtn");
+    const themeLightOption = document.getElementById("themeLightOption");
+    const themeDarkOption = document.getElementById("themeDarkOption");
+    const langFaBtn = document.getElementById("langFaBtn");
+    const langEnBtn = document.getElementById("langEnBtn");
+    const currencySelect = document.getElementById("currencySelect");
+
+    const balanceAmountEl = document.getElementById("balanceAmount");
+    const incomeAmountEl = document.getElementById("incomeAmount");
+    const expenseAmountEl = document.getElementById("expenseAmount");
+    const balanceTrendBadge = document.getElementById("balanceTrendBadge");
+    const balanceRatioText = document.getElementById("balanceRatioText");
+    const accountsContainer = document.getElementById("accountsContainer");
+
+    const budgetUsageAmount = document.getElementById("budgetUsageAmount");
+    const budgetLimitBadge = document.getElementById("budgetLimitBadge");
+    const budgetProgressBar = document.getElementById("budgetProgressBar");
+    const budgetStatusNotice = document.getElementById("budgetStatusNotice");
+    const budgetRemainingText = document.getElementById("budgetRemainingText");
+    const editBudgetBtn = document.getElementById("editBudgetBtn");
+    const budgetModal = document.getElementById("budgetModal");
+    const budgetLimitInput = document.getElementById("budgetLimitInput");
+    const closeBudgetModalBtn = document.getElementById("closeBudgetModalBtn");
+    const cancelBudgetBtn = document.getElementById("cancelBudgetBtn");
+    const saveBudgetBtn = document.getElementById("saveBudgetBtn");
+
+    const addNewAccountBtn = document.getElementById("addNewAccountBtn");
+    const accountModal = document.getElementById("accountModal");
+    const closeAccountModalBtn = document.getElementById("closeAccountModalBtn");
+    const cancelAccountBtn = document.getElementById("cancelAccountBtn");
+    const saveAccountBtn = document.getElementById("saveAccountBtn");
+    const accountNameInput = document.getElementById("accountNameInput");
+    const accountBalanceInput = document.getElementById("accountBalanceInput");
+    const accountColorInput = document.getElementById("accountColorInput");
+    const transactionAccountSelect = document.getElementById("transactionAccountSelect");
+
+    const transactionForm = document.getElementById("transactionForm");
+    const typeExpenseBtn = document.getElementById("typeExpenseBtn");
+    const typeIncomeBtn = document.getElementById("typeIncomeBtn");
+    const descInput = document.getElementById("descInput");
+    const amountInput = document.getElementById("amountInput");
+    const categorySelect = document.getElementById("categorySelect");
+    const dateInput = document.getElementById("dateInput");
+    const shamsiDateBtn = document.getElementById("shamsiDateBtn");
+    const shamsiDateLabel = document.getElementById("shamsiDateLabel");
+    const shamsiCalendarPopover = document.getElementById("shamsiCalendarPopover");
+    const calMonthYearTitle = document.getElementById("calMonthYearTitle");
+    const calDaysGrid = document.getElementById("calDaysGrid");
+    const calPrevMonth = document.getElementById("calPrevMonth");
+    const calNextMonth = document.getElementById("calNextMonth");
+    const calJumpTodayBtn = document.getElementById("calJumpTodayBtn");
+    const calCloseBtn = document.getElementById("calCloseBtn");
+    const currencySymbolBadge = document.getElementById("currencySymbolBadge");
+
+    const transactionsListEl = document.getElementById("transactionsList");
+    const emptyListStateEl = document.getElementById("emptyListState");
+    const searchInput = document.getElementById("searchInput");
+    const filterButtons = document.querySelectorAll(".filter-btn");
+
+    const exportCsvBtn = document.getElementById("exportCsvBtn");
+    const exportDataBtn = document.getElementById("exportDataBtn");
+    const importBackupInput = document.getElementById("importBackupInput");
+    const clearDataPromptBtn = document.getElementById("clearDataPromptBtn");
+    const toastEl = document.getElementById("toastNotification");
+    const toastMessageEl = document.getElementById("toastMessage");
+
+    const confirmModal = document.getElementById("confirmModal");
+    const confirmModalTitle = document.getElementById("confirmModalTitle");
+    const confirmModalDesc = document.getElementById("confirmModalDesc");
+    const cancelConfirmActionBtn = document.getElementById("cancelConfirmActionBtn");
+    const acceptConfirmActionBtn = document.getElementById("acceptConfirmActionBtn");
+
+    function safeRenderIcons() {
+      try {
+        if (window.lucide && typeof window.lucide.createIcons === "function") {
+          window.lucide.createIcons();
+        }
+      } catch (e) {}
+    }
+
+    function getDisplayCurrency() {
+      if (appPrefs.lang === "en") {
+        if (appPrefs.currency === "تومان") return "Toman";
+        if (appPrefs.currency === "ریال") return "Rial";
+      }
+      return appPrefs.currency;
+    }
+
+    function formatMoney(amount) {
+      const num = Number(amount) || 0;
+      const isFa = appPrefs.lang === "fa";
+      return num.toLocaleString(isFa ? "fa-IR" : "en-US") + " " + getDisplayCurrency();
+    }
+
+    function renderCalendarWeekdayHeader() {
+      const el = document.getElementById("calWeekdayHeader");
+      if (!el) return;
+      if (appPrefs.lang === "fa") {
+        el.innerHTML = `<span>ش</span><span>ی</span><span>د</span><span>س</span><span>چ</span><span>پ</span><span class="text-rose-500">ج</span>`;
+      } else {
+        el.innerHTML = `<span>Sa</span><span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span class="text-rose-500">Fr</span>`;
+      }
+    }
+
+    let toastTimeout;
+    function showToast(msg, isSuccess = true) {
+      if (!toastMessageEl || !toastEl) return;
+      toastMessageEl.textContent = msg;
+
+      const toastWrapper = document.getElementById("toastIconWrapper");
+      if (toastWrapper) {
+        toastWrapper.innerHTML = `<i data-lucide="${isSuccess ? 'check-circle-2' : 'alert-circle'}" class="w-5 h-5 ${isSuccess ? 'text-emerald-500' : 'text-rose-500'}"></i>`;
+      }
+      safeRenderIcons();
+
+      toastEl.classList.remove("translate-y-20", "opacity-0");
+      toastEl.classList.add("translate-y-0", "opacity-100");
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toastEl.classList.remove("translate-y-0", "opacity-100");
+        toastEl.classList.add("translate-y-20", "opacity-0");
+      }, 3000);
+    }
+
+    function populatePeriodDropdown() {
+      if (!periodFilterSelect) return;
+      const todayJ = getJalaliDateFromISO(getLocalDateISO());
+      const isFa = appPrefs.lang === "fa";
+      const mNames = isFa ? persianMonthNames : persianMonthNamesEn;
+      
+      let html = `<option value="current_month">${isFa ? `ماه جاری: ${mNames[todayJ.jm - 1]} ${toPersianDigits(todayJ.jy)}` : `Current Month: ${mNames[todayJ.jm - 1]} ${todayJ.jy}`}</option>`;
+
+      let tempM = todayJ.jm;
+      let tempY = todayJ.jy;
+      for (let i = 0; i < 4; i++) {
+        tempM--;
+        if (tempM < 1) { tempM = 12; tempY--; }
+        const label = isFa ? `${mNames[tempM - 1]} ${toPersianDigits(tempY)}` : `${mNames[tempM - 1]} ${tempY}`;
+        html += `<option value="${tempY}-${String(tempM).padStart(2, '0')}">${label}</option>`;
+      }
+
+      html += `<option value="all">${isFa ? 'تمام زمان‌ها' : 'All Time'}</option>`;
+      periodFilterSelect.innerHTML = html;
+      periodFilterSelect.value = activePeriod;
+    }
+
+    function populateCategoryDropdown() {
+      if (!categorySelect) return;
+      const list = categoriesConfig[currentTransactionType] || [];
+      categorySelect.innerHTML = "";
+      const isFa = appPrefs.lang === "fa";
+      list.forEach(cat => {
+        const option = document.createElement("option");
+        option.value = cat.id;
+        option.textContent = isFa ? cat.fa : (cat.en || cat.fa);
+        categorySelect.appendChild(option);
+      });
+    }
+
+    function applyLanguage(lang) {
+      appPrefs.lang = lang;
+      const htmlEl = document.documentElement;
+      const isFa = lang === "fa";
+      
+      htmlEl.setAttribute("lang", lang);
+      htmlEl.setAttribute("dir", isFa ? "rtl" : "ltr");
+      document.title = isFa ? "خرجینو | مدیریت هوشمند دخل و خرج" : "Kharjino | Smart Finance & Expense Tracker";
+
+      if (langFaBtn && langEnBtn) {
+        if (isFa) {
+          langFaBtn.className = "lang-opt-btn flex items-center justify-center gap-2 py-2 px-3 rounded-2xl border text-sm font-semibold transition-all bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-600/20";
+          langEnBtn.className = "lang-opt-btn flex items-center justify-center gap-2 py-2 px-3 rounded-2xl border text-sm font-semibold transition-all border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-indigo-400";
+        } else {
+          langEnBtn.className = "lang-opt-btn flex items-center justify-center gap-2 py-2 px-3 rounded-2xl border text-sm font-semibold transition-all bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-600/20";
+          langFaBtn.className = "lang-opt-btn flex items-center justify-center gap-2 py-2 px-3 rounded-2xl border text-sm font-semibold transition-all border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-indigo-400";
+        }
+      }
+
+      const dict = translations[lang] || translations.fa;
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (dict[key]) {
+          el.textContent = dict[key];
+        }
+      });
+
+      if (descInput) descInput.placeholder = dict.tx_title_ph;
+      if (searchInput) searchInput.placeholder = dict.search_ph;
+      if (accountNameInput) accountNameInput.placeholder = dict.account_name_ph;
+      if (budgetLimitInput) budgetLimitInput.placeholder = isFa ? "مثلاً: 15000000" : "e.g., 15000000";
+
+      if (currencySymbolBadge) currencySymbolBadge.textContent = getDisplayCurrency();
+
+      const headerTourBtn = document.getElementById("headerTourBtn");
+      const mobileTourBtn = document.getElementById("mobileTourBtn");
+      const themeBtn = document.getElementById("themeToggleBtn");
+      const themeBtnMobile = document.getElementById("themeToggleBtnMobile");
+      const openSettingsBtnEl = document.getElementById("openSettingsBtn");
+      const openSettingsBtnMobileEl = document.getElementById("openSettingsBtnMobile");
+
+      if (headerTourBtn) headerTourBtn.title = isFa ? "راهنمای سریع برنامه" : "Quick App Guide";
+      if (mobileTourBtn) mobileTourBtn.title = isFa ? "راهنمای برنامه" : "App Guide";
+      if (themeBtn) themeBtn.title = isFa ? "تغییر تم" : "Toggle Theme";
+      if (themeBtnMobile) themeBtnMobile.title = isFa ? "تغییر تم" : "Toggle Theme";
+      if (openSettingsBtnEl) openSettingsBtnEl.title = isFa ? "تنظیمات" : "Settings";
+      if (openSettingsBtnMobileEl) openSettingsBtnMobileEl.title = isFa ? "تنظیمات" : "Settings";
+      if (editBudgetBtn) editBudgetBtn.title = isFa ? "تنظیم سقف بودجه" : "Set Budget Limit";
+
+      renderCalendarWeekdayHeader();
+      setFormDate(dateInput ? (dateInput.value || getLocalDateISO()) : getLocalDateISO());
+
+      safeStorageSet(PREF_KEY, appPrefs);
+      populatePeriodDropdown();
+      populateCategoryDropdown();
+      renderUI();
+    }
+
+    function applyTheme(theme) {
+      appPrefs.theme = theme;
+      const themeIconName = theme === "dark" ? "sun" : "moon";
+      const themeBtn = document.getElementById("themeToggleBtn");
+      const themeBtnMobile = document.getElementById("themeToggleBtnMobile");
+
+      if (themeBtn) {
+        themeBtn.innerHTML = `<i data-lucide="${themeIconName}" class="w-5 h-5 text-indigo-500 dark:text-indigo-400"></i>`;
+      }
+      if (themeBtnMobile) {
+        themeBtnMobile.innerHTML = `<i data-lucide="${themeIconName}" class="w-4 h-4 text-indigo-500 dark:text-indigo-400"></i>`;
+      }
+
+      if (theme === "dark") {
+        document.documentElement.classList.add("dark");
+        if (themeDarkOption) themeDarkOption.className = "theme-opt-btn flex items-center justify-center gap-2 py-2 px-3 rounded-2xl border text-sm font-semibold transition-all bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-600/20";
+        if (themeLightOption) themeLightOption.className = "theme-opt-btn flex items-center justify-center gap-2 py-2 px-3 rounded-2xl border text-sm font-semibold transition-all border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-indigo-400";
+      } else {
+        document.documentElement.classList.remove("dark");
+        if (themeLightOption) themeLightOption.className = "theme-opt-btn flex items-center justify-center gap-2 py-2 px-3 rounded-2xl border text-sm font-semibold transition-all bg-indigo-600 text-white border-indigo-600 shadow-md shadow-indigo-600/20";
+        if (themeDarkOption) themeDarkOption.className = "theme-opt-btn flex items-center justify-center gap-2 py-2 px-3 rounded-2xl border text-sm font-semibold transition-all border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:border-indigo-400";
+      }
+
+      // Synchronize iOS Home Screen Icons and Theme Meta
+      if (typeof window._syncHomeTouchIcons === "function") {
+        window._syncHomeTouchIcons(theme);
+      }
+
+      safeRenderIcons();
+      safeStorageSet(PREF_KEY, appPrefs);
+      renderChart();
+    }
+
+    if (langFaBtn) langFaBtn.addEventListener("click", () => applyLanguage("fa"));
+    if (langEnBtn) langEnBtn.addEventListener("click", () => applyLanguage("en"));
+
+    if (themeToggleBtn) themeToggleBtn.addEventListener("click", () => applyTheme(appPrefs.theme === "dark" ? "light" : "dark"));
+    if (themeToggleBtnMobile) themeToggleBtnMobile.addEventListener("click", () => applyTheme(appPrefs.theme === "dark" ? "light" : "dark"));
+    if (themeLightOption) themeLightOption.addEventListener("click", () => applyTheme("light"));
+    if (themeDarkOption) themeDarkOption.addEventListener("click", () => applyTheme("dark"));
+
+    if (currencySelect) {
+      currencySelect.value = appPrefs.currency;
+      currencySelect.addEventListener("change", (e) => {
+        appPrefs.currency = e.target.value;
+        if (currencySymbolBadge) currencySymbolBadge.textContent = getDisplayCurrency();
+        safeStorageSet(PREF_KEY, appPrefs);
+        renderUI();
+      });
+    }
+
+    function renderAccounts() {
+      if (transactionAccountSelect) {
+        transactionAccountSelect.innerHTML = "";
+        if (accounts.length === 0) {
+          const opt = document.createElement("option");
+          opt.value = "";
+          opt.textContent = appPrefs.lang === "fa" ? "حسابی تعریف نشده است" : "No accounts created";
+          transactionAccountSelect.appendChild(opt);
+        } else {
+          accounts.forEach(acc => {
+            const opt = document.createElement("option");
+            opt.value = acc.id;
+            opt.textContent = `${acc.name} (${formatMoney(acc.balance)})`;
+            transactionAccountSelect.appendChild(opt);
+          });
+        }
+      }
+
+      if (!accountsContainer) return;
+      accountsContainer.innerHTML = "";
+
+      if (accounts.length === 0) {
+        const dict = translations[appPrefs.lang] || translations.fa;
+        accountsContainer.className = "w-full py-6 flex flex-col items-center justify-center text-center text-slate-400 border border-dashed border-slate-300 dark:border-slate-800 rounded-2xl";
+        accountsContainer.innerHTML = `
+          <div class="w-10 h-10 rounded-2xl bg-indigo-500/10 text-indigo-500 flex items-center justify-center mb-2">
+            <i data-lucide="credit-card" class="w-5 h-5"></i>
+          </div>
+          <p class="text-xs font-bold text-slate-700 dark:text-slate-300">${dict.no_accounts}</p>
+          <p class="text-[11px] text-slate-400 mt-0.5">${dict.no_accounts_sub}</p>
+          <button type="button" id="emptyStateAddAccBtn" class="mt-3 py-1.5 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center gap-1">
+            <i data-lucide="plus" class="w-3.5 h-3.5"></i>
+            <span>${dict.add_account}</span>
+          </button>
+        `;
+        document.getElementById("emptyStateAddAccBtn")?.addEventListener("click", () => {
+          addNewAccountBtn?.click();
+        });
+        safeRenderIcons();
+        return;
+      }
+
+      accountsContainer.className = "grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3";
+      accounts.forEach(acc => {
+        const card = document.createElement("div");
+        card.className = "glass-card p-3.5 rounded-2xl flex flex-col justify-between border-t-2 relative group hover:scale-[1.01] transition-transform";
+        card.style.borderTopColor = acc.color || "#6366f1";
+
+        card.innerHTML = `
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2 min-w-0">
+              <div class="w-2.5 h-2.5 rounded-full shrink-0" style="background-color: ${acc.color}"></div>
+              <span class="text-xs font-bold text-slate-700 dark:text-slate-200 truncate">${acc.name}</span>
+            </div>
+            <button type="button" data-delete-acc-id="${acc.id}" title="${appPrefs.lang === 'fa' ? 'حذف حساب' : 'Delete Account'}" class="delete-acc-btn w-6 h-6 rounded-lg text-slate-400 hover:text-rose-500 hover:bg-rose-500/10 flex items-center justify-center transition active:scale-95">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5 pointer-events-none"></i>
+            </button>
+          </div>
+          <div class="text-sm font-extrabold text-slate-900 dark:text-white">${formatMoney(acc.balance)}</div>
+        `;
+        accountsContainer.appendChild(card);
+      });
+
+      safeRenderIcons();
+    }
+
+    accountsContainer?.addEventListener("click", (e) => {
+      const btn = e.target.closest(".delete-acc-btn");
+      if (!btn) return;
+      const accId = btn.getAttribute("data-delete-acc-id");
+      const targetAcc = accounts.find(a => a.id === accId);
+      if (!targetAcc) return;
+
+      const dict = translations[appPrefs.lang] || translations.fa;
+      openConfirmModal(
+        dict.delete_acc_title,
+        dict.delete_acc_desc,
+        () => {
+          accounts = accounts.filter(a => a.id !== accId);
+          safeStorageSet(ACCOUNTS_KEY, accounts);
+          renderUI();
+          showToast(appPrefs.lang === "fa" ? "حساب با موفقیت حذف شد" : "Account deleted successfully", true);
+        }
+      );
+    });
+
+    function setTransactionType(type) {
+      currentTransactionType = type === "income" ? "income" : "expense";
+      if (currentTransactionType === "expense") {
+        if (typeExpenseBtn) typeExpenseBtn.className = "py-2 text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-1.5 transition-all bg-rose-500 text-white shadow-md shadow-rose-500/20";
+        if (typeIncomeBtn) typeIncomeBtn.className = "py-2 text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-1.5 transition-all text-slate-600 dark:text-slate-300 hover:text-emerald-500";
+      } else {
+        if (typeIncomeBtn) typeIncomeBtn.className = "py-2 text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-1.5 transition-all bg-emerald-500 text-white shadow-md shadow-emerald-500/20";
+        if (typeExpenseBtn) typeExpenseBtn.className = "py-2 text-sm font-semibold rounded-xl text-center flex items-center justify-center gap-1.5 transition-all text-slate-600 dark:text-slate-300 hover:text-rose-500";
+      }
+      populateCategoryDropdown();
+    }
+
+    if (typeExpenseBtn) typeExpenseBtn.addEventListener("click", () => setTransactionType("expense"));
+    if (typeIncomeBtn) typeIncomeBtn.addEventListener("click", () => setTransactionType("income"));
+
+    function getFilteredTransactionsByPeriod() {
+      if (activePeriod === "all") return transactions;
+
+      const todayJ = getJalaliDateFromISO(getLocalDateISO());
+      let targetYear = todayJ.jy;
+      let targetMonth = todayJ.jm;
+
+      if (activePeriod !== "current_month") {
+        const parts = activePeriod.split("-").map(Number);
+        targetYear = parts[0];
+        targetMonth = parts[1];
+      }
+
+      return transactions.filter(t => {
+        const j = getJalaliDateFromISO(t.date);
+        return j.jy === targetYear && j.jm === targetMonth;
+      });
+    }
+
+    function updateMetrics() {
+      let totalAccountsBalance = accounts.reduce((acc, a) => acc + Number(a.balance || 0), 0);
+      if (balanceAmountEl) balanceAmountEl.textContent = formatMoney(totalAccountsBalance);
+
+      const periodItems = getFilteredTransactionsByPeriod();
+      let pIncome = 0;
+      let pExpense = 0;
+
+      periodItems.forEach(item => {
+        if (item.type === "income") pIncome += Number(item.amount);
+        else pExpense += Number(item.amount);
+      });
+
+      if (incomeAmountEl) incomeAmountEl.textContent = formatMoney(pIncome);
+      if (expenseAmountEl) expenseAmountEl.textContent = formatMoney(pExpense);
+
+      if (balanceRatioText) {
+        const net = pIncome - pExpense;
+        balanceRatioText.textContent = (net >= 0 ? "+" : "") + formatMoney(net);
+        if (balanceTrendBadge) {
+          balanceTrendBadge.className = net >= 0 
+            ? "inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400"
+            : "inline-flex items-center text-xs font-semibold px-2 py-0.5 rounded-full bg-rose-500/10 text-rose-600 dark:text-rose-400";
+        }
+      }
+
+      if (budgetLimitBadge) {
+        budgetLimitBadge.textContent = monthlyBudgetLimit > 0 
+          ? (appPrefs.lang === "fa" ? "سقف: " : "Limit: ") + formatMoney(monthlyBudgetLimit)
+          : (appPrefs.lang === "fa" ? "تعریف نشده" : "Not Set");
+      }
+      
+      let usagePercent = monthlyBudgetLimit > 0 ? Math.round((pExpense / monthlyBudgetLimit) * 100) : 0;
+      if (budgetUsageAmount) budgetUsageAmount.textContent = toPersianDigits(usagePercent) + "%";
+      
+      if (budgetProgressBar) {
+        budgetProgressBar.style.width = Math.min(usagePercent, 100) + "%";
+        if (usagePercent > 100) {
+          budgetProgressBar.className = "h-2 rounded-full transition-all duration-500 bg-rose-500";
+        } else if (usagePercent > 75) {
+          budgetProgressBar.className = "h-2 rounded-full transition-all duration-500 bg-amber-500";
+        } else {
+          budgetProgressBar.className = "h-2 rounded-full transition-all duration-500 bg-emerald-500";
+        }
+      }
+
+      if (budgetRemainingText) {
+        const rem = monthlyBudgetLimit - pExpense;
+        budgetRemainingText.textContent = (rem >= 0 ? (appPrefs.lang === "fa" ? "باقی‌مانده: " : "Remaining: ") : (appPrefs.lang === "fa" ? "مازاد: " : "Over: ")) + formatMoney(Math.abs(rem));
+      }
+
+      if (budgetStatusNotice) {
+        const isFa = appPrefs.lang === "fa";
+        if (monthlyBudgetLimit === 0) {
+          budgetStatusNotice.firstElementChild.textContent = isFa ? "وضعیت: نامشخص" : "Status: Not Set";
+          budgetStatusNotice.firstElementChild.className = "text-slate-400";
+        } else if (usagePercent > 100) {
+          budgetStatusNotice.firstElementChild.textContent = isFa ? "وضعیت: ⚠️ فراتر از بودجه" : "Status: ⚠️ Over Budget";
+          budgetStatusNotice.firstElementChild.className = "text-rose-500 font-bold";
+        } else {
+          budgetStatusNotice.firstElementChild.textContent = isFa ? "وضعیت: رعایت‌شده" : "Status: Within Budget";
+          budgetStatusNotice.firstElementChild.className = "text-emerald-500 font-semibold";
+        }
+      }
+    }
+
+    function renderTransactionList() {
+      if (!transactionsListEl) return;
+      transactionsListEl.innerHTML = "";
+
+      const periodItems = getFilteredTransactionsByPeriod();
+      const q = (searchQuery || "").trim().toLowerCase();
+
+      const filtered = periodItems.filter(t => {
+        if (activeFilter !== "all" && t.type !== activeFilter) return false;
+        if (!q) return true;
+        const titleSafe = String(t.title || "").toLowerCase();
+        return titleSafe.includes(q);
+      });
+
+      filtered.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+      const countBadge = document.getElementById("transactionsCountBadge");
+      if (countBadge) {
+        countBadge.textContent = toPersianDigits(filtered.length);
+      }
+
+      if (filtered.length === 0) {
+        if (emptyListStateEl) emptyListStateEl.classList.remove("hidden");
+        return;
+      }
+      if (emptyListStateEl) emptyListStateEl.classList.add("hidden");
+
+      filtered.forEach(item => {
+        const isExpense = item.type === "expense";
+        const catList = categoriesConfig[item.type] || [];
+        const cat = catList.find(c => c.id === item.category) || { fa: "سایر", en: "Other", icon: "tag", color: "#64748b" };
+        const acc = accounts.find(a => a.id === item.accountId) || { name: appPrefs.lang === "fa" ? "حساب نامشخص" : "Unknown Account", color: "#6366f1" };
+
+        const row = document.createElement("div");
+        row.className = `group glass-card rounded-2xl p-3 sm:p-3.5 flex items-center justify-between gap-3 border-r-4 ${isExpense ? 'border-r-rose-500' : 'border-r-emerald-500'} hover:border-slate-300 dark:hover:border-slate-600 transition-all hover:translate-x-[-2px]`;
+
+        row.innerHTML = `
+          <div class="flex items-center gap-3 min-w-0 flex-1">
+            <div class="w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-sm" style="background-color: ${cat.color}15; color: ${cat.color}">
+              <i data-lucide="${cat.icon || 'tag'}" class="w-5 h-5"></i>
+            </div>
+            <div class="min-w-0 flex-1">
+              <h4 class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-100 break-words line-clamp-2 mb-1 leading-snug" title="${item.title}">${item.title}</h4>
+              <div class="flex items-center gap-2 text-[11px] text-slate-400 flex-wrap">
+                <span class="inline-flex items-center gap-1 font-medium text-slate-600 dark:text-slate-300">
+                  <span class="w-1.5 h-1.5 rounded-full shrink-0" style="background-color: ${cat.color}"></span>
+                  ${appPrefs.lang === 'fa' ? cat.fa : (cat.en || cat.fa)}
+                </span>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <span class="inline-flex items-center gap-1 font-medium text-slate-600 dark:text-slate-300">
+                  <span class="w-1.5 h-1.5 rounded-full shrink-0" style="background-color: ${acc.color || '#6366f1'}"></span>
+                  ${acc.name}
+                </span>
+                <span class="text-slate-300 dark:text-slate-700">•</span>
+                <span class="text-slate-400">${formatJalaliForDisplay(item.date)}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 sm:gap-3.5 shrink-0">
+            <div class="text-left font-extrabold text-xs sm:text-sm tracking-tight tabular-nums whitespace-nowrap ${isExpense ? 'text-rose-600 dark:text-rose-400' : 'text-emerald-600 dark:text-emerald-400'}">
+              ${isExpense ? '−' : '+'}&nbsp;${formatMoney(item.amount)}
+            </div>
+            <button type="button" data-delete-tx-id="${item.id}" title="${appPrefs.lang === 'fa' ? 'حذف تراکنش' : 'Delete Transaction'}" class="delete-tx-btn w-8 h-8 rounded-xl flex items-center justify-center text-slate-400 hover:text-rose-500 hover:bg-rose-500/10 active:scale-95 transition-all">
+              <i data-lucide="trash-2" class="w-4 h-4 pointer-events-none"></i>
+            </button>
+          </div>
+        `;
+        transactionsListEl.appendChild(row);
+      });
+
+      safeRenderIcons();
+    }
+
+    transactionsListEl?.addEventListener("click", (e) => {
+      const btn = e.target.closest(".delete-tx-btn");
+      if (!btn) return;
+      const id = btn.getAttribute("data-delete-tx-id");
+      const tx = transactions.find(t => t.id === id);
+      if (!tx) return;
+
+      const dict = translations[appPrefs.lang] || translations.fa;
+      openConfirmModal(
+        dict.delete_tx_title,
+        dict.delete_tx_desc,
+        () => {
+          const accIndex = accounts.findIndex(a => a.id === tx.accountId);
+          if (accIndex !== -1) {
+            if (tx.type === "expense") accounts[accIndex].balance += tx.amount;
+            else accounts[accIndex].balance -= tx.amount;
+            safeStorageSet(ACCOUNTS_KEY, accounts);
+          }
+          transactions = transactions.filter(t => t.id !== id);
+          safeStorageSet(STORAGE_KEY, transactions);
+          renderUI();
+          showToast(appPrefs.lang === "fa" ? "تراکنش حذف شد" : "Transaction deleted", true);
+        }
+      );
+    });
+
+    function renderChart() {
+      const canvasEl = document.getElementById("categoryChart");
+      const noChartDataEl = document.getElementById("noChartData");
+      if (!canvasEl) return;
+
+      const periodItems = getFilteredTransactionsByPeriod();
+      const expenses = periodItems.filter(t => t.type === "expense" && Number(t.amount) > 0);
+
+      if (expenses.length === 0) {
+        if (expenseChartInstance) { expenseChartInstance.destroy(); expenseChartInstance = null; }
+        if (noChartDataEl) noChartDataEl.classList.remove("hidden");
+        return;
+      }
+      if (noChartDataEl) noChartDataEl.classList.add("hidden");
+
+      const totals = {};
+      expenses.forEach(t => { totals[t.category] = (totals[t.category] || 0) + Number(t.amount); });
+
+      const labels = [];
+      const data = [];
+      const bgColors = [];
+
+      Object.keys(totals).forEach(catId => {
+        const cat = (categoriesConfig.expense || []).find(c => c.id === catId) || { fa: "سایر", en: "Other", color: "#64748b" };
+        labels.push(appPrefs.lang === "fa" ? cat.fa : (cat.en || cat.fa));
+        data.push(totals[catId]);
+        bgColors.push(cat.color);
+      });
+
+      if (expenseChartInstance) expenseChartInstance.destroy();
+
+      const isDark = document.documentElement.classList.contains("dark");
+      const activeFontFamily = appPrefs.lang === "fa" ? 'Vazirmatn, sans-serif' : 'Inter, sans-serif';
+      Chart.defaults.font.family = activeFontFamily;
+
+      expenseChartInstance = new Chart(canvasEl.getContext("2d"), {
+        type: 'doughnut',
+        data: {
+          labels: labels,
+          datasets: [{
+            data: data,
+            backgroundColor: bgColors,
+            borderColor: isDark ? "rgba(18, 24, 38, 0.8)" : "rgba(255, 255, 255, 0.8)",
+            borderWidth: 2,
+            hoverOffset: 6
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              position: 'bottom',
+              rtl: appPrefs.lang === "fa",
+              labels: {
+                color: isDark ? "#cbd5e1" : "#475569",
+                font: { family: activeFontFamily, size: 11 },
+                padding: 12,
+                usePointStyle: true
+              }
+            },
+            tooltip: {
+              rtl: appPrefs.lang === "fa",
+              titleFont: { family: activeFontFamily, size: 12, weight: 'bold' },
+              bodyFont: { family: activeFontFamily, size: 12 },
+              padding: 10,
+              cornerRadius: 12,
+              callbacks: {
+                label: function(context) {
+                  const val = context.raw || 0;
+                  return " " + formatMoney(val);
+                }
+              }
+            }
+          },
+          cutout: '70%'
+        }
+      });
+    }
+
+    function renderUI() {
+      updateMetrics();
+      renderAccounts();
+      renderTransactionList();
+      renderChart();
+    }
+
+    function setFormDate(isoDateStr) {
+      if (!isValidISODateString(isoDateStr)) isoDateStr = getLocalDateISO();
+      if (dateInput) dateInput.value = isoDateStr;
+      selectedJalali = getJalaliDateFromISO(isoDateStr);
+      if (shamsiDateLabel) shamsiDateLabel.textContent = formatJalaliForDisplay(isoDateStr);
+    }
+
+    function renderShamsiCalendar() {
+      if (!calMonthYearTitle || !calDaysGrid) return;
+      const mNames = appPrefs.lang === "fa" ? persianMonthNames : persianMonthNamesEn;
+      calMonthYearTitle.textContent = `${mNames[viewingJalaliMonth - 1]} ${toPersianDigits(viewingJalaliYear)}`;
+
+      const gFirst = jalaliToGregorian(viewingJalaliYear, viewingJalaliMonth, 1);
+      const gDate = new Date(gFirst.gy, gFirst.gm - 1, gFirst.gd);
+      const startDay = (gDate.getDay() + 1) % 7;
+
+      let totalDays = viewingJalaliMonth <= 6 ? 31 : (viewingJalaliMonth < 12 ? 30 : (isJalaliLeapYear(viewingJalaliYear) ? 30 : 29));
+      const todayJ = getJalaliDateFromISO(getLocalDateISO());
+
+      calDaysGrid.innerHTML = "";
+      for (let i = 0; i < startDay; i++) {
+        const cell = document.createElement("div");
+        cell.className = "cal-day-cell empty pointer-events-none";
+        calDaysGrid.appendChild(cell);
+      }
+
+      for (let d = 1; d <= totalDays; d++) {
+        const dayBtn = document.createElement("button");
+        dayBtn.type = "button";
+        dayBtn.className = "cal-day-cell text-slate-700 dark:text-slate-200 font-medium";
+
+        if (todayJ.jy === viewingJalaliYear && todayJ.jm === viewingJalaliMonth && todayJ.jd === d) dayBtn.classList.add("today");
+        if (selectedJalali && selectedJalali.jy === viewingJalaliYear && selectedJalali.jm === viewingJalaliMonth && selectedJalali.jd === d) dayBtn.classList.add("selected");
+
+        dayBtn.textContent = toPersianDigits(d);
+        dayBtn.addEventListener("click", () => {
+          const g = jalaliToGregorian(viewingJalaliYear, viewingJalaliMonth, d);
+          const iso = `${g.gy}-${String(g.gm).padStart(2, "0")}-${String(g.gd).padStart(2, "0")}`;
+          setFormDate(iso);
+          if (shamsiCalendarPopover) shamsiCalendarPopover.classList.remove("active");
+        });
+        calDaysGrid.appendChild(dayBtn);
+      }
+    }
+
+    if (shamsiDateBtn) {
+      shamsiDateBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        if (shamsiCalendarPopover.classList.contains("active")) {
+          shamsiCalendarPopover.classList.remove("active");
+        } else {
+          const nowJ = selectedJalali || getJalaliDateFromISO(getLocalDateISO());
+          viewingJalaliYear = nowJ.jy;
+          viewingJalaliMonth = nowJ.jm;
+          renderShamsiCalendar();
+          shamsiCalendarPopover.classList.add("active");
+        }
+      });
+    }
+
+    if (calCloseBtn) calCloseBtn.addEventListener("click", () => shamsiCalendarPopover.classList.remove("active"));
+    if (calJumpTodayBtn) {
+      calJumpTodayBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        setFormDate(getLocalDateISO());
+        shamsiCalendarPopover.classList.remove("active");
+      });
+    }
+    if (calPrevMonth) {
+      calPrevMonth.addEventListener("click", (e) => {
+        e.stopPropagation();
+        viewingJalaliMonth--;
+        if (viewingJalaliMonth < 1) { viewingJalaliMonth = 12; viewingJalaliYear--; }
+        renderShamsiCalendar();
+      });
+    }
+    if (calNextMonth) {
+      calNextMonth.addEventListener("click", (e) => {
+        e.stopPropagation();
+        viewingJalaliMonth++;
+        if (viewingJalaliMonth > 12) { viewingJalaliMonth = 1; viewingJalaliYear++; }
+        renderShamsiCalendar();
+      });
+    }
+    document.addEventListener("click", (e) => {
+      if (shamsiCalendarPopover && !shamsiCalendarPopover.contains(e.target) && !shamsiDateBtn.contains(e.target)) {
+        shamsiCalendarPopover.classList.remove("active");
+      }
+    });
+
+    if (transactionForm) {
+      transactionForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const amt = parseFloat(amountInput.value);
+        if (isNaN(amt) || amt <= 0) {
+          showToast(appPrefs.lang === "fa" ? "مبلغ تراکنش نامعتبر است" : "Invalid transaction amount", false);
+          return;
+        }
+
+        if (accounts.length === 0) {
+          const dict = translations[appPrefs.lang] || translations.fa;
+          showToast(dict.must_add_account, false);
+          addNewAccountBtn?.click();
+          return;
+        }
+
+        const selectedAccId = transactionAccountSelect.value || (accounts[0] ? accounts[0].id : "");
+        const newTx = {
+          id: `${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+          type: currentTransactionType,
+          title: descInput.value.trim(),
+          amount: Math.round(amt * 100) / 100,
+          category: categorySelect.value,
+          accountId: selectedAccId,
+          date: dateInput.value || getLocalDateISO()
+        };
+
+        const accIndex = accounts.findIndex(a => a.id === selectedAccId);
+        if (accIndex !== -1) {
+          if (newTx.type === "expense") {
+            accounts[accIndex].balance -= newTx.amount;
+          } else {
+            accounts[accIndex].balance += newTx.amount;
+          }
+          safeStorageSet(ACCOUNTS_KEY, accounts);
+        }
+
+        transactions.unshift(newTx);
+        safeStorageSet(STORAGE_KEY, transactions);
+
+        descInput.value = "";
+        amountInput.value = "";
+        setFormDate(getLocalDateISO());
+        renderUI();
+        showToast(appPrefs.lang === "fa" ? "تراکنش با موفقیت ثبت شد" : "Transaction saved successfully", true);
+      });
+    }
+
+    if (editBudgetBtn) {
+      editBudgetBtn.addEventListener("click", () => {
+        budgetLimitInput.value = monthlyBudgetLimit || "";
+        budgetModal.classList.remove("opacity-0", "pointer-events-none");
+        budgetModal.querySelector(".glass-card").classList.remove("scale-95");
+      });
+    }
+    const closeBudgetModal = () => {
+      budgetModal.classList.add("opacity-0", "pointer-events-none");
+      budgetModal.querySelector(".glass-card").classList.add("scale-95");
+    };
+    if (closeBudgetModalBtn) closeBudgetModalBtn.addEventListener("click", closeBudgetModal);
+    if (cancelBudgetBtn) cancelBudgetBtn.addEventListener("click", closeBudgetModal);
+    if (saveBudgetBtn) {
+      saveBudgetBtn.addEventListener("click", () => {
+        const val = parseFloat(budgetLimitInput.value) || 0;
+        monthlyBudgetLimit = val;
+        safeStorageSet(BUDGET_KEY, monthlyBudgetLimit);
+        closeBudgetModal();
+        renderUI();
+        showToast(appPrefs.lang === "fa" ? "سقف بودجه ذخیره شد" : "Budget limit saved", true);
+      });
+    }
+
+    if (addNewAccountBtn) {
+      addNewAccountBtn.addEventListener("click", () => {
+        accountNameInput.value = "";
+        accountBalanceInput.value = "";
+        accountModal.classList.remove("opacity-0", "pointer-events-none");
+        accountModal.querySelector(".glass-card").classList.remove("scale-95");
+      });
+    }
+    const closeAccountModal = () => {
+      accountModal.classList.add("opacity-0", "pointer-events-none");
+      accountModal.querySelector(".glass-card").classList.add("scale-95");
+    };
+    if (closeAccountModalBtn) closeAccountModalBtn.addEventListener("click", closeAccountModal);
+    if (cancelAccountBtn) cancelAccountBtn.addEventListener("click", closeAccountModal);
+    if (saveAccountBtn) {
+      saveAccountBtn.addEventListener("click", () => {
+        const name = accountNameInput.value.trim();
+        const bal = parseFloat(accountBalanceInput.value) || 0;
+        const color = accountColorInput.value || "#6366f1";
+        if (!name) return;
+
+        accounts.push({
+          id: `acc_${Date.now()}`,
+          name: name,
+          balance: bal,
+          color: color
+        });
+        safeStorageSet(ACCOUNTS_KEY, accounts);
+        closeAccountModal();
+        renderUI();
+        showToast(appPrefs.lang === "fa" ? "حساب با موفقیت افزوده شد" : "Account added successfully", true);
+      });
+    }
+
+    function openSettingsModal() {
+      settingsModal.classList.remove("opacity-0", "pointer-events-none");
+      document.getElementById("settingsDialogCard").classList.remove("scale-95");
+    }
+    function closeSettingsModal() {
+      settingsModal.classList.add("opacity-0", "pointer-events-none");
+      document.getElementById("settingsDialogCard").classList.add("scale-95");
+    }
+    if (openSettingsBtn) openSettingsBtn.addEventListener("click", openSettingsModal);
+    if (openSettingsBtnMobile) openSettingsBtnMobile.addEventListener("click", openSettingsModal);
+    if (closeSettingsBtn) closeSettingsBtn.addEventListener("click", closeSettingsModal);
+    if (confirmSettingsBtn) confirmSettingsBtn.addEventListener("click", closeSettingsModal);
+
+    function openConfirmModal(title, desc, onConfirm) {
+      confirmModalTitle.textContent = title;
+      confirmModalDesc.textContent = desc;
+      pendingConfirmAction = onConfirm;
+      confirmModal.classList.remove("opacity-0", "pointer-events-none");
+      confirmModal.querySelector(".glass-card").classList.remove("scale-95");
+    }
+    function closeConfirmModal() {
+      confirmModal.classList.add("opacity-0", "pointer-events-none");
+      confirmModal.querySelector(".glass-card").classList.add("scale-95");
+      pendingConfirmAction = null;
+    }
+    if (cancelConfirmActionBtn) cancelConfirmActionBtn.addEventListener("click", closeConfirmModal);
+    if (acceptConfirmActionBtn) {
+      acceptConfirmActionBtn.addEventListener("click", () => {
+        if (typeof pendingConfirmAction === "function") pendingConfirmAction();
+        closeConfirmModal();
+      });
+    }
+
+    if (clearDataPromptBtn) {
+      clearDataPromptBtn.addEventListener("click", () => {
+        closeSettingsModal();
+        openConfirmModal(
+          appPrefs.lang === "fa" ? "پاکسازی کلی اطلاعات" : "Clear All Data",
+          appPrefs.lang === "fa" ? "تمامی تراکنش‌ها، حساب‌های بانکی و سقف بودجه پاک خواهند شد. آیا ادامه می‌دهید؟" : "All transactions, accounts, and budgets will be permanently deleted. Continue?",
+          () => {
+            transactions = [];
+            accounts = [];
+            monthlyBudgetLimit = 0;
+            safeStorageSet(STORAGE_KEY, transactions);
+            safeStorageSet(ACCOUNTS_KEY, accounts);
+            safeStorageSet(BUDGET_KEY, monthlyBudgetLimit);
+            renderUI();
+            showToast(appPrefs.lang === "fa" ? "تمام اطلاعات پاکسازی شدند" : "All data cleared", true);
+          }
+        );
+      });
+    }
+
+    if (exportCsvBtn) {
+      exportCsvBtn.addEventListener("click", () => {
+        const isFa = appPrefs.lang === "fa";
+        let csvContent = "\uFEFF";
+        csvContent += isFa 
+          ? "شناسه,نوع,عنوان,مبلغ,دسته‌بندی,حساب,تاریخ شمسی,تاریخ میلادی\n"
+          : "ID,Type,Title,Amount,Category,Account,Jalali Date,Gregorian Date\n";
+
+        transactions.forEach(t => {
+          const typeLabel = t.type === "expense" ? (isFa ? "هزینه" : "Expense") : (isFa ? "درآمد" : "Income");
+          const cat = (categoriesConfig[t.type] || []).find(c => c.id === t.category) || { fa: "سایر", en: "Other" };
+          const acc = accounts.find(a => a.id === t.accountId) || { name: "-" };
+          const shamsi = formatJalaliForDisplay(t.date);
+          const catLabel = isFa ? cat.fa : (cat.en || cat.fa);
+          csvContent += `"${t.id}","${typeLabel}","${t.title}","${t.amount}","${catLabel}","${acc.name}","${shamsi}","${t.date}"\n`;
+        });
+
+        const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement("a");
+        link.setAttribute("href", url);
+        link.setAttribute("download", `kharjino_report_${getLocalDateISO()}.csv`);
+        document.body.appendChild(link);
+        link.click();
+        link.remove();
+        showToast(isFa ? "فایل اکسل دانلود شد" : "Excel CSV exported", true);
+      });
+    }
+
+    if (exportDataBtn) {
+      exportDataBtn.addEventListener("click", () => {
+        const backupData = {
+          app: "kharjino",
+          version: "4.0",
+          exportedAt: new Date().toISOString(),
+          preferences: appPrefs,
+          accounts: accounts,
+          monthlyBudgetLimit: monthlyBudgetLimit,
+          transactions: transactions
+        };
+        const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(backupData, null, 2));
+        const a = document.createElement("a");
+        a.href = dataStr;
+        a.download = `kharjino_backup_${getLocalDateISO()}.json`;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        showToast(appPrefs.lang === "fa" ? "بکاپ با موفقیت ذخیره شد" : "JSON backup downloaded", true);
+      });
+    }
+
+    if (importBackupInput) {
+      importBackupInput.addEventListener("change", (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          try {
+            const data = JSON.parse(event.target.result);
+            if (Array.isArray(data.transactions) && Array.isArray(data.accounts)) {
+              transactions = data.transactions;
+              accounts = data.accounts;
+              if (data.monthlyBudgetLimit !== undefined) monthlyBudgetLimit = Number(data.monthlyBudgetLimit);
+              if (data.preferences) appPrefs = data.preferences;
+
+              safeStorageSet(STORAGE_KEY, transactions);
+              safeStorageSet(ACCOUNTS_KEY, accounts);
+              safeStorageSet(BUDGET_KEY, monthlyBudgetLimit);
+              safeStorageSet(PREF_KEY, appPrefs);
+
+              renderUI();
+              closeSettingsModal();
+              showToast(appPrefs.lang === "fa" ? "اطلاعات با موفقیت بازیابی شد" : "Data restored successfully", true);
+            } else {
+              showToast(appPrefs.lang === "fa" ? "فایل پشتیبان نامعتبر است" : "Invalid backup file", false);
+            }
+          } catch (err) {
+            showToast(appPrefs.lang === "fa" ? "فایل پشتیبان نامعتبر است" : "Invalid backup file", false);
+          }
+        };
+        reader.readAsText(file);
+      });
+    }
+
+    if (periodFilterSelect) {
+      periodFilterSelect.addEventListener("change", (e) => {
+        activePeriod = e.target.value;
+        const note = document.getElementById("chartPeriodNote");
+        if (note) note.textContent = e.target.options[e.target.selectedIndex].text;
+        renderUI();
+      });
+    }
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterButtons.forEach(b => {
+          b.classList.remove("active-filter", "bg-white", "dark:bg-slate-700", "shadow-sm", "text-slate-800", "dark:text-white");
+          b.classList.add("text-slate-500");
+        });
+        btn.classList.add("active-filter", "bg-white", "dark:bg-slate-700", "shadow-sm", "text-slate-800", "dark:text-white");
+        btn.classList.remove("text-slate-500");
+        activeFilter = btn.getAttribute("data-filter") || "all";
+        renderTransactionList();
+      });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener("input", (e) => {
+        searchQuery = e.target.value;
+        renderTransactionList();
+      });
+    }
+
+    const navButtons = document.querySelectorAll(".nav-dock-btn");
+    let isManualNavClick = false;
+    let manualNavTimeout = null;
+    let currentActiveNav = "dashboard";
+
+    function setActiveNav(targetNavKey) {
+      if (!targetNavKey || targetNavKey === currentActiveNav) return;
+      currentActiveNav = targetNavKey;
+
+      navButtons.forEach(btn => {
+        const isMatch = btn.getAttribute("data-nav") === targetNavKey;
+        btn.classList.toggle("active", isMatch);
+      });
+    }
+
+    function scrollToSection(targetNavKey, targetEl, onComplete) {
+      isManualNavClick = true;
+      clearTimeout(manualNavTimeout);
+      setActiveNav(targetNavKey);
+
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      if (typeof onComplete === "function") {
+        setTimeout(onComplete, 350);
+      }
+
+      manualNavTimeout = setTimeout(() => {
+        isManualNavClick = false;
+      }, 1100);
+    }
+
+    document.getElementById("navHomeBtn")?.addEventListener("click", () => {
+      scrollToSection("dashboard", null);
+    });
+
+    document.getElementById("navAccountsBtn")?.addEventListener("click", () => {
+      const el = document.getElementById("accountsSectionWrapper");
+      scrollToSection("accounts", el);
+    });
+
+    document.getElementById("navCenterAddBtn")?.addEventListener("click", () => {
+      const formCard = document.getElementById("transactionFormCard");
+      scrollToSection("add", formCard, () => {
+        formCard?.classList.add("ring-4", "ring-indigo-500/40");
+        setTimeout(() => formCard?.classList.remove("ring-4", "ring-indigo-500/40"), 1200);
+        descInput?.focus();
+      });
+    });
+
+    document.getElementById("navAnalyticsBtn")?.addEventListener("click", () => {
+      const el = document.getElementById("analyticsSectionCard");
+      scrollToSection("analytics", el);
+    });
+
+    document.getElementById("navHistoryBtn")?.addEventListener("click", () => {
+      const el = document.getElementById("historySectionCard");
+      scrollToSection("history", el);
+    });
+
+    let isScrollTicking = false;
+    function handleScrollSpy() {
+      if (isManualNavClick) return;
+
+      const scrollY = window.scrollY || window.pageYOffset;
+      if (scrollY < 140) {
+        setActiveNav("dashboard");
+        return;
+      }
+
+      if ((window.innerHeight + scrollY) >= document.documentElement.scrollHeight - 70) {
+        setActiveNav("history");
+        return;
+      }
+
+      const targetViewportY = window.innerHeight * 0.42;
+      const sectionItems = [
+        { key: "history", el: document.getElementById("historySectionCard") },
+        { key: "analytics", el: document.getElementById("analyticsSectionCard") },
+        { key: "add", el: document.getElementById("transactionFormCard") },
+        { key: "accounts", el: document.getElementById("accountsSectionWrapper") },
+        { key: "dashboard", el: document.getElementById("tourMetrics") }
+      ];
+
+      for (const item of sectionItems) {
+        if (!item.el) continue;
+        const rect = item.el.getBoundingClientRect();
+        if (rect.top <= targetViewportY && rect.bottom >= targetViewportY - 90) {
+          setActiveNav(item.key);
+          return;
+        }
+      }
+    }
+
+    window.addEventListener("scroll", () => {
+      if (!isScrollTicking) {
+        window.requestAnimationFrame(() => {
+          handleScrollSpy();
+          isScrollTicking = false;
+        });
+        isScrollTicking = true;
+      }
+    }, { passive: true });
+
+    const tourSteps = [
+      {
+        elementId: "tourHeader",
+        title: "هدر و انتخاب دوره",
+        subtitle: "تقویم و فیلترهای زمانی",
+        titleEn: "Header & Period Selector",
+        subtitleEn: "Calendar & Date Filters",
+        icon: "calendar",
+        color: "linear-gradient(135deg, #6366f1, #8b5cf6)",
+        content: "در این بخش می‌توانید ماه مورد نظر خود را برای مشاهده دخل‌وخرج انتخاب کنید و تم تاریک/روشن یا تنظیمات را باز کنید.",
+        contentEn: "Select your desired month to view income and expenses, or toggle themes and open settings."
+      },
+      {
+        elementId: "tourMetrics",
+        title: "خلاصه کارت‌های مالی",
+        subtitle: "تراز، درآمد، هزینه و بودجه",
+        titleEn: "Financial Summary Cards",
+        subtitleEn: "Balance, Income, Expenses & Budget",
+        icon: "target",
+        color: "linear-gradient(135deg, #10b981, #059669)",
+        content: "موجودی کل، میزان درآمد، مجموع هزینه‌های ماه و درصد رعایت سقف بودجه به‌صورت زنده در این ۴ کارت نمایش داده می‌شوند.",
+        contentEn: "Total balance, period income, expenses and monthly budget adherence are tracked in real-time here."
+      },
+      {
+        elementId: "accountsSectionWrapper",
+        title: "حساب‌های شما",
+        subtitle: "کارت‌های بانکی و کیف پول‌ها",
+        titleEn: "Your Accounts",
+        subtitleEn: "Bank Cards & Wallets",
+        icon: "credit-card",
+        color: "linear-gradient(135deg, #8b5cf6, #d946ef)",
+        content: "کارت‌های بانکی، حساب‌ها و کیف پول‌های نقدی خود را اینجا ثبت کنید. هر زمان بخواهید می‌توانید کارت جدید اضافه یا قبلی‌ها را حذف کنید.",
+        contentEn: "Manage your bank accounts and cash wallets. Add new cards or delete existing ones easily."
+      },
+      {
+        elementId: "transactionFormCard",
+        title: "فرم ثبت تراکنش",
+        subtitle: "ثبت سریع هزینه و درآمد",
+        titleEn: "Transaction Form",
+        subtitleEn: "Quick Expense & Income Entry",
+        icon: "plus-circle",
+        color: "linear-gradient(135deg, #f43f5e, #e11d48)",
+        content: "درآمدها و مخارج خود را همراه با عنوان، مبلغ، دسته‌بندی و تاریخ شمسی ثبت کنید تا تراز مالی شما خودکار محاسبه گردد.",
+        contentEn: "Record income and expenses with titles, amounts, categories and Jalali dates."
+      },
+      {
+        elementId: "analyticsSectionCard",
+        title: "نمودار و تاریخچه",
+        subtitle: "تحلیل بصری و لیست مخارج",
+        titleEn: "Analytics & History",
+        subtitleEn: "Visual Breakdown & Records",
+        icon: "pie-chart",
+        color: "linear-gradient(135deg, #0ea5e9, #2563eb)",
+        content: "تحلیل درصد مخارج در نمودار دایره‌ای و فهرست کلیه تراکنش‌ها با امکان جستجو و فیلتر در اینجا قرار دارند.",
+        contentEn: "Visual breakdown of your expenses in a doughnut chart and a searchable history list."
+      }
+    ];
+
+    let currentTourIndex = 0;
+    let isTourActive = false;
+    const tourModal = document.getElementById("onboardingTourModal");
+    const tourPopoverCard = document.getElementById("tourPopoverCard");
+    const tourStepBadge = document.getElementById("tourStepBadge");
+    const tourStepTitle = document.getElementById("tourStepTitle");
+    const tourStepSub = document.getElementById("tourStepSub");
+    const tourStepContent = document.getElementById("tourStepContent");
+    const tourDotsContainer = document.getElementById("tourDotsContainer");
+    const tourPrevBtn = document.getElementById("tourPrevBtn");
+    const tourNextBtn = document.getElementById("tourNextBtn");
+    const skipTourTopBtn = document.getElementById("skipTourTopBtn");
+
+    function positionTourPopover(targetElement) {
+      if (!targetElement || !tourPopoverCard) return;
+
+      const rect = targetElement.getBoundingClientRect();
+      const popoverWidth = Math.min(window.innerWidth * 0.92, 384);
+      const popoverHeight = tourPopoverCard.offsetHeight || 215;
+      const isMobile = window.innerWidth < 1024;
+      const winHeight = window.innerHeight;
+      const winWidth = window.innerWidth;
+
+      let topPos;
+      let leftPos;
+
+      if (isMobile) {
+        leftPos = (winWidth - popoverWidth) / 2;
+        if (rect.bottom + popoverHeight + 24 < winHeight) {
+          topPos = rect.bottom + 14;
+        } else {
+          topPos = Math.max(rect.top + 95, winHeight - popoverHeight - 78);
+        }
+      } else {
+        if (targetElement.id === "transactionFormCard") {
+          leftPos = Math.max(20, rect.left - popoverWidth - 24);
+          topPos = Math.max(24, rect.top + 8);
+        } else if (targetElement.id === "analyticsSectionCard") {
+          leftPos = Math.max(20, rect.left + 24);
+          if (rect.bottom + popoverHeight + 20 < winHeight) {
+            topPos = rect.bottom + 14;
+          } else {
+            topPos = Math.max(24, winHeight - popoverHeight - 85);
+          }
+        } else {
+          leftPos = Math.max(20, Math.min(rect.left + (rect.width / 2) - (popoverWidth / 2), winWidth - popoverWidth - 20));
+          if (rect.bottom + popoverHeight + 20 < winHeight) {
+            topPos = rect.bottom + 14;
+          } else {
+            topPos = Math.max(24, rect.top - popoverHeight - 14);
+          }
+        }
+      }
+
+      topPos = Math.max(12, Math.min(topPos, winHeight - popoverHeight - 16));
+      leftPos = Math.max(8, Math.min(leftPos, winWidth - popoverWidth - 8));
+
+      tourPopoverCard.style.top = `${topPos}px`;
+      tourPopoverCard.style.left = `${leftPos}px`;
+      tourPopoverCard.style.width = `${popoverWidth}px`;
+    }
+
+    function renderTourStep(index) {
+      document.querySelectorAll(".tour-highlight").forEach(el => el.classList.remove("tour-highlight"));
+
+      const step = tourSteps[index];
+      if (!step) return;
+
+      const isFa = appPrefs.lang === "fa";
+      if (tourStepBadge) {
+        tourStepBadge.style.background = step.color;
+        tourStepBadge.innerHTML = `<i data-lucide="${step.icon}" class="w-5 h-5"></i>`;
+      }
+
+      if (tourStepTitle) tourStepTitle.textContent = isFa ? step.title : step.titleEn;
+      if (tourStepSub) tourStepSub.textContent = isFa ? step.subtitle : step.subtitleEn;
+      if (tourStepContent) tourStepContent.textContent = isFa ? step.content : step.contentEn;
+
+      if (tourPrevBtn) tourPrevBtn.disabled = index === 0;
+      if (tourNextBtn) tourNextBtn.textContent = index === tourSteps.length - 1 ? (isFa ? "پایان آموزش" : "Finish Tour") : (isFa ? "بعدی" : "Next");
+
+      if (tourDotsContainer) {
+        tourDotsContainer.innerHTML = "";
+        tourSteps.forEach((s, i) => {
+          const iconBtn = document.createElement("button");
+          iconBtn.type = "button";
+          iconBtn.title = isFa ? s.title : s.titleEn;
+          const isActive = i === index;
+          iconBtn.className = `w-7 h-7 rounded-xl flex items-center justify-center transition-all ${
+            isActive
+              ? 'text-white scale-110 shadow-md ring-2 ring-indigo-400'
+              : 'text-slate-400 hover:text-indigo-500 bg-slate-200/60 dark:bg-slate-800/80 hover:scale-105'
+          }`;
+          if (isActive) {
+            iconBtn.style.background = s.color;
+          }
+          iconBtn.innerHTML = `<i data-lucide="${s.icon}" class="w-3.5 h-3.5"></i>`;
+          iconBtn.addEventListener("click", () => {
+            currentTourIndex = i;
+            renderTourStep(i);
+          });
+          tourDotsContainer.appendChild(iconBtn);
+        });
+      }
+
+      const target = document.getElementById(step.elementId);
+      if (target) {
+        target.classList.add("tour-highlight");
+
+        const currentScroll = window.scrollY || window.pageYOffset;
+        const rect = target.getBoundingClientRect();
+        const targetAbsoluteTop = rect.top + currentScroll;
+        const topOffset = window.innerWidth < 640 ? 18 : 32;
+
+        window.scrollTo({
+          top: Math.max(0, targetAbsoluteTop - topOffset),
+          behavior: "smooth"
+        });
+
+        setTimeout(() => {
+          positionTourPopover(target);
+          safeRenderIcons();
+        }, 150);
+
+        setTimeout(() => {
+          positionTourPopover(target);
+        }, 420);
+      }
+
+      safeRenderIcons();
+    }
+
+    function startOnboardingTour() {
+      currentTourIndex = 0;
+      isTourActive = true;
+      if (tourModal && tourPopoverCard) {
+        tourModal.classList.remove("opacity-0", "pointer-events-none");
+        tourPopoverCard.classList.remove("scale-95");
+      }
+      renderTourStep(0);
+    }
+
+    function closeOnboardingTour() {
+      isTourActive = false;
+      document.querySelectorAll(".tour-highlight").forEach(el => el.classList.remove("tour-highlight"));
+      if (tourModal && tourPopoverCard) {
+        tourModal.classList.add("opacity-0", "pointer-events-none");
+        tourPopoverCard.classList.add("scale-95");
+      }
+      safeStorageSet(TOUR_KEY, "true");
+    }
+
+    tourNextBtn?.addEventListener("click", () => {
+      if (currentTourIndex < tourSteps.length - 1) {
+        currentTourIndex++;
+        renderTourStep(currentTourIndex);
+      } else {
+        closeOnboardingTour();
+        showToast(translations[appPrefs.lang].tour_end_toast, true);
+      }
+    });
+
+    tourPrevBtn?.addEventListener("click", () => {
+      if (currentTourIndex > 0) {
+        currentTourIndex--;
+        renderTourStep(currentTourIndex);
+      }
+    });
+
+    skipTourTopBtn?.addEventListener("click", closeOnboardingTour);
+
+    window.addEventListener("resize", () => {
+      if (tourModal && !tourModal.classList.contains("opacity-0")) {
+        const step = tourSteps[currentTourIndex];
+        if (step) {
+          const target = document.getElementById(step.elementId);
+          if (target) positionTourPopover(target);
+        }
+      }
+    });
+
+    document.getElementById("headerTourBtn")?.addEventListener("click", startOnboardingTour);
+    document.getElementById("mobileTourBtn")?.addEventListener("click", startOnboardingTour);
+    document.getElementById("restartTourFromSettings")?.addEventListener("click", () => {
+      closeSettingsModal();
+      setTimeout(startOnboardingTour, 300);
+    });
+
+    window.addEventListener("DOMContentLoaded", () => {
+      setFormDate(getLocalDateISO());
+      applyTheme(appPrefs.theme || "dark");
+      applyLanguage(appPrefs.lang || "fa");
+      populatePeriodDropdown();
+      setTransactionType("expense");
+      renderCalendarWeekdayHeader();
+      renderUI();
+      safeRenderIcons();
+
+      // Populate preview images in Settings
+      var lightImg = document.getElementById("iosLightPreviewImg");
+      var darkImg = document.getElementById("iosDarkPreviewImg");
+      if (lightImg && window._iosLightIconUrl) lightImg.src = window._iosLightIconUrl;
+      if (darkImg && window._iosDarkIconUrl) darkImg.src = window._iosDarkIconUrl;
+
+      const hasSeenTour = safeStorageGet(TOUR_KEY, false);
+      if (!hasSeenTour) {
+        setTimeout(startOnboardingTour, 800);
+      }
+    });
+  </script>
+</body>
+</html>
