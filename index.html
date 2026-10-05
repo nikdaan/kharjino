@@ -283,8 +283,8 @@
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
     html:not(.dark) .glass-card {
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(226, 232, 240, 0.8);
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(226, 232, 240, 0.85);
       box-shadow: 0 4px 20px -2px rgba(148, 163, 184, 0.12), 0 2px 6px -1px rgba(148, 163, 184, 0.06);
     }
     .dark .glass-card {
@@ -319,8 +319,8 @@
       -webkit-backdrop-filter: blur(20px);
     }
     html:not(.dark) .floating-dock-bar {
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(203, 213, 225, 0.8);
+      background: rgba(255, 255, 255, 0.94);
+      border: 1px solid rgba(203, 213, 225, 0.85);
       box-shadow: 0 12px 36px -4px rgba(100, 116, 139, 0.2);
     }
     .dark .floating-dock-bar {
@@ -377,7 +377,7 @@
       to { opacity: 1; transform: scale(1) translateY(0); }
     }
 
-    /* Native SVG Cutout Overlay - Crystal Clear & Glitch-Free */
+    /* Native SVG Cutout Overlay */
     #tourOverlay {
       position: fixed;
       inset: 0;
@@ -386,7 +386,6 @@
       transition: opacity 0.3s ease;
     }
 
-    /* Luminous Indigo Border around highlighted target */
     #tourSpotlightFrame {
       position: fixed;
       pointer-events: none;
@@ -397,7 +396,6 @@
       transition: all 0.15s ease-out;
     }
 
-    /* Dedicated Floating Tour Card (Always 100% above darkness at z-index 100) */
     #tourCard {
       position: fixed;
       z-index: 100 !important;
@@ -507,17 +505,14 @@
 
     <!-- Header Action Buttons -->
     <div class="flex items-center gap-2">
-      <!-- Tour Button -->
       <button id="tourBtn" title="راهنمای برنامه" class="w-10 h-10 rounded-2xl flex items-center justify-center bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 transition-all">
         <i data-lucide="help-circle" class="w-5 h-5"></i>
       </button>
 
-      <!-- Theme Switcher Button -->
       <button id="themeToggleBtn" title="تغییر تم" class="w-10 h-10 rounded-2xl flex items-center justify-center bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 transition-all">
         <i id="themeIcon" data-lucide="sun" class="w-5 h-5"></i>
       </button>
 
-      <!-- Settings Button -->
       <button id="settingsBtn" title="تنظیمات" class="w-10 h-10 rounded-2xl flex items-center justify-center bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 transition-all">
         <i data-lucide="settings" class="w-5 h-5"></i>
       </button>
@@ -615,7 +610,7 @@
 
       <!-- Accounts Grid Container -->
       <div id="accountsList" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Dynamically rendered accounts or empty prompt -->
+        <!-- Dynamically rendered accounts -->
       </div>
     </div>
   </section>
@@ -652,7 +647,7 @@
 
           <!-- Category -->
           <div>
-            <label class="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5" data-i18n="category_label">دسته‌بندی</label>
+            <label class="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5" data-i18n="category_label">دسته‌‌‌بندی</label>
             <select id="txCategorySelect" class="w-full px-3.5 py-2.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
               <!-- Dynamically populated categories -->
             </select>
@@ -718,48 +713,67 @@
     </div>
   </section>
 
-  <!-- SECTION 5: Transactions History -->
+  <!-- SECTION 5: REDESIGNED Transactions History with Expense & Income Tabs -->
   <section id="transactionsSection" class="scroll-mt-24 mb-6">
     <div class="glass-card rounded-3xl p-5 sm:p-6">
+      
+      <!-- Section Header -->
       <div class="flex items-center justify-between mb-5 flex-wrap gap-3">
-        <div class="flex items-center gap-2.5">
-          <div class="w-10 h-10 rounded-2xl flex items-center justify-center bg-violet-500/15 text-violet-600 dark:text-violet-400 border border-violet-500/20">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl flex items-center justify-center bg-violet-500/15 text-violet-600 dark:text-violet-400 border border-violet-500/20 shrink-0">
             <i data-lucide="arrow-down-up" class="w-5 h-5"></i>
           </div>
           <div>
-            <h2 class="text-lg font-bold text-slate-900 dark:text-white" data-i18n="tx_history_title">تاریخچه تراکنش‌ها</h2>
-            <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="tx_history_subtitle">مشاهده، فیلتر و مدیریت تمام گردش‌های مالی</p>
+            <div class="flex items-center gap-2.5">
+              <h2 class="text-lg font-bold text-slate-900 dark:text-white" data-i18n="tx_history_title">تاریخچه تراکنش‌ها</h2>
+              <span id="txActiveCountBadge" class="text-[11px] font-bold px-2.5 py-0.5 rounded-lg bg-violet-500/10 text-violet-600 dark:text-violet-400 border border-violet-500/20">۰ تراکنش</span>
+            </div>
+            <p class="text-xs text-slate-500 dark:text-slate-400" data-i18n="tx_history_subtitle">مشاهده، فیلتر و مدیریت تمام گردش‌های مالی تفکیک‌شده</p>
           </div>
         </div>
 
-        <!-- CSV Export Button -->
-        <button id="exportCsvBtn" class="flex items-center gap-2 px-3.5 py-2 rounded-2xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-semibold text-xs transition-all border border-slate-200 dark:border-slate-700">
-          <i data-lucide="download" class="w-4 h-4"></i>
-          <span data-i18n="export_csv">خروجی اکسل</span>
-        </button>
+        <!-- Expense / Income Category Tabs -->
+        <div class="flex items-center p-1 rounded-2xl bg-slate-100 dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/60 shadow-inner">
+          <!-- Expense Tab Button -->
+          <button type="button" id="tabExpenseBtn" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all bg-rose-500 text-white shadow-md shadow-rose-500/20">
+            <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            <span data-i18n="tab_expenses">هزینه‌ها</span>
+            <span id="tabExpenseCount" class="text-[10px] px-1.5 py-0.2 rounded-md bg-white/20">۰</span>
+          </button>
+          
+          <!-- Income Tab Button -->
+          <button type="button" id="tabIncomeBtn" class="flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white">
+            <i data-lucide="arrow-down-left" class="w-4 h-4"></i>
+            <span data-i18n="tab_incomes">درآمدها</span>
+            <span id="tabIncomeCount" class="text-[10px] px-1.5 py-0.2 rounded-md bg-slate-200 dark:bg-slate-700">۰</span>
+          </button>
+        </div>
       </div>
 
-      <!-- Filters Row -->
+      <!-- Symmetrical Filter Bar: Search + Account Filter + Category Filter -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 mb-4">
-        <div>
-          <input type="text" id="searchFilter" placeholder="جستجو در شرح یا دسته‌بندی..." class="w-full px-3.5 py-2 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
+        <!-- 1. Text Search -->
+        <div class="relative">
+          <input type="text" id="txHistorySearch" placeholder="جستجو در شرح، یادداشت یا مبلغ..." class="w-full px-3.5 py-2.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
         </div>
+
+        <!-- 2. Account Filter -->
         <div>
-          <select id="typeFilter" class="w-full px-3.5 py-2 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
-            <option value="all" data-i18n="filter_all_types">همه انواع (هزینه و درآمد)</option>
-            <option value="expense" data-i18n="expense">فقط هزینه‌ها</option>
-            <option value="income" data-i18n="income">فقط درآمدها</option>
+          <select id="txHistoryAccountFilter" class="w-full px-3.5 py-2.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
+            <option value="all" data-i18n="filter_all_accounts">همه حساب‌های بانکی</option>
           </select>
         </div>
+
+        <!-- 3. Category Filter -->
         <div>
-          <select id="categoryFilter" class="w-full px-3.5 py-2 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
+          <select id="txHistoryCategoryFilter" class="w-full px-3.5 py-2.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-xs focus:outline-none focus:ring-2 focus:ring-indigo-500">
             <option value="all" data-i18n="filter_all_categories">همه دسته‌بندی‌ها</option>
           </select>
         </div>
       </div>
 
-      <!-- Transaction Items List -->
-      <div id="transactionsList" class="space-y-2.5">
+      <!-- Transaction Items List with Perfect Symmetry -->
+      <div id="transactionsList" class="space-y-3">
         <!-- Dynamically injected items -->
       </div>
     </div>
@@ -784,7 +798,7 @@
         <span class="text-[10px] font-bold" data-i18n="nav_accounts">حساب‌ها</span>
       </a>
 
-      <!-- 3. Center Action Button: Record Transaction (Always in bar, no overflow) -->
+      <!-- 3. Center Action Button: Record Transaction -->
       <a href="#transactionFormSection" id="navAdd" class="dock-nav-item" data-nav="add">
         <div class="icon-pill !bg-indigo-600 !text-white shadow-md shadow-indigo-500/30">
           <i data-lucide="plus" class="w-5 h-5 stroke-[2.8]"></i>
@@ -810,9 +824,9 @@
     </div>
   </nav>
 
-  <!-- MODAL 1: Settings & Language -->
+  <!-- MODAL 1: Settings & Language (Includes Excel / CSV Export) -->
   <div id="settingsModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
-    <div class="glass-card rounded-3xl p-6 w-full max-w-md modal-enter border border-slate-200 dark:border-white/10 shadow-2xl">
+    <div class="glass-card rounded-3xl p-6 w-full max-w-md modal-enter border border-slate-200 dark:border-white/10 shadow-2xl max-h-[90vh] overflow-y-auto">
       <div class="flex items-center justify-between mb-5">
         <div class="flex items-center gap-2.5">
           <div class="w-9 h-9 rounded-2xl flex items-center justify-center bg-indigo-500/20 text-indigo-600 dark:text-indigo-400">
@@ -826,6 +840,24 @@
       </div>
 
       <div class="space-y-4">
+        <!-- EXCEL EXPORT SECTION INSIDE SETTINGS -->
+        <div class="p-3.5 rounded-2xl bg-indigo-500/10 border border-indigo-500/20">
+          <div class="flex items-center justify-between gap-3 mb-2">
+            <div class="flex items-center gap-2">
+              <i data-lucide="file-spreadsheet" class="w-5 h-5 text-indigo-500"></i>
+              <span class="text-xs font-bold text-slate-900 dark:text-white" data-i18n="export_csv_title">خروجی اکسل و نسخه پشتیبان</span>
+            </div>
+            <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-indigo-500/20 text-indigo-600 dark:text-indigo-400">CSV</span>
+          </div>
+          <p class="text-[11px] text-slate-500 dark:text-slate-400 mb-3 leading-relaxed" data-i18n="export_csv_desc">
+            دانلود تمام تراکنش‌ها، تاریخ‌ها، مبالغ و حساب‌ها در قالب فایل سازگار با نرم‌افزار اکسل (Excel).
+          </p>
+          <button id="exportCsvBtnSettings" type="button" class="w-full py-2.5 px-4 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md shadow-indigo-500/25 transition-all flex items-center justify-center gap-2">
+            <i data-lucide="download" class="w-4 h-4"></i>
+            <span data-i18n="export_btn">دانلود فایل اکسل تراکنش‌ها</span>
+          </button>
+        </div>
+
         <!-- Language Selector -->
         <div>
           <label class="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-2" data-i18n="select_language">زبان برنامه (Language)</label>
@@ -839,7 +871,7 @@
           </div>
         </div>
 
-        <!-- Theme Mode Selection inside settings -->
+        <!-- Theme Mode Selection -->
         <div>
           <label class="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-2" data-i18n="theme_label">حالت نمایشی (Theme)</label>
           <div class="grid grid-cols-2 gap-2.5">
@@ -856,7 +888,7 @@
 
         <!-- Currency -->
         <div>
-          <label class="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5" data-i18n="currency_label">واحد پول پیش‌فرض</label>
+          <label class="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5" data-i18n="currency_label">واحد پول پیش‌‌فرض</label>
           <select id="currencySelect" class="w-full px-3.5 py-2.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
             <option value="toman">تومان (Toman)</option>
             <option value="rial">ریال (Rial)</option>
@@ -881,7 +913,7 @@
   <div id="addAccountModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
     <div class="glass-card rounded-3xl p-6 w-full max-w-md modal-enter border border-slate-200 dark:border-white/10 shadow-2xl">
       <div class="flex items-center justify-between mb-5">
-        <h3 class="text-lg font-bold text-slate-900 dark:text-white" data-i18n="add_new_account">افزودن حساب جدید</h3>
+        <h3 id="accountModalTitle" class="text-lg font-bold text-slate-900 dark:text-white" data-i18n="add_new_account">افزودن حساب جدید</h3>
         <button id="closeAccountModalBtn" class="w-8 h-8 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-600 dark:hover:text-white">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
@@ -893,7 +925,7 @@
           <input type="text" id="accNameInput" required placeholder="مثلاً: کارت بانک سامان، نقد، ..." class="w-full px-3.5 py-2.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
         </div>
         <div>
-          <label class="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5" data-i18n="initial_balance_label">موجودی اولیه (تومان)</label>
+          <label id="accBalanceLabel" class="block text-xs font-bold text-slate-600 dark:text-slate-400 mb-1.5" data-i18n="initial_balance_label">موجودی اولیه (تومان)</label>
           <input type="number" id="accBalanceInput" required min="0" value="0" class="w-full px-3.5 py-2.5 rounded-2xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500">
         </div>
         <div>
@@ -903,7 +935,7 @@
             <span class="text-xs text-slate-500 dark:text-slate-400" data-i18n="pick_card_color">رنگ پس‌زمینه کارت را انتخاب کنید</span>
           </div>
         </div>
-        <button type="submit" class="w-full py-2.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md shadow-indigo-500/20 transition-all" data-i18n="save_account_btn">
+        <button type="submit" id="accountModalSubmitBtn" class="w-full py-2.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md shadow-indigo-500/20 transition-all" data-i18n="save_account_btn">
           ذخیره حساب
         </button>
       </form>
@@ -931,7 +963,7 @@
     </div>
   </div>
 
-  <!-- MODAL 4: Custom Reset Confirmation Dialog (No window.confirm) -->
+  <!-- MODAL 4: Custom Reset Confirmation Dialog -->
   <div id="resetConfirmModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden">
     <div class="glass-card rounded-3xl p-6 w-full max-w-sm modal-enter border border-rose-500/30 shadow-2xl text-center">
       <div class="w-12 h-12 rounded-2xl bg-rose-500/15 text-rose-500 flex items-center justify-center mx-auto mb-4 border border-rose-500/20">
@@ -952,7 +984,7 @@
     </div>
   </div>
 
-  <!-- TOUR OVERLAY & SPOTLIGHT (Pure SVG Mask Cutout with Real-Time Tracking) -->
+  <!-- TOUR OVERLAY & SPOTLIGHT -->
   <div id="tourOverlay" class="hidden">
     <!-- SVG Mask Backdrop -->
     <svg class="fixed inset-0 w-full h-full pointer-events-auto" style="z-index: 80;">
@@ -965,35 +997,34 @@
       <rect x="0" y="0" width="100%" height="100%" fill="rgba(3, 7, 18, 0.76)" mask="url(#tourCutoutMask)" />
     </svg>
 
-    <!-- Glowing frame matching the hole exactly -->
     <div id="tourSpotlightFrame"></div>
 
-    <!-- Tour Card Popover -->
     <div id="tourCard" class="p-5 w-[90%] max-w-md mx-auto">
-      <div class="flex items-center justify-between mb-3.5">
-        <div class="flex items-center gap-3">
+      <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-200/60 dark:border-white/10">
+        <div class="flex items-center gap-3 min-w-0">
           <div id="tourIconBox" class="w-10 h-10 rounded-2xl flex items-center justify-center bg-indigo-500/15 text-indigo-500 border border-indigo-500/25 shrink-0">
             <i data-lucide="sparkles" class="w-5 h-5"></i>
           </div>
-          <div>
-            <span id="tourStepBadge" class="inline-block px-2 py-0.5 rounded-lg text-[10px] font-black uppercase tracking-wider bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border border-indigo-500/20 mb-0.5">مرحله ۱ از ۵</span>
-            <h4 id="tourTitle" class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white">عنوان راهنما</h4>
-          </div>
+          <h4 id="tourTitle" class="text-sm sm:text-base font-extrabold text-slate-900 dark:text-white truncate">عنوان راهنما</h4>
         </div>
-        <button id="tourCloseBtn" class="w-8 h-8 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-800/60 transition-all">
+        <button id="tourCloseBtn" class="w-8 h-8 rounded-xl flex items-center justify-center text-slate-400 hover:text-slate-700 dark:hover:text-white hover:bg-slate-200/50 dark:hover:bg-slate-800/60 transition-all shrink-0">
           <i data-lucide="x" class="w-4 h-4"></i>
         </button>
       </div>
       <p id="tourDesc" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-5 font-medium">
         توضیحات راهنما در اینجا قرار می‌گیرد.
       </p>
-      <div class="flex items-center justify-between pt-2 border-t border-slate-200/60 dark:border-white/10">
-        <button id="tourPrevBtn" class="px-3.5 py-2 rounded-xl border border-slate-300 dark:border-slate-700 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition-all">
+      <div class="flex items-center justify-between pt-3 border-t border-slate-200/60 dark:border-white/10 gap-2">
+        <button id="tourPrevBtn" class="px-2.5 sm:px-3 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 text-xs font-bold hover:bg-slate-100 dark:hover:bg-slate-800 disabled:opacity-30 disabled:pointer-events-none transition-all shrink-0">
           قبلی
         </button>
-        <button id="tourNextBtn" class="px-5 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white text-xs font-black shadow-lg shadow-indigo-500/30 transition-all flex items-center gap-1.5">
+        <!-- Interactive Step Navigation Icons -->
+        <div id="tourStepIcons" class="flex items-center justify-center gap-1 p-1 rounded-2xl bg-slate-100/80 dark:bg-slate-800/70 border border-slate-200/70 dark:border-slate-700/60 shrink-0">
+          <!-- Step icons dynamically rendered & interactive -->
+        </div>
+        <button id="tourNextBtn" class="px-3 sm:px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white text-xs font-black shadow-md shadow-indigo-500/25 transition-all flex items-center gap-1 shrink-0">
           <span>بعدی</span>
-          <i data-lucide="chevron-left" class="w-4 h-4 rtl:rotate-0 ltr:rotate-180"></i>
+          <i data-lucide="chevron-left" class="w-3.5 h-3.5 rtl:rotate-0 ltr:rotate-180"></i>
         </button>
       </div>
     </div>
@@ -1033,9 +1064,13 @@
         chart_subtitle: "ترکیب و سهم هر دسته از مخارج شما",
         no_chart_data: "هنوز هزینه‌ای در این بازه ثبت نشده است.",
         tx_history_title: "تاریخچه تراکنش‌ها",
-        tx_history_subtitle: "مشاهده، فیلتر و مدیریت تمام گردش‌های مالی",
-        export_csv: "خروجی اکسل",
-        filter_all_types: "همه انواع (هزینه و درآمد)",
+        tx_history_subtitle: "مشاهده، فیلتر و مدیریت تمام گردش‌های مالی تفکیک‌شده",
+        tab_expenses: "هزینه‌ها",
+        tab_incomes: "درآمدها",
+        export_csv_title: "خروجی اکسل و نسخه پشتیبان",
+        export_csv_desc: "دانلود تمام تراکنش‌ها، تاریخ‌ها، مبالغ و حساب‌ها در قالب فایل سازگار با نرم‌افزار اکسل (Excel).",
+        export_btn: "دانلود فایل اکسل تراکنش‌ها",
+        filter_all_accounts: "همه حساب‌های بانکی",
         filter_all_categories: "همه دسته‌بندی‌ها",
         nav_overview: "داشبورد",
         nav_accounts: "حساب‌ها",
@@ -1050,8 +1085,11 @@
         currency_label: "واحد پول پیش‌فرض",
         reset_all_data: "پاک‌سازی و بازنشانی تمام اطلاعات",
         add_new_account: "افزودن حساب جدید",
+        edit_account_title: "ویرایش حساب",
+        update_account_btn: "بروزرسانی حساب",
         account_name_label: "نام حساب یا کارت",
         initial_balance_label: "موجودی اولیه (تومان)",
+        account_balance_label: "موجودی حساب",
         account_color_label: "رنگ کارت",
         pick_card_color: "رنگ پس‌زمینه کارت را انتخاب کنید",
         save_account_btn: "ذخیره حساب",
@@ -1067,13 +1105,24 @@
         remaining_budget: "باقی‌مانده: ",
         no_accounts: "هنوز حسابی تعریف نکرده‌اید!",
         no_accounts_desc: "برای شروع، اولین حساب بانکی یا کیف پول خود را اضافه کنید.",
-        no_transactions: "هیچ تراکنشی یافت نشد.",
+        no_transactions: "هیچ تراکنشی در این دسته‌بندی یافت نشد.",
         delete_account: "حذف حساب",
+        edit_account: "ویرایش حساب",
         delete_tx: "حذف تراکنش",
+        unknown_acc: "حساب نامشخص",
         reset_modal_title: "تأیید بازنشانی کامل اطلاعات",
         reset_modal_desc: "آیا مطمئن هستید؟ با این کار تمامی حساب‌ها، تراکنش‌ها و بودجه ثبت‌شده برای همیشه حذف خواهند شد.",
         confirm_btn: "بله، حذف کن",
-        cancel_btn: "انصراف"
+        cancel_btn: "انصراف",
+        step_prefix: "مرحله",
+        step_of: "از",
+        tour_prev: "قبلی",
+        tour_next: "بعدی",
+        tour_finish: "پایان راهنما",
+        search_placeholder: "جستجو در شرح، یادداشت یا مبلغ...",
+        tx_desc_placeholder: "توضیحات یا یادداشت (اختیاری)...",
+        amount_placeholder: "مثلاً: ۵۰,۰۰۰",
+        acc_name_placeholder: "مثلاً: کارت بانک سامان، نقد، ..."
       },
       en: {
         app_title: "Kharjino",
@@ -1099,9 +1148,13 @@
         chart_subtitle: "Category breakdown of your monthly spending",
         no_chart_data: "No expenses recorded yet.",
         tx_history_title: "Transaction History",
-        tx_history_subtitle: "Browse, filter, and manage financial logs",
-        export_csv: "Export CSV",
-        filter_all_types: "All Types (Expense & Income)",
+        tx_history_subtitle: "Browse, filter, and manage separated financial records",
+        tab_expenses: "Expenses",
+        tab_incomes: "Incomes",
+        export_csv_title: "Excel Export & Backup",
+        export_csv_desc: "Download all financial logs, categories, amounts and accounts as a spreadsheet file.",
+        export_btn: "Download Excel CSV",
+        filter_all_accounts: "All Bank Accounts",
         filter_all_categories: "All Categories",
         nav_overview: "Dashboard",
         nav_accounts: "Accounts",
@@ -1116,8 +1169,11 @@
         currency_label: "Default Currency",
         reset_all_data: "Reset All Application Data",
         add_new_account: "Add New Account",
+        edit_account_title: "Edit Account",
+        update_account_btn: "Update Account",
         account_name_label: "Account / Card Name",
         initial_balance_label: "Initial Balance (Toman)",
+        account_balance_label: "Account Balance",
         account_color_label: "Card Color",
         pick_card_color: "Choose background accent color",
         save_account_btn: "Save Account",
@@ -1133,13 +1189,24 @@
         remaining_budget: "Remaining: ",
         no_accounts: "No accounts defined yet!",
         no_accounts_desc: "Add your first bank account or wallet to get started.",
-        no_transactions: "No transactions found.",
+        no_transactions: "No transactions found in this category.",
         delete_account: "Delete Account",
+        edit_account: "Edit Account",
         delete_tx: "Delete Transaction",
+        unknown_acc: "Unknown Account",
         reset_modal_title: "Confirm Complete Data Reset",
         reset_modal_desc: "Are you sure? All accounts, logged transactions, and custom budgets will be permanently deleted.",
         confirm_btn: "Yes, Reset All",
-        cancel_btn: "Cancel"
+        cancel_btn: "Cancel",
+        step_prefix: "Step",
+        step_of: "of",
+        tour_prev: "Previous",
+        tour_next: "Next",
+        tour_finish: "Finish Tour",
+        search_placeholder: "Search in description, note or amount...",
+        tx_desc_placeholder: "Note or details (optional)...",
+        amount_placeholder: "e.g. 50,000",
+        acc_name_placeholder: "e.g. Bank Card, Cash Wallet..."
       }
     };
 
@@ -1156,11 +1223,115 @@
       { id: "other", fa: "سایر موارد", en: "Other Expenses", color: "#64748b", icon: "more-horizontal" }
     ];
 
+    /* SEED MOCK DATA GENERATOR */
+    function getDemoSeedData() {
+      const now = new Date();
+      const currentYear = now.getFullYear();
+      const currentMonth = now.getMonth();
+
+      const d = (dayOffset, hour = 14) => {
+        const dt = new Date(currentYear, currentMonth, Math.max(1, now.getDate() - dayOffset), hour, 30);
+        return dt.toISOString();
+      };
+
+      return {
+        budget: 18000000,
+        accounts: [
+          { id: "acc_1", name: "کارت حقوق بانک سامان", balance: 24500000, color: "#6366f1" },
+          { id: "acc_2", name: "کارت روزمره بانک ملت", balance: 6850000, color: "#f43f5e" },
+          { id: "acc_3", name: "کیف پول نقدی و اسنپ", balance: 1450000, color: "#10b981" }
+        ],
+        transactions: [
+          {
+            id: "tx_demo_1",
+            type: "income",
+            amount: 28000000,
+            categoryId: "salary",
+            accountId: "acc_1",
+            description: "حقوق ماهیانه شرکت",
+            date: d(12, 10)
+          },
+          {
+            id: "tx_demo_2",
+            type: "income",
+            amount: 3500000,
+            categoryId: "investment",
+            accountId: "acc_2",
+            description: "سود صندوق درآمد ثابت",
+            date: d(7, 12)
+          },
+          {
+            id: "tx_demo_3",
+            type: "expense",
+            amount: 4200000,
+            categoryId: "shopping",
+            accountId: "acc_1",
+            description: "خرید لباس و کفش زمستانی",
+            date: d(1, 19)
+          },
+          {
+            id: "tx_demo_4",
+            type: "expense",
+            amount: 1850000,
+            categoryId: "food",
+            accountId: "acc_2",
+            description: "خرید مواد اولیه سوپرمارکت",
+            date: d(2, 21)
+          },
+          {
+            id: "tx_demo_5",
+            type: "expense",
+            amount: 950000,
+            categoryId: "food",
+            accountId: "acc_2",
+            description: "شام دورهمی در رستوران",
+            date: d(3, 22)
+          },
+          {
+            id: "tx_demo_6",
+            type: "expense",
+            amount: 620000,
+            categoryId: "transport",
+            accountId: "acc_3",
+            description: "بنزین و سفرهای اسنپ هفتگی",
+            date: d(4, 9)
+          },
+          {
+            id: "tx_demo_7",
+            type: "expense",
+            amount: 3500000,
+            categoryId: "bills",
+            accountId: "acc_1",
+            description: "شارژ ساختمان و بسته اینترنت",
+            date: d(5, 15)
+          },
+          {
+            id: "tx_demo_8",
+            type: "expense",
+            amount: 1200000,
+            categoryId: "health",
+            accountId: "acc_2",
+            description: "ویزیت دندانپزشک و داروخانه",
+            date: d(8, 17)
+          },
+          {
+            id: "tx_demo_9",
+            type: "expense",
+            amount: 480000,
+            categoryId: "entertainment",
+            accountId: "acc_3",
+            description: "بلیط سینما و اشتراک فیلیمو",
+            date: d(10, 20)
+          }
+        ]
+      };
+    }
+
     /* APP STATE */
     let appData = {
       accounts: [],
       transactions: [],
-      budget: 5000000
+      budget: 18000000
     };
 
     let appPrefs = {
@@ -1170,17 +1341,24 @@
     };
 
     let chartInstance = null;
-    let currentTxType = "expense";
+    let currentTxType = "expense"; // Form transaction type
+    let activeTxHistoryTab = "expense"; // "expense" | "income"
     let activeNavTab = "overview";
     let editingAccountIndex = null;
 
-    /* HELPER: Storage Functions */
     function loadStorage() {
       try {
         const storedData = localStorage.getItem(STORAGE_KEY_DATA);
-        if (storedData) appData = JSON.parse(storedData);
+        if (storedData) {
+          appData = JSON.parse(storedData);
+        }
+        if (!appData.accounts || appData.accounts.length === 0) {
+          appData = getDemoSeedData();
+          saveStorage();
+        }
       } catch (e) {
         console.warn("Data load note:", e);
+        appData = getDemoSeedData();
       }
       try {
         const storedPrefs = localStorage.getItem(STORAGE_KEY_PREFS);
@@ -1204,7 +1382,7 @@
       const cur = appPrefs.currency || "toman";
       const lang = appPrefs.lang || "fa";
       const numStr = Math.abs(amount).toLocaleString(lang === "fa" ? "fa-IR" : "en-US");
-      const isNeg = amount < 0 ? "-" : "";
+      const isNeg = amount < 0 ? (lang === "fa" ? "−" : "-") : "";
 
       if (cur === "usd") {
         return lang === "fa" ? `${isNeg}${numStr} دلار` : `${isNeg}$${numStr}`;
@@ -1288,6 +1466,12 @@
       document.getElementById("incomeCountVal").innerText = `${incCount} ${appPrefs.lang === "fa" ? "تراکنش دریافتی" : "income entries"}`;
       document.getElementById("expenseCountVal").innerText = `${expCount} ${appPrefs.lang === "fa" ? "تراکنش هزینه" : "expense entries"}`;
 
+      // Update History Tabs Counters
+      const tabExpCountEl = document.getElementById("tabExpenseCount");
+      const tabIncCountEl = document.getElementById("tabIncomeCount");
+      if (tabExpCountEl) tabExpCountEl.innerText = expCount;
+      if (tabIncCountEl) tabIncCountEl.innerText = incCount;
+
       // Budget Progress
       const budget = appData.budget || 1;
       const percent = Math.min(Math.round((monthlyExpenses / budget) * 100), 100);
@@ -1311,10 +1495,16 @@
     function renderAccounts() {
       const container = document.getElementById("accountsList");
       const txAccountSelect = document.getElementById("txAccountSelect");
+      const historyAccountFilter = document.getElementById("txHistoryAccountFilter");
       if (!container) return;
 
       container.innerHTML = "";
       if (txAccountSelect) txAccountSelect.innerHTML = "";
+      
+      const currentHistoryAccFilterVal = historyAccountFilter ? historyAccountFilter.value : "all";
+      if (historyAccountFilter) {
+        historyAccountFilter.innerHTML = `<option value="all">${translations[appPrefs.lang].filter_all_accounts}</option>`;
+      }
 
       const t = translations[appPrefs.lang];
 
@@ -1325,10 +1515,7 @@
               <i data-lucide="wallet-cards" class="w-6 h-6"></i>
             </div>
             <h4 class="text-sm font-bold text-slate-900 dark:text-white mb-1">${t.no_accounts}</h4>
-            <p class="text-xs text-slate-500 dark:text-slate-400 mb-4 max-w-sm">${t.no_accounts_desc}</p>
-            <button onclick="document.getElementById('openAddAccountBtn').click()" class="px-4 py-2 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shadow-md transition-all">
-              ${t.add_account_btn}
-            </button>
+            <p class="text-xs text-slate-500 dark:text-slate-400 max-w-sm">${t.no_accounts_desc}</p>
           </div>
         `;
         if (txAccountSelect) {
@@ -1371,7 +1558,18 @@
           opt.innerText = `${acc.name} (${formatMoney(acc.balance)})`;
           txAccountSelect.appendChild(opt);
         }
+
+        if (historyAccountFilter) {
+          const opt = document.createElement("option");
+          opt.value = acc.id;
+          opt.innerText = acc.name;
+          historyAccountFilter.appendChild(opt);
+        }
       });
+
+      if (historyAccountFilter) {
+        historyAccountFilter.value = currentHistoryAccFilterVal;
+      }
 
       lucide.createIcons();
     }
@@ -1383,6 +1581,7 @@
       saveStorage();
       renderAccounts();
       renderOverview();
+      renderTransactions();
       showToast(appPrefs.lang === "fa" ? "حساب با موفقیت حذف شد." : "Account deleted successfully.", "success");
     };
 
@@ -1413,63 +1612,125 @@
       document.getElementById("addAccountModal").classList.remove("hidden");
     };
 
-    /* POPULATE CATEGORIES SELECT */
+    /* POPULATE CATEGORIES IN TRANSACTION FORM & HISTORY FILTER */
     function populateCategories() {
+      // 1. Populate Transaction Quick Add Form Categories
       const select = document.getElementById("txCategorySelect");
-      const filterSelect = document.getElementById("categoryFilter");
-      if (!select) return;
+      if (select) {
+        select.innerHTML = "";
+        const isInc = currentTxType === "income";
+        const formCats = DEFAULT_CATEGORIES.filter(c => isInc ? c.isIncome : !c.isIncome);
 
-      select.innerHTML = "";
-      if (filterSelect) {
-        filterSelect.innerHTML = `<option value="all">${translations[appPrefs.lang].filter_all_categories}</option>`;
+        formCats.forEach(c => {
+          const opt = document.createElement("option");
+          opt.value = c.id;
+          opt.innerText = appPrefs.lang === "fa" ? c.fa : c.en;
+          select.appendChild(opt);
+        });
       }
 
-      const isInc = currentTxType === "income";
-      const cats = DEFAULT_CATEGORIES.filter(c => isInc ? c.isIncome : !c.isIncome);
+      // 2. Populate History Filter Categories based on Active History Tab
+      populateHistoryCategoryFilter();
+    }
 
-      cats.forEach(c => {
+    function populateHistoryCategoryFilter() {
+      const filterSelect = document.getElementById("txHistoryCategoryFilter");
+      if (!filterSelect) return;
+
+      const currentVal = filterSelect.value || "all";
+      filterSelect.innerHTML = `<option value="all">${translations[appPrefs.lang].filter_all_categories}</option>`;
+
+      const isInc = activeTxHistoryTab === "income";
+      const relevantCats = DEFAULT_CATEGORIES.filter(c => isInc ? c.isIncome : !c.isIncome);
+
+      relevantCats.forEach(c => {
         const opt = document.createElement("option");
         opt.value = c.id;
         opt.innerText = appPrefs.lang === "fa" ? c.fa : c.en;
-        select.appendChild(opt);
-
-        if (filterSelect) {
-          const opt2 = document.createElement("option");
-          opt2.value = c.id;
-          opt2.innerText = appPrefs.lang === "fa" ? c.fa : c.en;
-          filterSelect.appendChild(opt2);
-        }
+        filterSelect.appendChild(opt);
       });
+
+      // Restore value if present in new list
+      if (Array.from(filterSelect.options).some(o => o.value === currentVal)) {
+        filterSelect.value = currentVal;
+      } else {
+        filterSelect.value = "all";
+      }
     }
 
-    /* RENDER TRANSACTIONS LIST */
+    /* SWITCH TRANSACTION HISTORY TABS (EXPENSES vs INCOMES) */
+    function setTransactionHistoryTab(tab) {
+      activeTxHistoryTab = tab;
+      const tabExpBtn = document.getElementById("tabExpenseBtn");
+      const tabIncBtn = document.getElementById("tabIncomeBtn");
+
+      if (tab === "expense") {
+        tabExpBtn.className = "flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all bg-rose-500 text-white shadow-md shadow-rose-500/25";
+        tabIncBtn.className = "flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+      } else {
+        tabIncBtn.className = "flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-black transition-all bg-emerald-500 text-white shadow-md shadow-emerald-500/25";
+        tabExpBtn.className = "flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-bold transition-all text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white";
+      }
+
+      populateHistoryCategoryFilter();
+      renderTransactions();
+    }
+
+    /* RENDER TRANSACTIONS LIST WITH COMPLETE TEXT & STRUCTURAL SYMMETRY */
     function renderTransactions() {
       const container = document.getElementById("transactionsList");
       if (!container) return;
 
-      const search = (document.getElementById("searchFilter")?.value || "").toLowerCase();
-      const typeF = document.getElementById("typeFilter")?.value || "all";
-      const catF = document.getElementById("categoryFilter")?.value || "all";
+      const search = (document.getElementById("txHistorySearch")?.value || "").toLowerCase().trim();
+      const accFilter = document.getElementById("txHistoryAccountFilter")?.value || "all";
+      const catFilter = document.getElementById("txHistoryCategoryFilter")?.value || "all";
       const t = translations[appPrefs.lang];
 
-      let list = [...appData.transactions].reverse();
+      // Base filter strictly by active history tab (Expense vs Income)
+      let list = [...appData.transactions]
+        .reverse()
+        .filter(item => item.type === activeTxHistoryTab);
 
-      if (typeF !== "all") list = list.filter(item => item.type === typeF);
-      if (catF !== "all") list = list.filter(item => item.categoryId === catF);
+      // Account filter
+      if (accFilter !== "all") {
+        list = list.filter(item => item.accountId === accFilter);
+      }
+
+      // Category filter
+      if (catFilter !== "all") {
+        list = list.filter(item => item.categoryId === catFilter);
+      }
+
+      // Search filter (description, category name, amount)
       if (search) {
-        list = list.filter(item => 
-          (item.description && item.description.toLowerCase().includes(search)) ||
-          item.amount.toString().includes(search)
-        );
+        list = list.filter(item => {
+          const cat = DEFAULT_CATEGORIES.find(c => c.id === item.categoryId);
+          const catLabel = cat ? (appPrefs.lang === "fa" ? cat.fa : cat.en) : "";
+          return (
+            (item.description && item.description.toLowerCase().includes(search)) ||
+            (catLabel && catLabel.toLowerCase().includes(search)) ||
+            item.amount.toString().includes(search)
+          );
+        });
+      }
+
+      // Update Active Count Badge
+      const countBadge = document.getElementById("txActiveCountBadge");
+      if (countBadge) {
+        countBadge.innerText = `${list.length} ${appPrefs.lang === "fa" ? "تراکنش" : "records"}`;
       }
 
       container.innerHTML = "";
       if (list.length === 0) {
         container.innerHTML = `
-          <div class="p-8 text-center text-slate-400 text-xs font-semibold">
-            ${t.no_transactions}
+          <div class="p-8 rounded-3xl border-2 border-dashed border-slate-200 dark:border-slate-800/80 flex flex-col items-center justify-center text-center">
+            <div class="w-10 h-10 rounded-2xl bg-slate-100 dark:bg-slate-800 text-slate-400 flex items-center justify-center mb-2">
+              <i data-lucide="inbox" class="w-5 h-5"></i>
+            </div>
+            <p class="text-xs font-bold text-slate-500 dark:text-slate-400">${t.no_transactions}</p>
           </div>
         `;
+        lucide.createIcons();
         return;
       }
 
@@ -1477,31 +1738,78 @@
         const cat = DEFAULT_CATEGORIES.find(c => c.id === tx.categoryId) || { fa: "عمومی", en: "General", color: "#6366f1", icon: "activity" };
         const acc = appData.accounts.find(a => a.id === tx.accountId) || { name: t.unknown_acc };
         const isExp = tx.type === "expense";
+        const catName = appPrefs.lang === "fa" ? cat.fa : cat.en;
 
+        let formattedDate = "";
+        try {
+          formattedDate = new Date(tx.date).toLocaleDateString(appPrefs.lang === "fa" ? "fa-IR" : "en-US", {
+            year: "numeric",
+            month: "short",
+            day: "numeric"
+          });
+        } catch (e) {
+          formattedDate = new Date(tx.date).toLocaleDateString();
+        }
+
+        /* 
+         * PERFECT 2x2 SYMMETRICAL ROW ARCHITECTURE:
+         * Right side (Start): 
+         *   Row 1: Category Name + Description
+         *   Row 2: Account Name • Date
+         * Left side (End): 
+         *   Row 1: Amount with +/- and Currency
+         *   Row 2: Category Badge / Type Tag
+         * Far Left:
+         *   Delete Action Icon Button
+         */
         const item = document.createElement("div");
-        item.className = "flex items-center justify-between p-3.5 rounded-2xl glass-card border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all";
+        item.className = "flex items-center justify-between gap-3 p-3.5 sm:p-4 rounded-2xl glass-card border border-slate-200 dark:border-white/10 hover:border-indigo-500/30 transition-all";
         item.innerHTML = `
-          <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-2xl flex items-center justify-center shrink-0" style="background-color: ${cat.color}22; color: ${cat.color}">
+          <!-- Start Side: Icon and Meta Text Column (Symmetrically aligned) -->
+          <div class="flex items-center gap-3 min-w-0 flex-1">
+            <div class="w-10 h-10 rounded-2xl flex items-center justify-center shrink-0 shadow-sm" style="background-color: ${cat.color}1a; color: ${cat.color}; border: 1px solid ${cat.color}33;">
               <i data-lucide="${cat.icon || 'tag'}" class="w-5 h-5"></i>
             </div>
-            <div>
-              <div class="text-xs font-bold text-slate-900 dark:text-white">
-                ${appPrefs.lang === "fa" ? cat.fa : cat.en}
-                ${tx.description ? `<span class="font-normal text-slate-500 dark:text-slate-400 mr-1.5">- ${tx.description}</span>` : ""}
+            <div class="min-w-0 flex-1 flex flex-col justify-center">
+              <!-- Row 1: Title and Description -->
+              <div class="flex items-center gap-1.5 flex-wrap">
+                <span class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white truncate">${catName}</span>
+                ${tx.description ? `<span class="text-xs font-normal text-slate-500 dark:text-slate-400 truncate max-w-[140px] sm:max-w-xs">• ${tx.description}</span>` : ""}
               </div>
-              <div class="text-[11px] text-slate-400 mt-0.5 flex items-center gap-2">
-                <span>${acc.name}</span>
-                <span>•</span>
-                <span>${new Date(tx.date).toLocaleDateString(appPrefs.lang === "fa" ? "fa-IR" : "en-US")}</span>
+              <!-- Row 2: Account and Date -->
+              <div class="text-[11px] text-slate-400 mt-1 flex items-center gap-2 flex-wrap">
+                <span class="inline-flex items-center gap-1 font-medium text-slate-600 dark:text-slate-300">
+                  <i data-lucide="credit-card" class="w-3 h-3 text-slate-400"></i>
+                  <span>${acc.name}</span>
+                </span>
+                <span class="text-slate-300 dark:text-slate-600">•</span>
+                <span class="inline-flex items-center gap-1 font-medium text-slate-400 dark:text-slate-400">
+                  <i data-lucide="calendar" class="w-3 h-3 text-slate-400"></i>
+                  <span>${formattedDate}</span>
+                </span>
               </div>
             </div>
           </div>
-          <div class="flex items-center gap-3">
-            <div class="text-sm font-black ${isExp ? 'text-rose-500' : 'text-emerald-500'} dir-ltr">
-              ${isExp ? '-' : '+'}${formatMoney(tx.amount)}
+
+          <!-- End Side: Symmetrical Amount, Badge and Action Button -->
+          <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+            <!-- Amount & Badge Column (Mirrored symmetry with Start Column) -->
+            <div class="flex flex-col items-end text-end justify-center">
+              <!-- Row 1: Formatted Price with Sign -->
+              <div class="flex items-center gap-1 text-xs sm:text-sm font-black ${isExp ? 'text-rose-500 dark:text-rose-400' : 'text-emerald-500 dark:text-emerald-400'}">
+                <span class="font-extrabold text-xs sm:text-sm">${isExp ? '−' : '+'}</span>
+                <span>${formatMoney(tx.amount)}</span>
+              </div>
+              <!-- Row 2: Type Tag Badge -->
+              <div class="mt-1">
+                <span class="inline-block px-2 py-0.5 rounded-lg text-[10px] font-bold ${isExp ? 'bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20' : 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border border-emerald-500/20'}">
+                  ${isExp ? t.expense : t.income}
+                </span>
+              </div>
             </div>
-            <button onclick="deleteTransaction('${tx.id}')" title="${t.delete_tx}" class="w-7 h-7 rounded-xl flex items-center justify-center text-slate-400 hover:text-rose-500 hover:bg-rose-500/10 transition-all">
+
+            <!-- Delete Action Button -->
+            <button onclick="deleteTransaction('${tx.id}')" title="${t.delete_tx}" class="w-8 h-8 rounded-xl flex items-center justify-center text-slate-400 hover:text-rose-500 hover:bg-rose-500/10 transition-all border border-transparent hover:border-rose-500/20">
               <i data-lucide="trash-2" class="w-4 h-4"></i>
             </button>
           </div>
@@ -1532,7 +1840,7 @@
       }
     };
 
-    /* RENDER CHART */
+    /* RENDER CHART (WITH FIXED PERMANENT VAZIRMATN FONT) */
     function renderChart() {
       try {
         const canvas = document.getElementById("expenseChart");
@@ -1592,6 +1900,10 @@
           return;
         }
 
+        // Set global Chart default fonts to ensure NO font swap on click or hover
+        Chart.defaults.font.family = "'Vazirmatn', 'Inter', -apple-system, sans-serif";
+        Chart.defaults.color = appPrefs.theme === "dark" ? "#cbd5e1" : "#475569";
+
         if (chartInstance) {
           try { chartInstance.destroy(); } catch (e) {}
           chartInstance = null;
@@ -1613,7 +1925,27 @@
             responsive: true,
             maintainAspectRatio: false,
             plugins: {
-              legend: { display: false }
+              legend: { display: false },
+              tooltip: {
+                titleFont: {
+                  family: "'Vazirmatn', 'Inter', -apple-system, sans-serif",
+                  size: 13,
+                  weight: 'bold'
+                },
+                bodyFont: {
+                  family: "'Vazirmatn', 'Inter', -apple-system, sans-serif",
+                  size: 12
+                },
+                footerFont: {
+                  family: "'Vazirmatn', 'Inter', -apple-system, sans-serif"
+                },
+                callbacks: {
+                  label: function(context) {
+                    const value = context.raw || 0;
+                    return ` ${formatMoney(value)}`;
+                  }
+                }
+              }
             },
             cutout: "68%"
           }
@@ -1666,8 +1998,8 @@
         if (t[key]) el.innerText = t[key];
       });
 
-      // Update placeholders with practical examples (preventing undefined text)
-      const searchInput = document.getElementById("searchFilter");
+      // Update placeholders
+      const searchInput = document.getElementById("txHistorySearch");
       if (searchInput && t.search_placeholder) searchInput.placeholder = t.search_placeholder;
 
       const txDescInput = document.getElementById("txDescInput");
@@ -1699,7 +2031,7 @@
       renderChart();
     }
 
-    /* TOUR ENGINE WITH DYNAMIC REAL-TIME TRACKING & SVG CUTOUT */
+    /* TOUR ENGINE */
     const tourSteps = [
       {
         target: "#overviewSection",
@@ -1735,10 +2067,10 @@
       },
       {
         target: "#transactionsSection",
-        titleFa: "تاریخچه و خروجی اکسل",
-        descFa: "گردش‌های مالی خود را جستجو، فیلتر یا در قالب فایل اکسل استخراج کنید.",
-        titleEn: "History & CSV Export",
-        descEn: "Filter your past financial records or download a full spreadsheet export anytime.",
+        titleFa: "تاریخچه تفکیک‌شده هزینه‌ها و درآمدها",
+        descFa: "گردش‌های مالی خود را در دو تب تفکیک‌شده هزینه‌ها و درآمدها همراه با فیلتر دقیق حساب و دسته‌بندی بررسی کنید.",
+        titleEn: "Categorized History & Filters",
+        descEn: "Review your expenses and incomes in dedicated tabs with multi-level filtering.",
         icon: "arrow-down-up"
       }
     ];
@@ -1748,7 +2080,6 @@
 
     function startTour() {
       currentTourIdx = 0;
-      // Hide sticky header smoothly so it doesn't overlap other cards during tour
       const header = document.getElementById("appHeader");
       if (header) {
         header.style.transform = "translateY(-140%)";
@@ -1780,7 +2111,6 @@
       const width = Math.min(window.innerWidth, rect.width + pad * 2);
       const height = rect.height + pad * 2;
 
-      // Update SVG Cutout Hole
       if (hole) {
         hole.setAttribute("x", left);
         hole.setAttribute("y", top);
@@ -1788,7 +2118,6 @@
         hole.setAttribute("height", height);
       }
 
-      // Update Glow Frame
       if (frame) {
         frame.style.top = `${top}px`;
         frame.style.left = `${left}px`;
@@ -1796,7 +2125,6 @@
         frame.style.height = `${height}px`;
       }
 
-      // Smart Card Positioning: Prevent hiding headers or overflowing bottom
       if (card) {
         const cardHeight = card.offsetHeight || 220;
         const spaceBelow = window.innerHeight - (top + height);
@@ -1804,13 +2132,10 @@
 
         let cardTop = 0;
         if (spaceBelow >= cardHeight + 85) {
-          // Room available right under the section
           cardTop = top + height + 16;
         } else if (spaceAbove >= cardHeight + 85) {
-          // Room available right above the section
           cardTop = top - cardHeight - 16;
         } else {
-          // Very tall section: Dock card neatly above floating bottom dock
           cardTop = Math.max(80, window.innerHeight - cardHeight - 88);
         }
 
@@ -1833,12 +2158,43 @@
       tourTrackingRaf = requestAnimationFrame(trackFrame);
     }
 
+    function renderTourStepIcons() {
+      const container = document.getElementById("tourStepIcons");
+      if (!container) return;
+      const isFa = appPrefs.lang === "fa";
+
+      container.innerHTML = tourSteps.map((step, idx) => {
+        const isActive = idx === currentTourIdx;
+        const title = isFa ? step.titleFa : step.titleEn;
+        return `
+          <button 
+            type="button" 
+            onclick="goToTourStep(${idx})" 
+            title="${title}" 
+            aria-label="${title}" 
+            class="w-6 h-6 sm:w-7 sm:h-7 rounded-lg sm:rounded-xl shrink-0 flex items-center justify-center transition-all duration-200 cursor-pointer ${
+              isActive 
+                ? 'bg-indigo-600 text-white shadow-sm ring-2 ring-indigo-400/40 font-bold' 
+                : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200/60 dark:hover:bg-slate-700/60'
+            }">
+            <i data-lucide="${step.icon}" class="w-3 h-3 sm:w-3.5 sm:h-3.5 pointer-events-none"></i>
+          </button>
+        `;
+      }).join("");
+    }
+
+    window.goToTourStep = function(idx) {
+      if (idx >= 0 && idx < tourSteps.length) {
+        currentTourIdx = idx;
+        renderTourStep();
+      }
+    };
+
     function renderTourStep() {
       const step = tourSteps[currentTourIdx];
       const targetEl = document.querySelector(step.target);
       if (!targetEl) return;
 
-      // Aligned scroll to target top with clean top margin (header is hidden during tour)
       const topOffset = 24;
       const elementY = targetEl.getBoundingClientRect().top + window.pageYOffset;
       const targetScrollY = Math.max(0, elementY - topOffset);
@@ -1848,12 +2204,10 @@
         behavior: "smooth"
       });
 
-      // Update content immediately
       const isFa = appPrefs.lang === "fa";
       const t = translations[appPrefs.lang];
       document.getElementById("tourTitle").innerText = isFa ? step.titleFa : step.titleEn;
       document.getElementById("tourDesc").innerText = isFa ? step.descFa : step.descEn;
-      document.getElementById("tourStepBadge").innerText = `${t.step_prefix} ${currentTourIdx + 1} ${t.step_of} ${tourSteps.length}`;
       document.getElementById("tourIconBox").innerHTML = `<i data-lucide="${step.icon}" class="w-5 h-5"></i>`;
 
       const prevBtn = document.getElementById("tourPrevBtn");
@@ -1865,16 +2219,14 @@
         ? `<span>${t.tour_finish}</span><i data-lucide="check" class="w-4 h-4"></i>`
         : `<span>${t.tour_next}</span><i data-lucide="chevron-left" class="w-4 h-4 rtl:rotate-0 ltr:rotate-180"></i>`;
 
+      renderTourStepIcons();
       lucide.createIcons();
-
-      // Track smooth scroll continuously
       startLiveTourTracking(700);
     }
 
     function closeTour() {
       if (tourTrackingRaf) cancelAnimationFrame(tourTrackingRaf);
       document.getElementById("tourOverlay").classList.add("hidden");
-      // Restore top header smoothly
       const header = document.getElementById("appHeader");
       if (header) {
         header.style.transform = "";
@@ -1883,7 +2235,6 @@
       }
     }
 
-    // Attach active window listeners for tour alignment
     window.addEventListener("scroll", () => {
       if (!document.getElementById("tourOverlay").classList.contains("hidden")) {
         updateTourSpotlightGeometry();
@@ -1895,6 +2246,30 @@
         updateTourSpotlightGeometry();
       }
     }, { passive: true });
+
+    /* EXPORT CSV HANDLER */
+    function handleCsvExport() {
+      if (appData.transactions.length === 0) {
+        showToast(appPrefs.lang === "fa" ? "تراکنشی برای خروجی وجود ندارد." : "No transactions to export.", "info");
+        return;
+      }
+      let csv = "شناسه,نوع,مبلغ,دسته بندی,حساب بانکی,تاریخ,توضیحات\n";
+      appData.transactions.forEach(t => {
+        const acc = appData.accounts.find(a => a.id === t.accountId);
+        const cat = DEFAULT_CATEGORIES.find(c => c.id === t.categoryId);
+        const catName = cat ? cat.fa : t.categoryId;
+        const typeName = t.type === "expense" ? "هزینه" : "درآمد";
+        csv += `"${t.id}","${typeName}","${t.amount}","${catName}","${acc ? acc.name : ''}","${t.date}","${t.description || ''}"\n`;
+      });
+      const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `kharjino_export_${Date.now()}.csv`;
+      link.click();
+      URL.revokeObjectURL(url);
+      showToast(appPrefs.lang === "fa" ? "فایل اکسل با موفقیت دانلود شد." : "CSV exported successfully.", "success");
+    }
 
     document.addEventListener("DOMContentLoaded", () => {
       loadStorage();
@@ -1918,6 +2293,7 @@
       document.getElementById("langEnBtn")?.addEventListener("click", () => applyLanguage("en"));
       document.getElementById("themeLightOption")?.addEventListener("click", () => applyTheme("light"));
       document.getElementById("themeDarkOption")?.addEventListener("click", () => applyTheme("dark"));
+      document.getElementById("exportCsvBtnSettings")?.addEventListener("click", handleCsvExport);
       
       const currencySelect = document.getElementById("currencySelect");
       if (currencySelect) {
@@ -1934,7 +2310,7 @@
         });
       }
 
-      // Safe Reset Modal Handlers (Replacing native confirm)
+      // Safe Reset Modal Handlers
       const resetModal = document.getElementById("resetConfirmModal");
       document.getElementById("resetDataBtn")?.addEventListener("click", () => {
         resetModal?.classList.remove("hidden");
@@ -1943,7 +2319,7 @@
         resetModal?.classList.add("hidden");
       });
       document.getElementById("confirmResetBtn")?.addEventListener("click", () => {
-        appData = { accounts: [], transactions: [], budget: 5000000 };
+        appData = getDemoSeedData();
         saveStorage();
         renderOverview();
         renderAccounts();
@@ -1951,7 +2327,7 @@
         renderChart();
         resetModal?.classList.add("hidden");
         document.getElementById("settingsModal")?.classList.add("hidden");
-        showToast(appPrefs.lang === "fa" ? "تمامی اطلاعات با موفقیت پاک‌سازی و بازنشانی شدند." : "All data has been completely reset.", "info");
+        showToast(appPrefs.lang === "fa" ? "داده‌ها مجدداً با نمونه‌های نمایشی بازنشانی شدند." : "Demo data reset successfully.", "info");
       });
 
       // Budget Edit
@@ -2008,13 +2384,11 @@
 
         if (name) {
           if (editingAccountIndex !== null && appData.accounts[editingAccountIndex]) {
-            // Update existing account
             appData.accounts[editingAccountIndex].name = name;
             appData.accounts[editingAccountIndex].balance = balance;
             appData.accounts[editingAccountIndex].color = color;
             showToast(appPrefs.lang === "fa" ? "حساب با موفقیت ویرایش شد." : "Account updated successfully.", "success");
           } else {
-            // Add new account
             appData.accounts.push({
               id: "acc_" + Date.now(),
               name,
@@ -2027,13 +2401,14 @@
           saveStorage();
           renderAccounts();
           renderOverview();
+          renderTransactions();
           editingAccountIndex = null;
           document.getElementById("addAccountModal").classList.add("hidden");
           document.getElementById("addAccountForm").reset();
         }
       });
 
-      // Transaction Type Toggles
+      // Transaction Type Toggles in Form
       const expBtn = document.getElementById("typeExpenseBtn");
       const incBtn = document.getElementById("typeIncomeBtn");
       expBtn?.addEventListener("click", () => {
@@ -2113,7 +2488,16 @@
         return false;
       });
 
-      // Smooth Safe Navigation for Bottom Dock links (Prevent iframe reload/white screen)
+      // Transaction History Tabs Handlers
+      document.getElementById("tabExpenseBtn")?.addEventListener("click", () => setTransactionHistoryTab("expense"));
+      document.getElementById("tabIncomeBtn")?.addEventListener("click", () => setTransactionHistoryTab("income"));
+
+      // Transaction History Filters Handlers
+      document.getElementById("txHistorySearch")?.addEventListener("input", renderTransactions);
+      document.getElementById("txHistoryAccountFilter")?.addEventListener("change", renderTransactions);
+      document.getElementById("txHistoryCategoryFilter")?.addEventListener("change", renderTransactions);
+
+      // Smooth Safe Navigation for Bottom Dock links
       document.querySelectorAll(".dock-nav-item").forEach(link => {
         link.addEventListener("click", (e) => {
           e.preventDefault();
@@ -2125,31 +2509,6 @@
             }
           }
         });
-      });
-
-      // Filters
-      document.getElementById("searchFilter")?.addEventListener("input", renderTransactions);
-      document.getElementById("typeFilter")?.addEventListener("change", renderTransactions);
-      document.getElementById("categoryFilter")?.addEventListener("change", renderTransactions);
-
-      // Export CSV
-      document.getElementById("exportCsvBtn")?.addEventListener("click", () => {
-        if (appData.transactions.length === 0) {
-          showToast(appPrefs.lang === "fa" ? "تراکنشی برای خروجی وجود ندارد." : "No transactions to export.", "info");
-          return;
-        }
-        let csv = "ID,Type,Amount,Category,Account,Date,Description\n";
-        appData.transactions.forEach(t => {
-          const acc = appData.accounts.find(a => a.id === t.accountId);
-          csv += `"${t.id}","${t.type}","${t.amount}","${t.categoryId}","${acc ? acc.name : ''}","${t.date}","${t.description || ''}"\n`;
-        });
-        const blob = new Blob(["\uFEFF" + csv], { type: "text/csv;charset=utf-8;" });
-        const url = URL.createObjectURL(blob);
-        const link = document.createElement("a");
-        link.href = url;
-        link.download = `kharjino_export_${Date.now()}.csv`;
-        link.click();
-        URL.revokeObjectURL(url);
       });
 
       // Tour Buttons
@@ -2169,7 +2528,7 @@
         }
       });
 
-      // Robust Scroll-Spy for Floating Dock
+      // Scroll-Spy for Floating Dock
       const sections = [
         { id: "overviewSection", navId: "navOverview" },
         { id: "accountsSection", navId: "navAccounts" },
